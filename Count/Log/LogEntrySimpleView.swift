@@ -10,15 +10,23 @@ import SwiftUI
 
 struct LogEntryView: View {
     var name:String = ""
+    var calories:Decimal = 0
+    var protien:Decimal = 0
     var entryDate:String = ""
     
     var body: some View {
         HStack{
             VStack(alignment: .leading){
+                HStack(){
                 Text(name)
                     .font(.headline)
-                Text(entryDate)
-                    .font(.caption)
+                //HStack(){
+                    Spacer()
+                    Text("Calories:" + calories.description)
+                        .font(.caption)
+                    Text("Protien:"+protien.description)
+                        .font(.caption)
+                }
             }
         }
     }

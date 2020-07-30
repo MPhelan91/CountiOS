@@ -12,8 +12,8 @@ import CoreData
 public class LogEntry:NSManagedObject,Identifiable{
     @NSManaged public var entryDate:Date?
     @NSManaged public var name:String?
-    @NSManaged public var calories:Decimal
-    @NSManaged public var protien:Decimal
+    @NSManaged public var calories:NSDecimalNumber?
+    @NSManaged public var protien:NSDecimalNumber?
 }
 
 extension LogEntry{
