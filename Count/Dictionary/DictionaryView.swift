@@ -26,7 +26,7 @@ struct DictionaryView: View {
                     Section(header: Text("Dictionary")){
                         ForEach(self.dictionaryEntries){ entry in
                             NavigationLink(destination: DictionaryEntryFullView(entry)){
-                                DictionaryEntrySimpleView(name: entry.name,
+                                DictionaryEntrySimpleView(name: entry.name!,
                                              calories: entry.calories as! Int,
                                              protien: entry.protien as! Int
                                 )

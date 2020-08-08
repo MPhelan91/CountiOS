@@ -10,19 +10,19 @@ import Foundation
 import CoreData
 
 public class DictionaryEntry:NSManagedObject,Identifiable{
-    @NSManaged public var name:String
-    @NSManaged public var definition:String
-    @NSManaged public var calories:NSNumber
-    @NSManaged public var protien:NSNumber
-    @NSManaged public var servingUnit:NSNumber
-    @NSManaged public var servingSize:NSNumber
+    @NSManaged public var name:String?
+    @NSManaged public var definition:String?
+    @NSManaged public var calories:NSNumber?
+    @NSManaged public var protien:NSNumber?
+    @NSManaged public var servingUnit:NSNumber?
+    @NSManaged public var servingSize:NSNumber?
 }
 
 extension DictionaryEntry{
     static func getAllDictionaryEntries() -> NSFetchRequest<DictionaryEntry> {
         let request: NSFetchRequest<DictionaryEntry> = DictionaryEntry.fetchRequest() as! NSFetchRequest<DictionaryEntry>
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         request.sortDescriptors = [sortDescriptor]
         
         return request

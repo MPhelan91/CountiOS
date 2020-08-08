@@ -22,12 +22,12 @@ struct DictionaryEntryFullView : View {
     private var entryToEdit : DictionaryEntry? = nil
     
     init(_ entry: DictionaryEntry) {
-        _name = State(initialValue: entry.name)
-        _definition = State(initialValue: entry.definition)
-        _servingSize = State(initialValue: entry.servingSize.description)
+        _name = State(initialValue: entry.name!)
+        _definition = State(initialValue: entry.definition!)
+        _servingSize = State(initialValue: entry.servingSize!.description)
         _servingUnit = State(initialValue: ServingUnit(rawValue: entry.servingUnit as! Int) ?? ServingUnit.Gram)
-        _calories = State(initialValue: entry.calories.description)
-        _protien = State(initialValue: entry.protien.description)
+        _calories = State(initialValue: entry.calories!.description)
+        _protien = State(initialValue: entry.protien!.description)
         entryToEdit = entry
     }
     

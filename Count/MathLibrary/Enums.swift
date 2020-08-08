@@ -23,3 +23,7 @@ enum ServingUnit : Int, CaseIterable {
         }
     }
 }
+
+enum CountError: Error {
+    case VolumeMassConversion
+}
