@@ -20,9 +20,15 @@ struct LogEntryView: View {
         HStack{
             VStack(alignment: .leading){
                 HStack(){
-                Text(name)
-                    .font(.headline)
-                //HStack(){
+//                    Button(action:{
+//                        print("Hey")
+//                    }){
+//                        Image(systemName: "doc.on.doc")
+//                    }
+                    Checkbox()
+                    Text(name)
+                        .font(.headline)
+                    //HStack(){
                     Spacer()
                     Text("Calories: \(self.calories, specifier: "%.0f")")
                         .font(.caption)

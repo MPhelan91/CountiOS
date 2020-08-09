@@ -16,12 +16,9 @@ struct DictionaryView: View {
     var body: some View {
         NavigationView{
             VStack{
-                NavigationLink(destination: DictionaryEntryFullView(), tag: 1, selection: $action) {
-                    EmptyView()
-                }
-                Button(action: {self.action = 1}){
-                    Text("Add Entry")
-                }
+//                Menu("..."){
+//                    
+//                }
                 List{
                     Section(header: Text("Dictionary")){
                         ForEach(self.dictionaryEntries){ entry in
@@ -42,6 +39,15 @@ struct DictionaryView: View {
                         }
                     }
                 }
+                .navigationBarTitle(Text("Dictionary"))
+                .navigationBarItems(trailing: HStack{
+                    NavigationLink(destination: DictionaryEntryFullView(), tag: 1, selection: $action) {
+                        EmptyView()
+                    }
+                    Button(action: {self.action = 1}){
+                        Image(systemName: "plus")
+                    }
+                })
             }
         }
     }
