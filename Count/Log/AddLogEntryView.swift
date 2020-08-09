@@ -12,6 +12,7 @@ import CoreData
 struct AddLogEntryView : View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var vm : AddLogEntryVM
+    @EnvironmentObject var vm2 : LogVM
     
     var body: some View{
         NavigationView{
@@ -35,7 +36,8 @@ struct AddLogEntryView : View {
                     TextField("Calories", text: $vm.calories)
                     TextField("Protien", text: $vm.protien)
                     Button(action: {
-                        self.vm.addEntry()
+                        self.vm.addEntry(date:self.vm2.dateForCurrentEntries)
+                        self.vm2.fetchEntries()
                         self.presentationMode.wrappedValue.dismiss()
                     }){
                         Text("Add")

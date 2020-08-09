@@ -73,13 +73,13 @@ class AddLogEntryVM: ObservableObject {
         }
     }
     
-    func addEntry(){
+    func addEntry(date:Date = Date()){
         let newEntry = LogEntry(context: self.context)
         
         newEntry.name = self.name
         newEntry.calories = NSDecimalNumber(value: Double(self.calories) ?? 0)
         newEntry.protien = NSDecimalNumber(value: Double(self.protien) ?? 0)
-        newEntry.entryDate = Date()
+        newEntry.entryDate = date
         
         do{
             try self.context.save()

@@ -25,4 +25,18 @@ extension LogEntry{
         
         return request
     }
+    
+    static func getLogEntriesForDate(date:Date) -> NSFetchRequest<LogEntry> {
+        let request: NSFetchRequest<LogEntry> = LogEntry.fetchRequest() as! NSFetchRequest<LogEntry>
+        
+        let sortDescriptor = NSSortDescriptor(key: "entryDate", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        
+        let startDate = date.onlyDate as! Date
+        let endDate = startDate.addingTimeInterval(24*60*60)
+        
+        request.predicate = NSPredicate(format: "(entryDate >= %@) AND (entryDate <= %@)", startDate as NSDate, endDate as NSDate)
+        
+        return request
+    }
 }

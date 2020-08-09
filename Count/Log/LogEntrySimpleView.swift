@@ -10,9 +10,11 @@ import SwiftUI
 
 struct LogEntryView: View {
     var name:String = ""
-    var calories:Decimal = 0
-    var protien:Decimal = 0
+    var calories:Double = 0
+    var protien:Double = 0
     var entryDate:String = ""
+    
+    //Text("Calories: \(self.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")"))
     
     var body: some View {
         HStack{
@@ -22,9 +24,9 @@ struct LogEntryView: View {
                     .font(.headline)
                 //HStack(){
                     Spacer()
-                    Text("Calories:" + calories.description)
+                    Text("Calories: \(self.calories, specifier: "%.0f")")
                         .font(.caption)
-                    Text("Protien:"+protien.description)
+                    Text("Protien: \(self.protien, specifier: "%.0f")")
                         .font(.caption)
                 }
             }
