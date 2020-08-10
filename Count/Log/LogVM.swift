@@ -6,7 +6,6 @@
 //  Copyright © 2020 MichaelPhelan. All rights reserved.
 //
 
-import SwiftUI
 import CoreData
 
 class LogVM: ObservableObject {
@@ -16,6 +15,7 @@ class LogVM: ObservableObject {
         }
     }
     @Published var logEntries: [LogEntry] = []
+    @Published var selectedEntries: [LogEntry] = []
     
     private let context: NSManagedObjectContext
     
@@ -48,5 +48,42 @@ class LogVM: ObservableObject {
         }
         
         fetchEntries()
+    }
+    
+    public func selelctEntry(objectId:NSManagedObjectID){
+        let entry = self.logEntries.first(where: { $0.objectID.isEqual(objectId) })
+        selectedEntries.append(entry!)
+    }
+    
+    public func unselectEntry(objectId:NSManagedObjectID){
+        selectedEntries.removeAll(where: {$0.objectID.isEqual(objectId)})
+    }
+    
+    public func isSelected(objectId:NSManagedObjectID) -> Bool {
+        return selectedEntries.contains(where: {$0.objectID.isEqual(objectId)})
+    }
+    
+    public func copySelected() -> Bool {
+        if(self.selectedEntries.count > 0){
+            for entry in self.selectedEntries {
+                let newEntry = LogEntry(context: self.context)
+                
+                newEntry.name = entry.name
+                newEntry.calories = entry.calories
+                newEntry.protien = entry.protien
+                newEntry.entryDate = Date()
+                
+                do{
+                    try self.context.save()
+                }catch{
+                    print(error)
+                    return false
+                }
+            }
+            selectedEntries.removeAll()
+            fetchEntries()
+            return true
+        }
+        return false
     }
 }

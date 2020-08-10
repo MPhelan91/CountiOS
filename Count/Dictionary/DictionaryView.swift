@@ -16,9 +16,6 @@ struct DictionaryView: View {
     var body: some View {
         NavigationView{
             VStack{
-//                Menu("..."){
-//                    
-//                }
                 List{
                     Section(header: Text("Dictionary")){
                         ForEach(self.dictionaryEntries){ entry in

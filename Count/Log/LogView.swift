@@ -10,7 +10,19 @@ import SwiftUI
 
 struct LogView: View {
     @State private var action: Int? = 0
-    
+    @State private var showToast = false{
+        didSet{
+            //TODO: try and do this in the Toast class itself
+            if(self.showToast){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                  withAnimation {
+                    self.showToast = false
+                  }
+                }
+            }
+        }
+    }
+    @State private var toastMessage = ""
     @EnvironmentObject var vm : LogVM
     
     func dateToString() -> String{
@@ -24,10 +36,18 @@ struct LogView: View {
     var body: some View {
         NavigationView{
             VStack{
+                HStack{
+                    Button("Copy", action:{
+                        if(self.vm.copySelected()){
+                            self.toastMessage = "Copied to Today"
+                            self.showToast = true
+                        }
+                    })
+                }
                 List{
                     Section(header: Text("Calories: \(self.vm.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.vm.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")")){
                         ForEach(self.vm.logEntries){ logEntry in
-                            LogEntryView(name: logEntry.name!, calories: logEntry.calories! as! Double, protien: logEntry.protien! as! Double, entryDate: "\(logEntry.entryDate!)")
+                            LogEntrySimpleView(logEntry: logEntry)
                         }.onDelete { indexSet in
                             self.vm.deleteEntry(index: indexSet.first!)
                         }
@@ -54,6 +74,6 @@ struct LogView: View {
                     }
                 )
             }
-        }
+        }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }

@@ -17,6 +17,8 @@
 		4F6D295724DF491E008CEF08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295624DF491E008CEF08 /* Extensions.swift */; };
 		4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295A24DF5900008CEF08 /* LogVM.swift */; };
 		4F6D295E24E072CC008CEF08 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295D24E072CC008CEF08 /* Checkbox.swift */; };
+		4F6D296024E19425008CEF08 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295F24E19425008CEF08 /* Toast.swift */; };
+		4F6D296224E1955C008CEF08 /* UIExetnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D296124E1955C008CEF08 /* UIExetnsions.swift */; };
 		4F8E688224C90AE800E8810D /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E687B24C9086D00E8810D /* LogView.swift */; };
 		4F8E688324C90AED00E8810D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BAC24A57A59008672D9 /* ContentView.swift */; };
 		4F8E688524C90E3A00E8810D /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688424C90E3A00E8810D /* DictionaryView.swift */; };
@@ -45,6 +47,8 @@
 		4F6D295624DF491E008CEF08 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F6D295A24DF5900008CEF08 /* LogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVM.swift; sourceTree = "<group>"; };
 		4F6D295D24E072CC008CEF08 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		4F6D295F24E19425008CEF08 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		4F6D296124E1955C008CEF08 /* UIExetnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExetnsions.swift; sourceTree = "<group>"; };
 		4F8E687B24C9086D00E8810D /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		4F8E688424C90E3A00E8810D /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		4F8E688624C90E9C00E8810D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 			children = (
 				4F45E66F24D23C440085A951 /* MultilineTextView.swift */,
 				4F6D295D24E072CC008CEF08 /* Checkbox.swift */,
+				4F6D295F24E19425008CEF08 /* Toast.swift */,
+				4F6D296124E1955C008CEF08 /* UIExetnsions.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -270,8 +276,10 @@
 				4F6D294F24DA029E008CEF08 /* ServingInfo.swift in Sources */,
 				4F6D295724DF491E008CEF08 /* Extensions.swift in Sources */,
 				4FFF1BA824A57A59008672D9 /* SceneDelegate.swift in Sources */,
+				4F6D296224E1955C008CEF08 /* UIExetnsions.swift in Sources */,
 				4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */,
 				4F45E66D24CFB4B30085A951 /* DictionaryEntrySimpleView.swift in Sources */,
+				4F6D296024E19425008CEF08 /* Toast.swift in Sources */,
 				4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

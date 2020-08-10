@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Checkbox:View{
-    @State var isChecked = false;
+    @State public var isChecked = false;
 
     var body : some View{
         Button(action:{self.isChecked = !self.isChecked}){

@@ -7,41 +7,37 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct LogEntryView: View {
-    var name:String = ""
-    var calories:Double = 0
-    var protien:Double = 0
-    var entryDate:String = ""
+struct LogEntrySimpleView: View {
+    @EnvironmentObject var vm : LogVM
     
-    //Text("Calories: \(self.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")"))
+    var logEntry:LogEntry
     
     var body: some View {
         HStack{
             VStack(alignment: .leading){
                 HStack(){
-//                    Button(action:{
-//                        print("Hey")
-//                    }){
-//                        Image(systemName: "doc.on.doc")
-//                    }
-                    Checkbox()
-                    Text(name)
+                    Button(action: {
+                        let isChecked = self.vm.isSelected(objectId: self.logEntry.objectID)
+                        if(!isChecked){
+                            self.vm.selelctEntry(objectId: self.logEntry.objectID)
+                        }
+                        else if(isChecked) {
+                            self.vm.unselectEntry(objectId: self.logEntry.objectID)
+                        }
+                    }){
+                        Image(systemName: vm.isSelected(objectId: self.logEntry.objectID) ? "checkmark.square": "square")
+                    }
+                    Text(self.logEntry.name ?? "")
                         .font(.headline)
-                    //HStack(){
                     Spacer()
-                    Text("Calories: \(self.calories, specifier: "%.0f")")
+                    Text("Calories: \((self.logEntry.calories ?? 0) as Double, specifier: "%.0f")")
                         .font(.caption)
-                    Text("Protien: \(self.protien, specifier: "%.0f")")
+                    Text("Protien: \((self.logEntry.protien ?? 0) as Double, specifier: "%.0f")")
                         .font(.caption)
                 }
             }
         }
-    }
-}
-
-struct LogEntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogEntryView()
     }
 }
