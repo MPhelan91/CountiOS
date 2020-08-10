@@ -9,53 +9,53 @@
 import Foundation
 
 struct UnitKey: Hashable{
-    var fromUnit:ServingUnit
-    var toUnit:ServingUnit
-    init(from:ServingUnit, to:ServingUnit){
+    var fromUnit:Units
+    var toUnit:Units
+    init(from:Units, to:Units){
         fromUnit = from
         toUnit = to
     }
 }
 
 class Conversions{
-    private static var massAndWeightUnits = [ServingUnit.Gram, ServingUnit.Ounce, ServingUnit.Pound]
-    private static var volumeUnits = [ServingUnit.Cup, ServingUnit.Milliliter, ServingUnit.Liter]
+    private static var massAndWeightUnits = [Units.Gram, Units.Ounce, Units.Pound]
+    private static var volumeUnits = [Units.Cup, Units.Milliliter, Units.Liter]
     
     private static var unitConversionDictionary = [
-        UnitKey(from:ServingUnit.Liter, to:ServingUnit.Milliliter): 1000,
-        UnitKey(from:ServingUnit.Milliliter, to:ServingUnit.Liter): 0.001,
+        UnitKey(from:Units.Liter, to:Units.Milliliter): 1000,
+        UnitKey(from:Units.Milliliter, to:Units.Liter): 0.001,
         
-        UnitKey(from:ServingUnit.Liter, to:ServingUnit.Cup): 4.22675,
-        UnitKey(from:ServingUnit.Cup, to:ServingUnit.Liter): 0.236588,
+        UnitKey(from:Units.Liter, to:Units.Cup): 4.22675,
+        UnitKey(from:Units.Cup, to:Units.Liter): 0.236588,
         
-        UnitKey(from:ServingUnit.Cup, to:ServingUnit.Milliliter): 236.588,
-        UnitKey(from:ServingUnit.Milliliter, to:ServingUnit.Cup): 0.00422675,
+        UnitKey(from:Units.Cup, to:Units.Milliliter): 236.588,
+        UnitKey(from:Units.Milliliter, to:Units.Cup): 0.00422675,
         
-        UnitKey(from:ServingUnit.Gram, to:ServingUnit.Ounce): 0.035274,
-        UnitKey(from:ServingUnit.Ounce, to:ServingUnit.Gram): 28.3495,
+        UnitKey(from:Units.Gram, to:Units.Ounce): 0.035274,
+        UnitKey(from:Units.Ounce, to:Units.Gram): 28.3495,
         
-        UnitKey(from:ServingUnit.Gram, to:ServingUnit.Pound): 0.00220462,
-        UnitKey(from:ServingUnit.Pound, to:ServingUnit.Gram): 453.592,
+        UnitKey(from:Units.Gram, to:Units.Pound): 0.00220462,
+        UnitKey(from:Units.Pound, to:Units.Gram): 453.592,
         
-        UnitKey(from:ServingUnit.Pound, to:ServingUnit.Ounce): 16,
-        UnitKey(from:ServingUnit.Ounce, to:ServingUnit.Pound): 0.0625,
+        UnitKey(from:Units.Pound, to:Units.Ounce): 16,
+        UnitKey(from:Units.Ounce, to:Units.Pound): 0.0625,
     ]
     
     public static func Convert(servingSize:ServingInfo, servingNutrition: NutritionalInfo, portion:ServingInfo) throws -> NutritionalInfo {
-        let ratio = servingSize.Unit == portion.Unit
+        let ratio = servingSize.ServingUnit == portion.ServingUnit
             ? portion.Serving / servingSize.Serving
-            : try ConvertPortion(portion: portion, servingUnit: servingSize.Unit) / servingSize.Serving
+            : try ConvertPortion(portion: portion, servingUnit: servingSize.ServingUnit) / servingSize.Serving
         
-        return NutritionalInfo(calories: servingNutrition.Calories * ratio, protien: servingNutrition.Protien * ratio);
+        return NutritionalInfo(Calories: servingNutrition.Calories * ratio, Protien: servingNutrition.Protien * ratio);
     }
     
-    public static func ConvertPortion(portion:ServingInfo, servingUnit:ServingUnit) throws -> Double {
-        if((volumeUnits.contains(portion.Unit) && massAndWeightUnits.contains(servingUnit)) ||
-            (massAndWeightUnits.contains(portion.Unit) && volumeUnits.contains(servingUnit)) ){
+    public static func ConvertPortion(portion:ServingInfo, servingUnit:Units) throws -> Double {
+        if((volumeUnits.contains(portion.ServingUnit) && massAndWeightUnits.contains(servingUnit)) ||
+            (massAndWeightUnits.contains(portion.ServingUnit) && volumeUnits.contains(servingUnit)) ){
             throw CountError.VolumeMassConversion
         }
         
-        let ratio = unitConversionDictionary[UnitKey(from:portion.Unit, to:servingUnit)]
+        let ratio = unitConversionDictionary[UnitKey(from:portion.ServingUnit, to:servingUnit)]
         return ratio! * portion.Serving;
     }
 }

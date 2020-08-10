@@ -9,10 +9,6 @@
 import Foundation
 
 struct ServingInfo{
-    var Serving:Double
-    var Unit:ServingUnit
-    init(serving:Double, unit:ServingUnit){
-        Serving = serving
-        Unit = unit
-    }
+    var Serving:Double = 0
+    var ServingUnit:Units = Units.Gram
 }

@@ -24,7 +24,7 @@ class AddLogEntryVM: ObservableObject {
             recalcNutrition()
         }
     }
-    @Published var servingUnit=ServingUnit.Gram{
+    @Published var servingUnit=Units.Gram{
         didSet{
             recalcNutrition()
         }
@@ -49,7 +49,7 @@ class AddLogEntryVM: ObservableObject {
             self.definition = selectedEntry!.definition!
             self.servings = "1"
             self.servingSize = selectedEntry!.servingSize!.description
-            self.servingUnit = ServingUnit(rawValue: selectedEntry!.servingUnit as! Int) ?? ServingUnit.Gram
+            self.servingUnit = Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram
             self.calories = selectedEntry!.calories!.description
             self.protien = selectedEntry!.protien!.description
         }
@@ -57,9 +57,9 @@ class AddLogEntryVM: ObservableObject {
     
     func recalcNutrition(){
         if(selectedEntry != nil){
-            let servingSize = ServingInfo(serving: selectedEntry?.servingSize as! Double, unit: ServingUnit(rawValue: selectedEntry!.servingUnit as! Int) ?? ServingUnit.Gram)
-            let nutritionInfo = NutritionalInfo(calories: selectedEntry?.calories as! Double, protien: selectedEntry?.protien as! Double)
-            let portion = ServingInfo(serving: Double(self.servingSize) ?? 0, unit: self.servingUnit)
+            let servingSize = ServingInfo(Serving: selectedEntry?.servingSize as! Double, ServingUnit: Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram)
+            let nutritionInfo = NutritionalInfo(Calories: selectedEntry?.calories as! Double, Protien: selectedEntry?.protien as! Double)
+            let portion = ServingInfo(Serving: Double(self.servingSize) ?? 0, ServingUnit: self.servingUnit)
             
             do{
                 let result = try Conversions.Convert(servingSize: servingSize, servingNutrition: nutritionInfo, portion: portion)
@@ -96,7 +96,7 @@ class AddLogEntryVM: ObservableObject {
         self.definition = ""
         self.servings = ""
         self.servingSize = ""
-        self.servingUnit = ServingUnit.Gram
+        self.servingUnit = Units.Gram
         self.calories = ""
         self.protien = ""
     }

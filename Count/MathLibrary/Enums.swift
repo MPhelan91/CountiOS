@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ServingUnit : Int, CaseIterable {
+enum Units : Int, CaseIterable {
     
     case Gram, Ounce, Pound, Liter, Milliliter, Cup
     

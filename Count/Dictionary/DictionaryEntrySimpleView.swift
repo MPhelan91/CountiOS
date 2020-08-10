@@ -12,7 +12,7 @@ struct DictionaryEntrySimpleView : View{
     var name:String=""
     var definition:String=""
     var servingSize:Int=0
-    var servingUnit:ServingUnit = ServingUnit.Gram
+    var servingUnit:Units = Units.Gram
     var calories:Int=0
     var protien:Int=0
     

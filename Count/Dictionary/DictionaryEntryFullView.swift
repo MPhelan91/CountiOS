@@ -15,7 +15,7 @@ struct DictionaryEntryFullView : View {
     @State private var name = ""
     @State private var definition = ""
     @State private var servingSize = ""
-    @State private var servingUnit = ServingUnit.Gram
+    @State private var servingUnit = Units.Gram
     @State private var calories = ""
     @State private var protien = ""
     
@@ -25,7 +25,7 @@ struct DictionaryEntryFullView : View {
         _name = State(initialValue: entry.name!)
         _definition = State(initialValue: entry.definition!)
         _servingSize = State(initialValue: entry.servingSize!.description)
-        _servingUnit = State(initialValue: ServingUnit(rawValue: entry.servingUnit as! Int) ?? ServingUnit.Gram)
+        _servingUnit = State(initialValue: Units(rawValue: entry.servingUnit as! Int) ?? Units.Gram)
         _calories = State(initialValue: entry.calories!.description)
         _protien = State(initialValue: entry.protien!.description)
         entryToEdit = entry
@@ -39,7 +39,7 @@ struct DictionaryEntryFullView : View {
                 TextField("Description",text: self.$definition)
                 TextField("Serving Size", text: self.$servingSize)
                 Picker(selection: $servingUnit, label: Text("Unit")) {
-                    ForEach(ServingUnit.allCases, id: \.self) { unit in
+                    ForEach(Units.allCases, id: \.self) { unit in
                         Text(unit.abbreviation)
                     }
                 }
@@ -63,7 +63,7 @@ struct DictionaryEntryFullView : View {
                     
                     self.name = ""
                     self.definition = ""
-                    self.servingUnit = ServingUnit.Gram
+                    self.servingUnit = Units.Gram
                     self.servingSize = ""
                     self.calories = ""
                     self.protien = ""

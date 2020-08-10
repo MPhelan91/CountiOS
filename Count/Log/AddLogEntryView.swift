@@ -22,12 +22,11 @@ struct AddLogEntryView : View {
                         Text(entry.name!).tag(entry.name)
                     }
                 }
-                TextField("Name", text: $vm.name)
                 TextField("Description", text: $vm.definition)
                 TextField("Servings", text: $vm.servings)
                 TextField("Serving Size", text: $vm.servingSize)
                 Picker(selection: $vm.servingUnit, label: Text("Unit")) {
-                    ForEach(ServingUnit.allCases, id: \.self) { unit in
+                    ForEach(Units.allCases, id: \.self) { unit in
                         Text(unit.abbreviation)
                     }
                 }
