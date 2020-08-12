@@ -73,5 +73,38 @@ class ConversionTests: XCTestCase {
             }
         }
     }
+    
+    func testConvert() throws{
+        let cases = [
+            //(4, Units.Ounce, 110.0, 26.0,
+              //        12, Units.Ounce, 330.0, 78.0),
+                     
+                     (4 , Units.Ounce, 110.0, 26.0,
+                      1.25, Units.Pound, 550.0, 130.0),
+        
+                     (0.75 , Units.Pound, 100.0, 5.0,
+                      400, Units.Gram, 117.58, 5.88),
+                     
+                     (1 , Units.Liter, 30.0, 3.0,
+                      2500, Units.Milliliter, 75.0, 7.5),
+                     
+                     (1 , Units.Cup, 30.0, 3.0,
+                      1, Units.Liter, 126.80, 12.68),
+                     
+                     (1 , Units.Cup, 30.0, 3.0,
+                      1000, Units.Milliliter, 126.80, 12.68)]
+        
+        for testCase in cases{
+            let definition = NutritionalInfo(Servings: 1, ServingSize: testCase.0, ServingUnit: testCase.1, Calories: testCase.2, Protien: testCase.3)
+            
+            let toInfo = try Conversions.NewConvert(definition: definition, fieldChanged: ChangedData.Portion, newValue: testCase.4, newUnit: testCase.5)
+            XCTAssertEqual(testCase.6, toInfo.Calories, accuracy: 0.01)
+            XCTAssertEqual(testCase.7, toInfo.Protien, accuracy: 0.01)
+            
+            let fromInfo2 = try Conversions.NewConvert(definition: toInfo, fieldChanged: ChangedData.Portion, newValue: testCase.0, newUnit: testCase.1);
+            XCTAssertEqual(testCase.2, fromInfo2.Calories, accuracy: 0.01)
+            XCTAssertEqual(testCase.3, fromInfo2.Protien, accuracy: 0.01)
+        }
+    }
 }
 

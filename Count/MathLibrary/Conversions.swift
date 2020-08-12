@@ -41,20 +41,24 @@ class Conversions{
         UnitKey(from:Units.Ounce, to:Units.Pound): 0.0625,
     ]
     
-    public static func NewConvert(definition: NutritionalInfo, fieldChanged: ChangedData, newValue: Double, newUnit: Units) -> NutritionalInfo{
-
+    public static func NewConvert(definition: NutritionalInfo, fieldChanged: ChangedData, newValue: Double, newUnit: Units) throws -> NutritionalInfo{
+        var result = definition
         
-        let oldValue = getFieldFromEnum(definition: definition, fieldChanged: fieldChanged)
+        result.ServingSize = result.ServingUnit != newUnit
+            ? try ConvertPortion(portion: result.ServingSize, fromUnit: result.ServingUnit, toUnit: newUnit)
+            : result.ServingSize
         
-        let ratio = oldValue / newValue;
+        let oldValue = getFieldBasedOnEnum(definition: result, fieldChanged: fieldChanged)
         
-        return NutritionalInfo()
-        //return applyRatio(ratio: ratio, info: definition)
+        let ratio = newValue / oldValue;
         
-        //Convert definition to new Unit first
+        result.Servings *= ratio
+        result.ServingSize *= ratio
+        result.ServingUnit = newUnit
+        result.Calories *= ratio
+        result.Protien *= ratio
         
-        //Convert newDefinition based on ratio of changed data second
-        
+        return result
     }
     
     public static func ConvertPortion(portion: Double, fromUnit: Units, toUnit: Units) throws -> Double {
@@ -67,10 +71,10 @@ class Conversions{
         return ratio! * portion;
     }
     
-    private static func getFieldFromEnum(definition:NutritionalInfo, fieldChanged:ChangedData) -> Double {
+    private static func getFieldBasedOnEnum(definition:NutritionalInfo, fieldChanged:ChangedData) -> Double {
         switch fieldChanged {
         case ChangedData.Serving:
-            return 1.0
+            return definition.Servings
         case ChangedData.Portion:
             return definition.ServingSize
         case ChangedData.Calorie:
@@ -83,21 +87,11 @@ class Conversions{
     public static func Convert(servingSize:ServingInfo, servingNutrition: NutritionalInfo, portion:ServingInfo) throws -> NutritionalInfo {
         let ratio = servingSize.ServingUnit == portion.ServingUnit
             ? portion.Serving / servingSize.Serving
-            : try ConvertPortion(portion: portion, servingUnit: servingSize.ServingUnit) / servingSize.Serving
+            : try ConvertPortion(portion: portion.Serving, fromUnit: portion.ServingUnit, toUnit: servingSize.ServingUnit) / servingSize.Serving
         
         var result = NutritionalInfo()
         result.Calories = ratio * servingNutrition.Calories
         result.Protien = ratio * servingNutrition.Protien
         return result;
-    }
-    
-    public static func ConvertPortion(portion:ServingInfo, servingUnit:Units) throws -> Double {
-        if((volumeUnits.contains(portion.ServingUnit) && massAndWeightUnits.contains(servingUnit)) ||
-            (massAndWeightUnits.contains(portion.ServingUnit) && volumeUnits.contains(servingUnit)) ){
-            throw CountError.VolumeMassConversion
-        }
-        
-        let ratio = unitConversionDictionary[UnitKey(from:portion.ServingUnit, to:servingUnit)]
-        return ratio! * portion.Serving;
     }
 }
