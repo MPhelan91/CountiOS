@@ -24,6 +24,10 @@ enum Units : Int, CaseIterable {
     }
 }
 
+enum ChangedData{
+    case Serving, Portion, Calorie, Protien
+}
+
 enum CountError: Error {
     case VolumeMassConversion
 }

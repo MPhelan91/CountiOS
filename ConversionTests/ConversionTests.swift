@@ -65,10 +65,10 @@ class ConversionTests: XCTestCase {
                                        (Units.Ounce, Units.Milliliter)]
         
         for testCase in cases{
-            XCTAssertThrowsError(try Conversions.ConvertPortion(portion: ServingInfo(Serving: 1, ServingUnit: testCase.0), servingUnit: testCase.1)) { error in
+            XCTAssertThrowsError(try Conversions.ConvertPortion(portion: 1, fromUnit: testCase.0, toUnit: testCase.1)) { error in
                 XCTAssertEqual(error as! CountError, CountError.VolumeMassConversion)
             }
-            XCTAssertThrowsError(try Conversions.ConvertPortion(portion: ServingInfo(Serving: 1, ServingUnit: testCase.1), servingUnit: testCase.0)) { error in
+            XCTAssertThrowsError(try Conversions.ConvertPortion(portion: 1, fromUnit: testCase.1, toUnit: testCase.0)) { error in
                 XCTAssertEqual(error as! CountError, CountError.VolumeMassConversion)
             }
         }

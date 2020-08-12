@@ -41,12 +41,54 @@ class Conversions{
         UnitKey(from:Units.Ounce, to:Units.Pound): 0.0625,
     ]
     
+    public static func NewConvert(definition: NutritionalInfo, fieldChanged: ChangedData, newValue: Double, newUnit: Units) -> NutritionalInfo{
+
+        
+        let oldValue = getFieldFromEnum(definition: definition, fieldChanged: fieldChanged)
+        
+        let ratio = oldValue / newValue;
+        
+        return NutritionalInfo()
+        //return applyRatio(ratio: ratio, info: definition)
+        
+        //Convert definition to new Unit first
+        
+        //Convert newDefinition based on ratio of changed data second
+        
+    }
+    
+    public static func ConvertPortion(portion: Double, fromUnit: Units, toUnit: Units) throws -> Double {
+        if((volumeUnits.contains(fromUnit) && massAndWeightUnits.contains(toUnit)) ||
+            (massAndWeightUnits.contains(fromUnit) && volumeUnits.contains(toUnit)) ){
+            throw CountError.VolumeMassConversion
+        }
+        
+        let ratio = unitConversionDictionary[UnitKey(from:fromUnit, to:toUnit)]
+        return ratio! * portion;
+    }
+    
+    private static func getFieldFromEnum(definition:NutritionalInfo, fieldChanged:ChangedData) -> Double {
+        switch fieldChanged {
+        case ChangedData.Serving:
+            return 1.0
+        case ChangedData.Portion:
+            return definition.ServingSize
+        case ChangedData.Calorie:
+            return definition.Calories
+        case ChangedData.Protien:
+            return definition.Protien
+        }
+    }
+    
     public static func Convert(servingSize:ServingInfo, servingNutrition: NutritionalInfo, portion:ServingInfo) throws -> NutritionalInfo {
         let ratio = servingSize.ServingUnit == portion.ServingUnit
             ? portion.Serving / servingSize.Serving
             : try ConvertPortion(portion: portion, servingUnit: servingSize.ServingUnit) / servingSize.Serving
         
-        return NutritionalInfo(Calories: servingNutrition.Calories * ratio, Protien: servingNutrition.Protien * ratio);
+        var result = NutritionalInfo()
+        result.Calories = ratio * servingNutrition.Calories
+        result.Protien = ratio * servingNutrition.Protien
+        return result;
     }
     
     public static func ConvertPortion(portion:ServingInfo, servingUnit:Units) throws -> Double {
