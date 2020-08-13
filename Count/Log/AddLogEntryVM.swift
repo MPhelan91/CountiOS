@@ -57,15 +57,14 @@ class AddLogEntryVM: ObservableObject {
     
     func recalcNutrition(){
         if(selectedEntry != nil){
-            let servingSize = ServingInfo(Serving: selectedEntry?.servingSize as! Double, ServingUnit: Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram)
-            let nutritionInfo = NutritionalInfo(Calories: selectedEntry?.calories as! Double, Protien: selectedEntry?.protien as! Double)
-            let portion = ServingInfo(Serving: Double(self.servingSize) ?? 0, ServingUnit: self.servingUnit)
+            let definition = NutritionalInfo(1, selectedEntry?.servingSize as! Double, Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double)
             
             do{
-                let result = try Conversions.Convert(servingSize: servingSize, servingNutrition: nutritionInfo, portion: portion)
+                let result = try Conversions.Convert(definition: definition, fieldChanged: ChangedData.Portion, newValue: Double(self.servingSize) ?? 0, newUnit: self.servingUnit)
                 
                 self.calories = result.Calories.description
                 self.protien = result.Protien.description
+                self.servings = result.NumberOfServings.description
             }
             catch{
                 print(error)

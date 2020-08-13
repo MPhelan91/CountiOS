@@ -24,8 +24,8 @@ enum Units : Int, CaseIterable {
     }
 }
 
-enum ChangedData{
-    case Serving, Portion, Calorie, Protien
+enum ChangedData : CaseIterable{
+    case NumberOfServings, Portion, Calorie, Protien
 }
 
 enum CountError: Error {

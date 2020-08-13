@@ -9,9 +9,19 @@
 import Foundation
 
 struct NutritionalInfo{
-    var Servings:Double = 0
-    var ServingSize:Double = 0
-    var ServingUnit:Units = Units.Gram
+    var NumberOfServings:Double = 0
+    var PortionSize:Double = 0
+    var PortionUnit:Units = Units.Gram
     var Calories:Double = 0
     var Protien:Double = 0
+    
+    init(){}
+    
+    init(_ numberOfServings: Double, _ portionSize: Double, _ poritionUnit: Units, _ calories: Double, _ protien: Double){
+        self.NumberOfServings = numberOfServings
+        self.PortionSize = portionSize
+        self.PortionUnit = poritionUnit
+        self.Calories = calories
+        self.Protien = protien
+    }
 }
