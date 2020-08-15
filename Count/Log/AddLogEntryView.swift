@@ -23,8 +23,18 @@ struct AddLogEntryView : View {
                     }
                 }
                 TextField("Description", text: $vm.definition)
-                TextField("Servings", text: $vm.servings)
-                TextField("Serving Size", text: $vm.servingSize)
+                TextField("Servings",
+                          text: $vm.servings,
+                          onEditingChanged: {value in
+                            if(!value){self.vm.RecalcNutrition(ChangedData.NumberOfServings)}}
+                         ).keyboardType(.decimalPad)
+                //DecimalInput(value: $vm.servings)
+                TextField("Serving Size",
+                          text: $vm.servingSize,
+                          onEditingChanged: {value in
+                            if(!value){self.vm.RecalcNutrition(ChangedData.Portion)}}
+                          ).keyboardType(.decimalPad)
+                //Could not find onEditingChange equivelent for picker so using property observer of servingUnit in viewModel to recalc values on change
                 Picker(selection: $vm.servingUnit, label: Text("Unit")) {
                     ForEach(Units.allCases, id: \.self) { unit in
                         Text(unit.abbreviation)
@@ -32,8 +42,16 @@ struct AddLogEntryView : View {
                 }
                 Group{
                     TextField("Name", text: $vm.name)
-                    TextField("Calories", text: $vm.calories)
-                    TextField("Protien", text: $vm.protien)
+                    TextField("Calories",
+                              text: $vm.calories,
+                              onEditingChanged: {value in
+                                if(!value){self.vm.RecalcNutrition(ChangedData.Calorie)}}
+                              ).keyboardType(.decimalPad)
+                    TextField("Protien",
+                              text: $vm.protien,
+                              onEditingChanged: {value in
+                                if(!value){self.vm.RecalcNutrition(ChangedData.Protien)}}
+                              ).keyboardType(.decimalPad)
                     Button(action: {
                         self.vm.addEntry(date:self.vm2.dateForCurrentEntries)
                         self.vm2.fetchEntries()

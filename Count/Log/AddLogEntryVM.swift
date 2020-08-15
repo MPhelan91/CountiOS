@@ -19,14 +19,10 @@ class AddLogEntryVM: ObservableObject {
     @Published var name = ""
     @Published var definition = ""
     @Published var servings=""
-    @Published var servingSize=""{
-        didSet{
-            recalcNutrition()
-        }
-    }
+    @Published var servingSize=""
     @Published var servingUnit=Units.Gram{
         didSet{
-            recalcNutrition()
+            RecalcNutrition(ChangedData.Portion)
         }
     }
     @Published var calories=""
@@ -34,6 +30,7 @@ class AddLogEntryVM: ObservableObject {
     
     private let context: NSManagedObjectContext
     private var selectedEntry: DictionaryEntry?
+    private var loading = false
     
     init(context: NSManagedObjectContext){
         self.context = context
@@ -44,6 +41,7 @@ class AddLogEntryVM: ObservableObject {
     
     func setFieldsFromEntry(){
         if(!(dictionaryEntryName?.isEmpty ?? true)){
+            self.loading = true
             self.selectedEntry = self.dictionaryEntries.first(where: { $0.name == dictionaryEntryName })
             self.name = selectedEntry!.name!
             self.definition = selectedEntry!.definition!
@@ -52,23 +50,40 @@ class AddLogEntryVM: ObservableObject {
             self.servingUnit = Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram
             self.calories = selectedEntry!.calories!.description
             self.protien = selectedEntry!.protien!.description
+            self.loading = false
         }
     }
     
-    func recalcNutrition(){
-        if(selectedEntry != nil){
+    public func RecalcNutrition(_ dataChanged:ChangedData){
+        if(selectedEntry != nil && self.loading == false){
             let definition = NutritionalInfo(1, selectedEntry?.servingSize as! Double, Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double)
             
             do{
-                let result = try Conversions.Convert(definition: definition, fieldChanged: ChangedData.Portion, newValue: Double(self.servingSize) ?? 0, newUnit: self.servingUnit)
+                let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit)
                 
+                self.loading = true
+                self.servingSize = result.PortionSize.description
                 self.calories = result.Calories.description
                 self.protien = result.Protien.description
                 self.servings = result.NumberOfServings.description
+                self.loading = false
             }
             catch{
                 print(error)
             }
+        }
+    }
+    
+    func enumToValue(_ dataChanged:ChangedData) -> Double{
+        switch dataChanged {
+        case ChangedData.NumberOfServings:
+            return Double(self.servings) ?? 0
+        case ChangedData.Portion:
+            return Double(self.servingSize) ?? 0
+        case ChangedData.Calorie:
+            return Double(self.calories) ?? 0
+        case ChangedData.Protien:
+            return Double(self.protien) ?? 0
         }
     }
     

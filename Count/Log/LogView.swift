@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LogView: View {
+    @State private var ysys = 0.0
     @State private var action: Int? = 0
     @State private var showToast = false{
         didSet{
@@ -36,6 +37,7 @@ struct LogView: View {
     var body: some View {
         NavigationView{
             VStack{
+                //DecimalInput(value: self.$ysys)
                 HStack{
                     Button("Copy", action:{
                         if(self.vm.copySelected()){
@@ -66,14 +68,13 @@ struct LogView: View {
                     },
                     trailing: HStack{
                         NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
-                            EmptyView()
-                        }
-                        Button(action: {self.action = 1}){
-                            Image(systemName: "plus")
+                            Button(action: {self.action = 1}){
+                                Image(systemName: "plus")
+                            }
                         }
                     }
                 )
             }
-        }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
+            }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }
