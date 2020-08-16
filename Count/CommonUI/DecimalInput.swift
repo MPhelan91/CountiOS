@@ -14,7 +14,7 @@ class DecimalInputVM : ObservableObject {
     private var ignoreNumericSet = false
     private var ignoreStringSet = false
 
-    @Published var stringRepresentation = ""{
+    @Published var stringRepresentation = "" {
         didSet{
             if(!ignoreStringSet){
                 self.ignoreNumericSet = true
@@ -41,25 +41,37 @@ class DecimalInputVM : ObservableObject {
             }
         }
     }
+    
+    init(_ numericRepresentation: Double?){
+        self.numericRepresentation = numericRepresentation
+    }
 }
 
 struct DecimalInput:View{
-    @ObservedObject var vm = DecimalInputVM()
-    @Binding var value: Double
+    @Binding var value: Double?
+    @ObservedObject var vm : DecimalInputVM
+    var onFinishedEditing: (() -> Void)?
+    
+    init(value: Binding<Double?>, onFinishedEditing: (() -> Void)?) {
+        self._value = value
+        self.onFinishedEditing = onFinishedEditing
+        self._vm = ObservedObject(wrappedValue: DecimalInputVM(value.wrappedValue))
+    }
     
     var body: some View{
-        HStack{
-            TextField("", text: self.$vm.stringRepresentation, onEditingChanged: {x in self.updateBinding(x)})
+        return HStack{
+            TextField("hello", text: self.$vm.stringRepresentation, onEditingChanged: {x in self.updateBinding(x)})
                 .keyboardType(.decimalPad)
             Button(action: {self.hideKeyboard()}){
                 Image(systemName: "checkmark")
             }
-        }.onAppear {
-            self.vm.numericRepresentation = self.value
         }
     }
     
-    private func updateBinding(_ finishedEditing:Bool){
-        self.value = self.vm.numericRepresentation ?? 0.0
+    private func updateBinding(_ editingChangedBool:Bool){
+        if(!editingChangedBool){
+            self.value = self.vm.numericRepresentation
+            if(self.onFinishedEditing != nil) {self.onFinishedEditing!()}
+        }
     }
 }

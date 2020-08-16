@@ -18,7 +18,7 @@ class AddLogEntryVM: ObservableObject {
     }
     @Published var name = ""
     @Published var definition = ""
-    @Published var servings=""
+    @Published var servings:Double? = nil
     @Published var servingSize=""
     @Published var servingUnit=Units.Gram{
         didSet{
@@ -45,7 +45,7 @@ class AddLogEntryVM: ObservableObject {
             self.selectedEntry = self.dictionaryEntries.first(where: { $0.name == dictionaryEntryName })
             self.name = selectedEntry!.name!
             self.definition = selectedEntry!.definition!
-            self.servings = "1"
+            self.servings = 1.0
             self.servingSize = selectedEntry!.servingSize!.description
             self.servingUnit = Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram
             self.calories = selectedEntry!.calories!.description
@@ -65,7 +65,7 @@ class AddLogEntryVM: ObservableObject {
                 self.servingSize = result.PortionSize.description
                 self.calories = result.Calories.description
                 self.protien = result.Protien.description
-                self.servings = result.NumberOfServings.description
+                self.servings = result.NumberOfServings
                 self.loading = false
             }
             catch{
@@ -77,7 +77,7 @@ class AddLogEntryVM: ObservableObject {
     func enumToValue(_ dataChanged:ChangedData) -> Double{
         switch dataChanged {
         case ChangedData.NumberOfServings:
-            return Double(self.servings) ?? 0
+            return self.servings ?? 0
         case ChangedData.Portion:
             return Double(self.servingSize) ?? 0
         case ChangedData.Calorie:
@@ -108,7 +108,7 @@ class AddLogEntryVM: ObservableObject {
         self.selectedEntry = nil
         self.name = ""
         self.definition = ""
-        self.servings = ""
+        self.servings = nil
         self.servingSize = ""
         self.servingUnit = Units.Gram
         self.calories = ""

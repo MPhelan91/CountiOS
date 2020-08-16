@@ -23,12 +23,12 @@ struct AddLogEntryView : View {
                     }
                 }
                 TextField("Description", text: $vm.definition)
-                TextField("Servings",
-                          text: $vm.servings,
-                          onEditingChanged: {value in
-                            if(!value){self.vm.RecalcNutrition(ChangedData.NumberOfServings)}}
-                         ).keyboardType(.decimalPad)
-                //DecimalInput(value: $vm.servings)
+//                TextField("Servings",
+//                          text: $vm.servings,
+//                          onEditingChanged: {value in
+//                            if(!value){self.vm.RecalcNutrition(ChangedData.NumberOfServings)}}
+//                         ).keyboardType(.decimalPad)
+                DecimalInput(value: $vm.servings, onFinishedEditing: { self.vm.RecalcNutrition(ChangedData.NumberOfServings) })
                 TextField("Serving Size",
                           text: $vm.servingSize,
                           onEditingChanged: {value in
