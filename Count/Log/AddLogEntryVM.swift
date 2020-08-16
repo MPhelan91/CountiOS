@@ -19,14 +19,14 @@ class AddLogEntryVM: ObservableObject {
     @Published var name = ""
     @Published var definition = ""
     @Published var servings:Double? = nil
-    @Published var servingSize=""
+    @Published var servingSize:Double? = nil
     @Published var servingUnit=Units.Gram{
         didSet{
             RecalcNutrition(ChangedData.Portion)
         }
     }
-    @Published var calories=""
-    @Published var protien=""
+    @Published var calories:Double? = nil
+    @Published var protien:Double? = nil
     
     private let context: NSManagedObjectContext
     private var selectedEntry: DictionaryEntry?
@@ -46,10 +46,10 @@ class AddLogEntryVM: ObservableObject {
             self.name = selectedEntry!.name!
             self.definition = selectedEntry!.definition!
             self.servings = 1.0
-            self.servingSize = selectedEntry!.servingSize!.description
+            self.servingSize = selectedEntry!.servingSize as! Double?
             self.servingUnit = Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram
-            self.calories = selectedEntry!.calories!.description
-            self.protien = selectedEntry!.protien!.description
+            self.calories = selectedEntry!.calories as! Double?
+            self.protien = selectedEntry!.protien as! Double?
             self.loading = false
         }
     }
@@ -62,9 +62,9 @@ class AddLogEntryVM: ObservableObject {
                 let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit)
                 
                 self.loading = true
-                self.servingSize = result.PortionSize.description
-                self.calories = result.Calories.description
-                self.protien = result.Protien.description
+                self.servingSize = result.PortionSize
+                self.calories = result.Calories
+                self.protien = result.Protien
                 self.servings = result.NumberOfServings
                 self.loading = false
             }
@@ -79,11 +79,11 @@ class AddLogEntryVM: ObservableObject {
         case ChangedData.NumberOfServings:
             return self.servings ?? 0
         case ChangedData.Portion:
-            return Double(self.servingSize) ?? 0
+            return self.servingSize ?? 0
         case ChangedData.Calorie:
-            return Double(self.calories) ?? 0
+            return self.calories ?? 0
         case ChangedData.Protien:
-            return Double(self.protien) ?? 0
+            return self.protien ?? 0
         }
     }
     
@@ -91,8 +91,8 @@ class AddLogEntryVM: ObservableObject {
         let newEntry = LogEntry(context: self.context)
         
         newEntry.name = self.name
-        newEntry.calories = NSDecimalNumber(value: Double(self.calories) ?? 0)
-        newEntry.protien = NSDecimalNumber(value: Double(self.protien) ?? 0)
+        newEntry.calories = NSDecimalNumber(value: self.calories ?? 0)
+        newEntry.protien = NSDecimalNumber(value: self.protien ?? 0)
         newEntry.entryDate = date
         
         do{
@@ -109,9 +109,9 @@ class AddLogEntryVM: ObservableObject {
         self.name = ""
         self.definition = ""
         self.servings = nil
-        self.servingSize = ""
+        self.servingSize = nil
         self.servingUnit = Units.Gram
-        self.calories = ""
-        self.protien = ""
+        self.calories = nil
+        self.protien = nil
     }
 }

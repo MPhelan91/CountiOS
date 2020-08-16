@@ -23,17 +23,8 @@ struct AddLogEntryView : View {
                     }
                 }
                 TextField("Description", text: $vm.definition)
-//                TextField("Servings",
-//                          text: $vm.servings,
-//                          onEditingChanged: {value in
-//                            if(!value){self.vm.RecalcNutrition(ChangedData.NumberOfServings)}}
-//                         ).keyboardType(.decimalPad)
-                DecimalInput(value: $vm.servings, onFinishedEditing: { self.vm.RecalcNutrition(ChangedData.NumberOfServings) })
-                TextField("Serving Size",
-                          text: $vm.servingSize,
-                          onEditingChanged: {value in
-                            if(!value){self.vm.RecalcNutrition(ChangedData.Portion)}}
-                          ).keyboardType(.decimalPad)
+                DecimalInput(label: "Servings", value: $vm.servings, onFinishedEditing: { self.vm.RecalcNutrition(ChangedData.NumberOfServings) })
+                DecimalInput(label: "Serving Size", value: $vm.servingSize, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Portion)})
                 //Could not find onEditingChange equivelent for picker so using property observer of servingUnit in viewModel to recalc values on change
                 Picker(selection: $vm.servingUnit, label: Text("Unit")) {
                     ForEach(Units.allCases, id: \.self) { unit in
@@ -42,16 +33,8 @@ struct AddLogEntryView : View {
                 }
                 Group{
                     TextField("Name", text: $vm.name)
-                    TextField("Calories",
-                              text: $vm.calories,
-                              onEditingChanged: {value in
-                                if(!value){self.vm.RecalcNutrition(ChangedData.Calorie)}}
-                              ).keyboardType(.decimalPad)
-                    TextField("Protien",
-                              text: $vm.protien,
-                              onEditingChanged: {value in
-                                if(!value){self.vm.RecalcNutrition(ChangedData.Protien)}}
-                              ).keyboardType(.decimalPad)
+                    DecimalInput(label: "Calories", value: $vm.calories, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Calorie)})
+                    DecimalInput(label: "Protien", value: $vm.protien, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Protien)})
                     Button(action: {
                         self.vm.addEntry(date:self.vm2.dateForCurrentEntries)
                         self.vm2.fetchEntries()

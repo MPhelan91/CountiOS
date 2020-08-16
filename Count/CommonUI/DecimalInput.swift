@@ -51,16 +51,19 @@ struct DecimalInput:View{
     @Binding var value: Double?
     @ObservedObject var vm : DecimalInputVM
     var onFinishedEditing: (() -> Void)?
+    var label: String
     
-    init(value: Binding<Double?>, onFinishedEditing: (() -> Void)?) {
+    init(label: String, value: Binding<Double?>, onFinishedEditing: (() -> Void)?) {
         self._value = value
         self.onFinishedEditing = onFinishedEditing
+        self.label = label
         self._vm = ObservedObject(wrappedValue: DecimalInputVM(value.wrappedValue))
     }
     
     var body: some View{
         return HStack{
-            TextField("hello", text: self.$vm.stringRepresentation, onEditingChanged: {x in self.updateBinding(x)})
+            Text("\(label): ")
+            TextField("", text: self.$vm.stringRepresentation, onEditingChanged: {x in self.updateBinding(x)})
                 .keyboardType(.decimalPad)
             Button(action: {self.hideKeyboard()}){
                 Image(systemName: "checkmark")
