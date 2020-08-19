@@ -20,3 +20,30 @@ extension Date {
     }
 
 }
+
+extension String {
+    static var formatter = NumberFormatter()
+    func roundDecimalString(_ decimalPrecision:Int) -> String?{
+        let numericValue = Double(self)
+        if(numericValue == nil){return nil}
+        
+        String.formatter.minimumFractionDigits = 0
+        String.formatter.maximumFractionDigits = decimalPrecision
+        String.formatter.roundingMode = .halfUp
+        String.formatter.minimumIntegerDigits = 1
+        
+        return String.formatter.string(from: NSNumber(value: numericValue!))
+    }
+}
+
+extension Double {
+    static var formatter = NumberFormatter()
+    func roundDecimalString(_ decimalPrecision: Int) -> String?{
+        String.formatter.minimumFractionDigits = 0
+        String.formatter.maximumFractionDigits = decimalPrecision
+        String.formatter.roundingMode = .halfUp
+        String.formatter.minimumIntegerDigits = 1
+        
+        return String.formatter.string(from: NSNumber(value: self))
+    }
+}

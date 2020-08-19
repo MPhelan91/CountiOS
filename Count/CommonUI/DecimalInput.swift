@@ -16,17 +16,15 @@ class DecimalInputVM : ObservableObject {
 
     @Published var stringRepresentation = "" {
         didSet{
-            if(!ignoreStringSet){
+            if(!ignoreStringSet && !stringRepresentation.hasSuffix(".")){
+                //Only allow two decimal places in string
+                self.ignoreStringSet = true
+                self.stringRepresentation = stringRepresentation.roundDecimalString(2) ?? ""
+                self.ignoreStringSet = false
+                
+                //Set Numeric Value based on entered string
                 self.ignoreNumericSet = true
-                
-                //Validate
-                if let newValue = Double(stringRepresentation) {
-                    self.numericRepresentation = newValue
-                }
-                else{
-                    self.numericRepresentation = nil
-                }
-                
+                self.numericRepresentation = Double(stringRepresentation)
                 self.ignoreNumericSet = false
             }
         }
@@ -36,7 +34,7 @@ class DecimalInputVM : ObservableObject {
         didSet{
             if(!ignoreNumericSet){
                 self.ignoreStringSet = true
-                self.stringRepresentation = numericRepresentation != nil ? numericRepresentation!.description : ""
+                self.stringRepresentation = numericRepresentation != nil ? numericRepresentation!.roundDecimalString(2)! : ""
                 self.ignoreStringSet = false
             }
         }
