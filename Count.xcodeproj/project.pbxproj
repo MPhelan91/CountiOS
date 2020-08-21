@@ -21,6 +21,7 @@
 		4F6D296A24E1BB24008CEF08 /* ConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D296924E1BB24008CEF08 /* ConversionTests.swift */; };
 		4F6D297224E83D4F008CEF08 /* DecimalInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D297124E83D4F008CEF08 /* DecimalInput.swift */; };
 		4F6D297A24E99453008CEF08 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D297924E99453008CEF08 /* ExtensionTests.swift */; };
+		4F6D298224EDF1A0008CEF08 /* FilterablePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D298124EDF1A0008CEF08 /* FilterablePicker.swift */; };
 		4F8E688224C90AE800E8810D /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E687B24C9086D00E8810D /* LogView.swift */; };
 		4F8E688324C90AED00E8810D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BAC24A57A59008672D9 /* ContentView.swift */; };
 		4F8E688524C90E3A00E8810D /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688424C90E3A00E8810D /* DictionaryView.swift */; };
@@ -74,6 +75,7 @@
 		4F6D297724E99453008CEF08 /* ExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6D297924E99453008CEF08 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
 		4F6D297B24E99453008CEF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F6D298124EDF1A0008CEF08 /* FilterablePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterablePicker.swift; sourceTree = "<group>"; };
 		4F8E687B24C9086D00E8810D /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		4F8E688424C90E3A00E8810D /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		4F8E688624C90E9C00E8810D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				4F6D295F24E19425008CEF08 /* Toast.swift */,
 				4F6D296124E1955C008CEF08 /* UIExetnsions.swift */,
 				4F6D297124E83D4F008CEF08 /* DecimalInput.swift */,
+				4F6D298124EDF1A0008CEF08 /* FilterablePicker.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4FFF1BC324A67EC1008672D9 /* LogEntrySimpleView.swift in Sources */,
+				4F6D298224EDF1A0008CEF08 /* FilterablePicker.swift in Sources */,
 				4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */,
 				4F6D295724DF491E008CEF08 /* Extensions.swift in Sources */,
 				4FFF1BA824A57A59008672D9 /* SceneDelegate.swift in Sources */,

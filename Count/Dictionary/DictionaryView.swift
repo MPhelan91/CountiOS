@@ -12,13 +12,24 @@ struct DictionaryView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: DictionaryEntry.getAllDictionaryEntries()) var dictionaryEntries:FetchedResults<DictionaryEntry>
     @State private var action: Int? = 0
+    @State private var filter = ""
+    
+    var filteredEntries : [DictionaryEntry] {
+        return filter.isEmpty ? dictionaryEntries.map({$0}) : dictionaryEntries.filter({$0.name!.lowercased().contains(filter.lowercased())})
+    }
     
     var body: some View {
         NavigationView{
             VStack{
                 List{
                     Section(header: Text("Dictionary")){
-                        ForEach(self.dictionaryEntries){ entry in
+                        HStack{
+                            TextField("Filter", text:self.$filter)
+                            Button(action:{self.filter = ""}){
+                                Image(systemName: "xmark")
+                            }
+                        }
+                        ForEach(self.filteredEntries){ entry in
                             NavigationLink(destination: DictionaryEntryFullView(entry)){
                                 DictionaryEntrySimpleView(name: entry.name!,
                                              calories: entry.calories as! Int,
@@ -26,7 +37,7 @@ struct DictionaryView: View {
                                 )
                             }
                         }.onDelete { indexSet in
-                            let deleteItem = self.dictionaryEntries[indexSet.first!]
+                            let deleteItem = self.filteredEntries[indexSet.first!]
                             self.managedObjectContext.delete(deleteItem)
                             do{
                                 try self.managedObjectContext.save()
