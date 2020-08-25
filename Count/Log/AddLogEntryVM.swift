@@ -10,8 +10,7 @@ import SwiftUI
 import CoreData
 
 class AddLogEntryVM: ObservableObject {
-    @Published var dictionaryEntries: [DictionaryEntry] = []
-    @Published var dictionaryEntryName : String? {
+    @Published var selectedEntry : DictionaryEntry? {
         didSet{
             setFieldsFromEntry()
         }
@@ -29,20 +28,16 @@ class AddLogEntryVM: ObservableObject {
     @Published var protien:Double? = nil
     
     private let context: NSManagedObjectContext
-    private var selectedEntry: DictionaryEntry?
     private var loading = false
     
     init(context: NSManagedObjectContext){
         self.context = context
-        let y = try? context.fetch(DictionaryEntry.getAllDictionaryEntries())
-        self.dictionaryEntries = y ?? []
         self.selectedEntry = nil
     }
     
     func setFieldsFromEntry(){
-        if(!(dictionaryEntryName?.isEmpty ?? true)){
+        if(selectedEntry != nil){
             self.loading = true
-            self.selectedEntry = self.dictionaryEntries.first(where: { $0.name == dictionaryEntryName })
             self.name = selectedEntry!.name!
             self.definition = selectedEntry!.definition!
             self.servings = 1.0
@@ -104,7 +99,6 @@ class AddLogEntryVM: ObservableObject {
     }
     
     func clearData(){
-        self.dictionaryEntryName = nil
         self.selectedEntry = nil
         self.name = ""
         self.definition = ""

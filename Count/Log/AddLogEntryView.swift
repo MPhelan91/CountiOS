@@ -18,7 +18,7 @@ struct AddLogEntryView : View {
         NavigationView{
             Form {
                 NavigationLink(destination: DictionaryView(onEntryClick: {(entry) in
-                    self.vm.dictionaryEntryName = entry.name
+                    self.vm.selectedEntry = entry
                 })){
                     Text("Add From Dictionary")
                 }
