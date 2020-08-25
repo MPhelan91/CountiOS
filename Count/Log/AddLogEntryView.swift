@@ -17,10 +17,10 @@ struct AddLogEntryView : View {
     var body: some View{
         NavigationView{
             Form {
-                Picker(selection: $vm.dictionaryEntryName, label: Text("Dictionary")) {
-                    ForEach(self.vm.dictionaryEntries, id: \.name) { entry in
-                        Text(entry.name!).tag(entry.name)
-                    }
+                NavigationLink(destination: DictionaryView(onEntryClick: {(entry) in
+                    self.vm.dictionaryEntryName = entry.name
+                })){
+                    Text("Add From Dictionary")
                 }
                 TextField("Description", text: $vm.definition)
                 DecimalInput(label: "Servings", value: $vm.servings, onFinishedEditing: { self.vm.RecalcNutrition(ChangedData.NumberOfServings) })

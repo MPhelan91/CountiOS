@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct DictionaryView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: DictionaryEntry.getAllDictionaryEntries()) var dictionaryEntries:FetchedResults<DictionaryEntry>
     @State private var action: Int? = 0
@@ -16,6 +17,12 @@ struct DictionaryView: View {
     
     var filteredEntries : [DictionaryEntry] {
         return filter.isEmpty ? dictionaryEntries.map({$0}) : dictionaryEntries.filter({$0.name!.lowercased().contains(filter.lowercased())})
+    }
+    
+    var onEntryClick : ((DictionaryEntry)->Void)?
+    
+    init(onEntryClick : ((DictionaryEntry) -> Void)? = nil){
+        self.onEntryClick = onEntryClick
     }
     
     var body: some View {
@@ -30,11 +37,23 @@ struct DictionaryView: View {
                             }
                         }
                         ForEach(self.filteredEntries){ entry in
-                            NavigationLink(destination: DictionaryEntryFullView(entry)){
-                                DictionaryEntrySimpleView(name: entry.name!,
-                                             calories: entry.calories as! Int,
-                                             protien: entry.protien as! Int
-                                )
+                            if(self.onEntryClick == nil){
+                                NavigationLink(destination: DictionaryEntryFullView(entry)){
+                                    DictionaryEntrySimpleView(name: entry.name!,
+                                                              calories: entry.calories as! Int,
+                                                              protien: entry.protien as! Int
+                                    )
+                                }
+                            } else{
+                                Button(action: {
+                                    self.onEntryClick!(entry)
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }){
+                                    DictionaryEntrySimpleView(name: entry.name!,
+                                                              calories: entry.calories as! Int,
+                                                              protien: entry.protien as! Int
+                                    )
+                                }
                             }
                         }.onDelete { indexSet in
                             let deleteItem = self.filteredEntries[indexSet.first!]
