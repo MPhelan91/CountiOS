@@ -1,0 +1,26 @@
+
+Features (Randked):
+- Put App on phone (13)
+- Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
+- Ability to clear dictionary choice in AddEntryView (2)
+- Multi delete functunality in LogView (2)
+- Create meal from selected entries in LogView (5)
+
+TechDebt (Not Ranked):
+O Use DecimalInput in DictionaryEntryFullView
+- Create ViewModel for DictionaryView 
+- Create ViewModel for DictionaryEntryFullView
+- Require both portion and unit to be set if one if set in DictionaryEntryFullView
+- Require at least name and calories to be set in DictionaryEntryFullView
+	- Default protien to 0
+	- Make name and calories no nullable in CoreData
+- Require at least calories to be set in AddLogEntry
+	- Deafult protien to 0
+	- Make name and cloaires be non nullable in CoreData
+- Change serving size to be decimal/double in CoreData
+
+Bugs (Not Ranked):
+- Order of log entries should be by date/time descending
+- Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
+
+
