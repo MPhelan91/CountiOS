@@ -19,7 +19,7 @@ class AddLogEntryVM: ObservableObject {
     @Published var definition = ""
     @Published var servings:Double? = nil
     @Published var servingSize:Double? = nil
-    @Published var servingUnit=Units.Gram{
+    @Published var servingUnit:Units?=nil{
         didSet{
             RecalcNutrition(ChangedData.Portion)
         }
@@ -42,7 +42,7 @@ class AddLogEntryVM: ObservableObject {
             self.definition = selectedEntry!.definition!
             self.servings = 1.0
             self.servingSize = selectedEntry!.servingSize as! Double?
-            self.servingUnit = Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram
+            self.servingUnit = selectedEntry!.servingUnit != nil ? Units(rawValue: selectedEntry!.servingUnit as! Int) : nil
             self.calories = selectedEntry!.calories as! Double?
             self.protien = selectedEntry!.protien as! Double?
             self.loading = false
@@ -51,10 +51,13 @@ class AddLogEntryVM: ObservableObject {
     
     public func RecalcNutrition(_ dataChanged:ChangedData){
         if(selectedEntry != nil && self.loading == false){
-            let definition = NutritionalInfo(1, selectedEntry?.servingSize as! Double, Units(rawValue: selectedEntry!.servingUnit as! Int) ?? Units.Gram, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double)
+            let portionSize = selectedEntry?.servingSize != nil ? (selectedEntry?.servingSize as! Double) : nil
+            let portionUnit = selectedEntry?.servingUnit != nil ? Units(rawValue: selectedEntry!.servingUnit as! Int) : nil
+            
+            let definition = NutritionalInfo(1, portionSize, portionUnit, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double)
             
             do{
-                let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit)
+                let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit ?? Units.Gram)
                 
                 self.loading = true
                 self.servingSize = result.PortionSize
@@ -85,7 +88,7 @@ class AddLogEntryVM: ObservableObject {
     func addEntry(date:Date = Date()){
         let newEntry = LogEntry(context: self.context)
         
-        newEntry.name = self.name
+        newEntry.name = self.name.isEmpty ? "Manual Entry" : self.name
         newEntry.calories = NSDecimalNumber(value: self.calories ?? 0)
         newEntry.protien = NSDecimalNumber(value: self.protien ?? 0)
         newEntry.entryDate = date

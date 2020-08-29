@@ -41,22 +41,31 @@ class Conversions{
         UnitKey(from:Units.Ounce, to:Units.Pound): 0.0625,
     ]
     
-    public static func Convert(definition: NutritionalInfo, fieldChanged: ChangedData, newValue: Double, newUnit: Units) throws -> NutritionalInfo{
-        var result = definition
+    public static func Convert(definition: NutritionalInfo, fieldChanged: ChangedData, newValue: Double, newUnit: Units?) throws -> NutritionalInfo{
+        let portionInfoExists = definition.PortionSize != nil && definition.PortionUnit != nil && newUnit != nil
         
-        result.PortionSize = result.PortionUnit != newUnit
-            ? try ConvertPortion(portion: result.PortionSize, fromUnit: result.PortionUnit, toUnit: newUnit)
-            : result.PortionSize
+        if(!portionInfoExists && fieldChanged == ChangedData.Portion){
+            throw CountError.ConvertPortionWithNoPortionInfo
+        }
+        
+        var result = definition
+        if(portionInfoExists){
+            result.PortionSize = result.PortionUnit != newUnit
+                ? try ConvertPortion(portion: result.PortionSize!, fromUnit: result.PortionUnit!, toUnit: newUnit!)
+                : result.PortionSize
+        }
         
         let oldValue = getFieldBasedOnEnum(definition: result, fieldChanged: fieldChanged)
         
         let ratio = newValue / oldValue;
         
         result.NumberOfServings *= ratio
-        result.PortionSize *= ratio
-        result.PortionUnit = newUnit
         result.Calories *= ratio
         result.Protien *= ratio
+        if(portionInfoExists){
+            result.PortionSize! *= ratio
+            result.PortionUnit = newUnit
+        }
         
         return result
     }
@@ -76,7 +85,7 @@ class Conversions{
         case ChangedData.NumberOfServings:
             return definition.NumberOfServings
         case ChangedData.Portion:
-            return definition.PortionSize
+            return definition.PortionSize!
         case ChangedData.Calorie:
             return definition.Calories
         case ChangedData.Protien:

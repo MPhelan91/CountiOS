@@ -32,6 +32,26 @@ class ConversionTests: XCTestCase {
         }
     }
     
+    func testConvert_Exception(){
+        let defintion = NutritionalInfo(1, nil, nil, 10, 10)
+        
+        XCTAssertThrowsError(try Conversions.Convert(definition: defintion, fieldChanged: ChangedData.Portion, newValue: 3, newUnit: nil)) { error in
+            XCTAssertEqual(error as! CountError, CountError.ConvertPortionWithNoPortionInfo)
+        }
+    }
+    
+    func testConvert_NoServingSize() throws{
+        let defintion = NutritionalInfo(1, nil, nil, 10, 10)
+        
+        let result = try Conversions.Convert(definition: defintion, fieldChanged: ChangedData.NumberOfServings, newValue: 3, newUnit: nil)
+        
+        XCTAssertEqual(nil, result.PortionSize)
+        XCTAssertEqual(nil, result.PortionUnit)
+        XCTAssertEqual(30, result.Calories)
+        XCTAssertEqual(30, result.Protien)
+        XCTAssertEqual(3, result.NumberOfServings)
+    }
+    
     func testConvert() throws{
         let cases = [
             (NutritionalInfo(1,4,Units.Ounce,110,26),
@@ -58,15 +78,15 @@ class ConversionTests: XCTestCase {
             let expectedResult = testCase.1
             
             for dataChanged in ChangedData.allCases{
-                let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged, expectedResult), newUnit: expectedResult.PortionUnit)
-                XCTAssertEqual(expectedResult.PortionSize, result.PortionSize, accuracy: 0.01)
+                let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged, expectedResult), newUnit: expectedResult.PortionUnit!)
+                XCTAssertEqual(expectedResult.PortionSize!, result.PortionSize!, accuracy: 0.01)
                 XCTAssertEqual(expectedResult.PortionUnit, result.PortionUnit)
                 XCTAssertEqual(expectedResult.Calories, result.Calories, accuracy: 0.01)
                 XCTAssertEqual(expectedResult.Protien, result.Protien, accuracy: 0.01)
                 XCTAssertEqual(expectedResult.NumberOfServings, result.NumberOfServings, accuracy: 0.01)
                 
-                let definition2 = try Conversions.Convert(definition: result, fieldChanged: dataChanged, newValue: enumToValue(dataChanged, definition), newUnit: definition.PortionUnit);
-                XCTAssertEqual(definition.PortionSize, definition2.PortionSize, accuracy: 0.01)
+                let definition2 = try Conversions.Convert(definition: result, fieldChanged: dataChanged, newValue: enumToValue(dataChanged, definition), newUnit: definition.PortionUnit!);
+                XCTAssertEqual(definition.PortionSize!, definition2.PortionSize!, accuracy: 0.01)
                 XCTAssertEqual(definition.PortionUnit, definition2.PortionUnit)
                 XCTAssertEqual(definition.Calories, definition2.Calories, accuracy: 0.01)
                 XCTAssertEqual(definition.Protien, definition2.Protien, accuracy: 0.01)
@@ -80,7 +100,7 @@ class ConversionTests: XCTestCase {
         case ChangedData.NumberOfServings:
             return data.NumberOfServings
         case ChangedData.Portion:
-            return data.PortionSize
+            return data.PortionSize!
         case ChangedData.Calorie:
             return data.Calories
         case ChangedData.Protien:

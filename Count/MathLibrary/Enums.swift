@@ -29,5 +29,5 @@ enum ChangedData : CaseIterable{
 }
 
 enum CountError: Error {
-    case VolumeMassConversion
+    case VolumeMassConversion, ConvertPortionWithNoPortionInfo
 }
