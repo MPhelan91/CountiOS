@@ -2,11 +2,13 @@
 Features (Randked):
 X Put App on phone
 - Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
+- Add other Macros (Fat and Sugar)
 - Ability to clear dictionary choice in AddEntryView (2)
 - Multi delete functunality in LogView (2)
 - Create meal from selected entries in LogView (5)
 - App Image (8)
-_ Put App on store (13)
+- Put App on store (13)
+- enforce seperation between mass and volume units`
 
 TechDebt (Not Ranked):
 X Use DecimalInput in DictionaryEntryFullView

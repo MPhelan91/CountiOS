@@ -54,7 +54,7 @@ class AddLogEntryVM: ObservableObject {
             let portionSize = selectedEntry?.servingSize != nil ? (selectedEntry?.servingSize as! Double) : nil
             let portionUnit = selectedEntry?.servingUnit != nil ? Units(rawValue: selectedEntry!.servingUnit as! Int) : nil
             
-            let definition = NutritionalInfo(1, portionSize, portionUnit, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double)
+            let definition = NutritionalInfo(1, portionSize, portionUnit, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double, 0, 0)
             
             do{
                 let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit ?? Units.Gram)

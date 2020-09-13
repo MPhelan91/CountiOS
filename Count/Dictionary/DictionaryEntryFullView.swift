@@ -12,6 +12,8 @@ struct DictionaryEntryFullView : View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State private var showScanner = false;
+    
     @State private var name = ""
     @State private var definition = ""
     @State private var servingSize:Int? = nil
@@ -34,46 +36,66 @@ struct DictionaryEntryFullView : View {
     init(){}
     
     var body : some View{
-            Form{
-                TextField("Name", text: self.$name)
-                MultilineTextField("Description", text:self.$definition )
-                HStack{
-                    IntegerInput(label:"Protion", value: self.$servingSize)
-                    Picker(selection: $servingUnit, label: Text("Unit")) {
-                        ForEach(Units.allCases, id: \.self) { unit in
-                            Text(unit.abbreviation).tag(unit as Units?)
-                        }
+        Form{
+            TextField("Name", text: self.$name)
+            MultilineTextField("Description", text:self.$definition )
+            HStack{
+                IntegerInput(label:"Protion", value: self.$servingSize)
+                Picker(selection: $servingUnit, label: Text("Unit")) {
+                    ForEach(Units.allCases, id: \.self) { unit in
+                        Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
-                IntegerInput(label:"Calories", value: self.$calories)
-                IntegerInput(label:"Protien", value: self.$protien)
-                Button(action : {
-                    let dictionaryEntry = self.entryToEdit ?? DictionaryEntry(context: self.managedObjectContext)
-                    
-                    dictionaryEntry.name = self.name
-                    dictionaryEntry.definition = self.definition
-                    dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSNumber(value: self.servingSize ?? 0)
-                    dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
-                    dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
-                    dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
-                    
-                    do{
-                        try self.managedObjectContext.save()
-                    }catch{
-                        print(error)
-                    }
-                    
-                    self.name = ""
-                    self.definition = ""
-                    self.servingUnit = nil
-                    self.servingSize = nil
-                    self.calories = nil
-                    self.protien = nil
-                    
-                    self.presentationMode.wrappedValue.dismiss()
-                }){
-                    Text(self.entryToEdit == nil ? "Add" : "Edit")
+            }
+            IntegerInput(label:"Calories", value: self.$calories)
+            IntegerInput(label:"Protien", value: self.$protien)
+            Button(action : {
+                let dictionaryEntry = self.entryToEdit ?? DictionaryEntry(context: self.managedObjectContext)
+                
+                dictionaryEntry.name = self.name
+                dictionaryEntry.definition = self.definition
+                dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSNumber(value: self.servingSize ?? 0)
+                dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
+                dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
+                dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
+                
+                do{
+                    try self.managedObjectContext.save()
+                }catch{
+                    print(error)
                 }
+                
+                self.name = ""
+                self.definition = ""
+                self.servingUnit = nil
+                self.servingSize = nil
+                self.calories = nil
+                self.protien = nil
+                
+                self.presentationMode.wrappedValue.dismiss()
+            }){
+                Text(self.entryToEdit == nil ? "Add" : "Edit")
+            }
+            Button(action:{self.showScanner = true}){
+                Image(systemName: "camera")
+            }
+        }.sheet(isPresented: self.$showScanner){
+            NutritionFactScanner(completion: {(args) in
+                if(args == nil || args!.count == 0){
+                    //Toast: No text found
+                }
+                else if(args!.count > 1){
+                    //Toast: More than one document scanner
+                }
+                else{
+                    let nutritionLabel = args![0];
+                    let servingInfo = nutritionLabel.getServingSizeInfo()
+                    self.servingUnit = servingInfo != nil ? servingInfo!.1 : nil
+                    self.servingSize = servingInfo != nil ? servingInfo!.0 : nil
+                    self.calories = nutritionLabel.getSubstringAfter("Calories")?.getFirstIntegerValue()
+                    self.protien = nutritionLabel.getSubstringAfter("Protein")?.getFirstIntegerValue()
+                }
+            })
         }
     }
 }

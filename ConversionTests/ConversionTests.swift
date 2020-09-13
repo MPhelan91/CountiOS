@@ -33,7 +33,7 @@ class ConversionTests: XCTestCase {
     }
     
     func testConvert_Exception(){
-        let defintion = NutritionalInfo(1, nil, nil, 10, 10)
+        let defintion = NutritionalInfo(1, nil, nil, 10, 10, 0, 0)
         
         XCTAssertThrowsError(try Conversions.Convert(definition: defintion, fieldChanged: ChangedData.Portion, newValue: 3, newUnit: nil)) { error in
             XCTAssertEqual(error as! CountError, CountError.ConvertPortionWithNoPortionInfo)
@@ -41,7 +41,7 @@ class ConversionTests: XCTestCase {
     }
     
     func testConvert_NoServingSize() throws{
-        let defintion = NutritionalInfo(1, nil, nil, 10, 10)
+        let defintion = NutritionalInfo(1, nil, nil, 10, 10, 0, 0)
         
         let result = try Conversions.Convert(definition: defintion, fieldChanged: ChangedData.NumberOfServings, newValue: 3, newUnit: nil)
         
@@ -54,23 +54,23 @@ class ConversionTests: XCTestCase {
     
     func testConvert() throws{
         let cases = [
-            (NutritionalInfo(1,4,Units.Ounce,110,26),
-             NutritionalInfo(3,12,Units.Ounce,330,78)),
+            (NutritionalInfo(1,4,Units.Ounce,110,26, 0, 0),
+             NutritionalInfo(3,12,Units.Ounce,330,78,0,0)),
             
-            (NutritionalInfo(1,4,Units.Ounce,110,26),
-             NutritionalInfo(5,1.25,Units.Pound,550,130)),
+            (NutritionalInfo(1,4,Units.Ounce,110,26,0,0),
+             NutritionalInfo(5,1.25,Units.Pound,550,130,0,0)),
             
-            (NutritionalInfo(1,0.75,Units.Pound,100,5),
-             NutritionalInfo(1.175797,400,Units.Gram,117.579733,5.87898667)),
+            (NutritionalInfo(1,0.75,Units.Pound,100,5,0,0),
+             NutritionalInfo(1.175797,400,Units.Gram,117.579733,5.87898667,0,0)),
             
-            (NutritionalInfo(1,1,Units.Liter,30,3),
-             NutritionalInfo(2.5,2500,Units.Milliliter,75,7.5)),
+            (NutritionalInfo(1,1,Units.Liter,30,3,0,0),
+             NutritionalInfo(2.5,2500,Units.Milliliter,75,7.5,0,0)),
             
-            (NutritionalInfo(1,1,Units.Cup,30,3),
-             NutritionalInfo(4.22675,1,Units.Liter,126.8025,12.68025)),
+            (NutritionalInfo(1,1,Units.Cup,30,3,0,0),
+             NutritionalInfo(4.22675,1,Units.Liter,126.8025,12.68025,0,0)),
             
-            (NutritionalInfo(1,1,Units.Cup,30,3),
-             NutritionalInfo(4.22675,1000,Units.Milliliter,126.8025,12.68025))
+            (NutritionalInfo(1,1,Units.Cup,30,3,0,0),
+             NutritionalInfo(4.22675,1000,Units.Milliliter,126.8025,12.68025,0,0))
         ]
         
         for testCase in cases{

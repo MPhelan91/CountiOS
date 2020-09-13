@@ -14,14 +14,18 @@ struct NutritionalInfo{
     var PortionUnit:Units? = nil
     var Calories:Double = 0
     var Protien:Double = 0
+    var Carbs:Double = 0
+    var Fat:Double = 0
     
     init(){}
     
-    init(_ numberOfServings: Double, _ portionSize: Double?, _ poritionUnit: Units?, _ calories: Double, _ protien: Double){
+    init(_ numberOfServings: Double, _ portionSize: Double?, _ poritionUnit: Units?, _ calories: Double, _ protien: Double, _ carbs: Double, _ fat: Double){
         self.NumberOfServings = numberOfServings
         self.PortionSize = portionSize
         self.PortionUnit = poritionUnit
         self.Calories = calories
         self.Protien = protien
+        self.Carbs = carbs
+        self.Fat = fat
     }
 }

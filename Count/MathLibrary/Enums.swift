@@ -22,6 +22,18 @@ enum Units : Int, CaseIterable {
         case .Cup : return "c"
         }
     }
+    
+    static func AbbreviationToEnum(_ abbrev:String) -> Units?{
+        switch abbrev {
+        case "g":   return .Gram
+        case "oz"   : return .Ounce
+        case "lb"  : return .Pound
+        case "L" : return .Liter
+        case "mL" : return .Milliliter
+        case "c" : return .Cup
+        default: return nil
+        }
+    }
 }
 
 enum ChangedData : CaseIterable{

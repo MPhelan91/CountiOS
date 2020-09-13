@@ -11,6 +11,68 @@ import XCTest
 
 class ExtensionTests: XCTestCase {
 
+    func test_StringExtension_GetSubstringAfter() throws {
+        let testCases:[(String,String,String?)] = [
+            ("Total Fat 5g Saturated Fat 2g Protien 1g", "yup", nil),
+            ("Total Fat 5g Saturated Fat 2g Protien 1g", "Fat", " 5g Saturated Fat 2g Protien 1g"),
+            ("Total Fat 5g Saturated Fat 2g Protien 1g", "1g", ""),
+
+        ]
+        
+        for testCase in testCases{
+            let result = testCase.0.getSubstringAfter(testCase.1)
+            XCTAssertEqual(result, testCase.2)
+        }
+    }
+    
+    func test_StringExtension_GetFirstIntegerValue() throws {
+        let testCases:[(String,Int?)] = [
+            ("There is no integer", nil),
+            ("", nil),
+            ("1", 1),
+            ("Total Fat 1.2g Saturated Fat", 1),
+            ("Total Fat (1.2g) Saturated Fat 1g", 1),
+        ]
+        
+        for testCase in testCases{
+            let result = testCase.0.getFirstIntegerValue()
+            XCTAssertEqual(result, testCase.1)
+        }
+    }
+    
+    func test_StringExtension_GetFirstDecimalValue() throws {
+        let testCases:[(String,Double?)] = [
+            ("There is no decimal", nil),
+            ("", nil),
+            ("1", 1),
+            ("Total Fat 1.2g Saturated Fat", 1.2),
+            ("Total Fat (1.2g) Saturated Fat 1g", 1.2),
+        ]
+        
+        for testCase in testCases{
+            let result = testCase.0.getFirstDecimalValue()
+            XCTAssertEqual(result, testCase.1)
+        }
+    }
+    
+    func test_StringExtension_GetServingInfo() throws {
+        let testCases:[(String,(Int,Units)?)] = [
+            ("There is no info", nil),
+            ("yada yada Serving Size 1 Pack(21g)", (21, Units.Gram)),
+        ]
+        
+        for testCase in testCases{
+            let result = testCase.0.getServingSizeInfo()
+            if(testCase.1 == nil){
+                XCTAssertTrue(result == nil)
+            }
+            else{
+                XCTAssertEqual(result?.0, testCase.1?.0)
+                XCTAssertEqual(result?.1, testCase.1?.1)
+            }
+        }
+    }
+    
     func test_StringExtension_RoundDecimalString_Invalid() throws {
         let stringValue = "Hello"
         let result = stringValue.roundDecimalString(1)
