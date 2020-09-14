@@ -88,12 +88,12 @@ struct DictionaryEntryFullView : View {
                     //Toast: More than one document scanner
                 }
                 else{
-                    let nutritionLabel = args![0];
+                    let nutritionLabel = args![0].lowercased();
                     let servingInfo = nutritionLabel.getServingSizeInfo()
                     self.servingUnit = servingInfo != nil ? servingInfo!.1 : nil
                     self.servingSize = servingInfo != nil ? servingInfo!.0 : nil
-                    self.calories = nutritionLabel.getSubstringAfter("Calories")?.getFirstIntegerValue()
-                    self.protien = nutritionLabel.getSubstringAfter("Protein")?.getFirstIntegerValue()
+                    self.calories = nutritionLabel.getSubstringAfter("calories")?.getFirstIntegerValue()
+                    self.protien = nutritionLabel.getSubstringAfter("protein")?.getFirstIntegerValue()
                 }
             })
         }
