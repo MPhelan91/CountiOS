@@ -31,6 +31,8 @@ struct LogEntrySimpleView: View {
                     }
                     Text(self.logEntry.name ?? "")
                         .font(.headline)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
                     Spacer()
                     Text("Calories: \((self.logEntry.calories ?? 0) as Double, specifier: "%.0f")")
                         .font(.caption)

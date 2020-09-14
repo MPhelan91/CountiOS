@@ -37,15 +37,23 @@ struct LogView: View {
     var body: some View {
         NavigationView{
             VStack{
-                //DecimalInput(value: self.$ysys)
-                HStack{
-                    Button("Copy", action:{
+                Image(systemName: "ellipsis").contextMenu{
+                    Button("Copy to Today",action:{
                         if(self.vm.copySelected()){
                             self.toastMessage = "Copied to Today"
                             self.showToast = true
                         }
                     })
                 }
+                HStack{
+                     Button(action:{self.vm.decrementDay()}){
+                         Text("<")
+                     }
+                     Text(self.dateToString())
+                     Button(action:{self.vm.incrementDay()}){
+                         Text(">")
+                     }
+                 }
                 List{
                     Section(header: Text("Calories: \(self.vm.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.vm.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")")){
                         ForEach(self.vm.logEntries){ logEntry in
@@ -57,15 +65,6 @@ struct LogView: View {
                 }
                 .navigationBarTitle(Text("Log"))
                 .navigationBarItems(
-                    leading: HStack{
-                        Button(action:{self.vm.decrementDay()}){
-                            Text("<")
-                        }
-                        Text(self.dateToString())
-                        Button(action:{self.vm.incrementDay()}){
-                            Text(">")
-                        }
-                    },
                     trailing: HStack{
                         NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
                             Button(action: {self.action = 1}){

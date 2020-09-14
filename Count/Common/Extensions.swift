@@ -74,7 +74,7 @@ extension String {
     }
     
     func getServingSizeInfo() -> (Int,Units)?{
-        var subString = self.getSubstringAfter("Serving Size") ?? ""
+        var subString = self.getSubstringAfter("serving size") ?? ""
         subString = subString.getSubstringAfter("(") ?? ""
         
         let portion = subString.getFirstIntegerValue() ?? 0

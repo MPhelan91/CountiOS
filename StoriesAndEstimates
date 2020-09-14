@@ -1,8 +1,14 @@
 
+UI(Not Ranked)
+- LogView - Put Copy and Delete under Elipses menu that is enabled after selection(s)
+X Dictionary View - Only show names - not calories info etc.
+X Dictionary View and Log View - Elipses names
+
 Features (Randked):
 X Put App on phone
 X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
-- Add other Macros (Fat and Sugar)
+- Add other Macros (Fat and Sugar) (5)
+- Add Ability to have default daily entries (8)
 - Ability to clear dictionary choice in AddEntryView (2)
 - Multi delete functunality in LogView (2)
 - Create meal from selected entries in LogView (5)

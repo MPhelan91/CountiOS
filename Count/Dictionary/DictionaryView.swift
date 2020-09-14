@@ -39,20 +39,14 @@ struct DictionaryView: View {
                         ForEach(self.filteredEntries){ entry in
                             if(self.onEntryClick == nil){
                                 NavigationLink(destination: DictionaryEntryFullView(entry)){
-                                    DictionaryEntrySimpleView(name: entry.name!,
-                                                              calories: entry.calories as! Int,
-                                                              protien: entry.protien as! Int
-                                    )
+                                    Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
                                 }
                             } else{
                                 Button(action: {
                                     self.onEntryClick!(entry)
                                     self.presentationMode.wrappedValue.dismiss()
                                 }){
-                                    DictionaryEntrySimpleView(name: entry.name!,
-                                                              calories: entry.calories as! Int,
-                                                              protien: entry.protien as! Int
-                                    )
+                                    Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
                                 }
                             }
                         }.onDelete { indexSet in
