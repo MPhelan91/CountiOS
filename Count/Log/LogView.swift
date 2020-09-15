@@ -16,9 +16,9 @@ struct LogView: View {
             //TODO: try and do this in the Toast class itself
             if(self.showToast){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                  withAnimation {
-                    self.showToast = false
-                  }
+                    withAnimation {
+                        self.showToast = false
+                    }
                 }
             }
         }
@@ -35,45 +35,51 @@ struct LogView: View {
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-                Image(systemName: "ellipsis").contextMenu{
-                    Button("Copy to Today",action:{
-                        if(self.vm.copySelected()){
-                            self.toastMessage = "Copied to Today"
-                            self.showToast = true
-                        }
-                    })
+        VStack{
+            HStack{
+                Button(action:{self.vm.decrementDay()}){
+                    Text("<")
                 }
-                HStack{
-                     Button(action:{self.vm.decrementDay()}){
-                         Text("<")
-                     }
-                     Text(self.dateToString())
-                     Button(action:{self.vm.incrementDay()}){
-                         Text(">")
-                     }
-                 }
-                List{
-                    Section(header: Text("Calories: \(self.vm.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.vm.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")")){
-                        ForEach(self.vm.logEntries){ logEntry in
-                            LogEntrySimpleView(logEntry: logEntry)
-                        }.onDelete { indexSet in
-                            self.vm.deleteEntry(index: indexSet.first!)
-                        }
-                    }
+                Text(self.dateToString())
+                Button(action:{self.vm.incrementDay()}){
+                    Text(">")
                 }
-                .navigationBarTitle(Text("Log"))
-                .navigationBarItems(
-                    trailing: HStack{
-                        NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
-                            Button(action: {self.action = 1}){
-                                Image(systemName: "plus")
-                            }
-                        }
-                    }
-                )
             }
-            }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
+            List{
+                Section(header: Text("Calories: \(self.vm.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.vm.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")")){
+                    ForEach(self.vm.logEntries){ logEntry in
+                        LogEntrySimpleView(logEntry: logEntry)
+                            .contextMenu{
+                                Button("Copy Selected to Today",action:{
+                                    if(self.vm.copySelected()){
+                                        self.toastMessage = "Copied to Today"
+                                        self.showToast = true
+                                    }
+                                })
+                                Button("Delete Selected",action:{
+                                    self.toastMessage = "Not Implemented"
+                                    self.showToast = true
+                                })
+                                Button("Make Dictionary Entry From Selected",action:{
+                                    self.toastMessage = "Not Implemented"
+                                    self.showToast = true
+                                })
+                        }
+                    }.onDelete { indexSet in
+                        self.vm.deleteEntry(index: indexSet.first!)
+                    }
+                }
+            }
+            .navigationBarTitle(Text("Log"))
+            .navigationBarItems(
+                trailing: HStack{
+                    NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
+                        Button(action: {self.action = 1}){
+                            Image(systemName: "plus")
+                        }
+                    }
+                }
+            )
+        }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }

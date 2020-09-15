@@ -26,53 +26,51 @@ struct DictionaryView: View {
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-                List{
-                    Section(header: Text("Dictionary")){
-                        HStack{
-                            TextField("Filter", text:self.$filter)
-                            Button(action:{self.filter = ""}){
-                                Image(systemName: "xmark")
+        VStack{
+            List{
+                Section(header: Text("Dictionary")){
+                    HStack{
+                        TextField("Filter", text:self.$filter)
+                        Button(action:{self.filter = ""}){
+                            Image(systemName: "xmark")
+                        }
+                    }
+                    ForEach(self.filteredEntries){ entry in
+                        if(self.onEntryClick == nil){
+                            NavigationLink(destination: DictionaryEntryFullView(entry)){
+                                Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
+                            }
+                        } else{
+                            Button(action: {
+                                self.onEntryClick!(entry)
+                                self.presentationMode.wrappedValue.dismiss()
+                            }){
+                                Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
                             }
                         }
-                        ForEach(self.filteredEntries){ entry in
-                            if(self.onEntryClick == nil){
-                                NavigationLink(destination: DictionaryEntryFullView(entry)){
-                                    Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
-                                }
-                            } else{
-                                Button(action: {
-                                    self.onEntryClick!(entry)
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }){
-                                    Text(entry.name!).font(.headline).truncationMode(.tail).lineLimit(1)
-                                }
-                            }
-                        }.onDelete { indexSet in
-                            let deleteItem = self.filteredEntries[indexSet.first!]
-                            self.managedObjectContext.delete(deleteItem)
-                            do{
-                                try self.managedObjectContext.save()
-                            }catch{
-                                print(error)
-                            }
+                    }.onDelete { indexSet in
+                        let deleteItem = self.filteredEntries[indexSet.first!]
+                        self.managedObjectContext.delete(deleteItem)
+                        do{
+                            try self.managedObjectContext.save()
+                        }catch{
+                            print(error)
                         }
                     }
                 }
-                .navigationBarTitle(Text("Dictionary"))
-                .navigationBarItems(trailing: HStack{
-                    NavigationLink(destination: DictionaryEntryFullView(), tag: 1, selection: $action) {
-                        EmptyView()
-                    }
-                    Button(action: {self.action = 1}){
-                        Image(systemName: "plus")
-                    }
-                })
             }
+            .navigationBarTitle(Text("Dictionary"))
+            .navigationBarItems(trailing: self.onEntryClick == nil
+                ? AnyView(HStack{
+                    NavigationLink(destination:DictionaryEntryFullView(), tag: 1, selection: $action){EmptyView()}
+                    Button(action: {self.action = 1}){Image(systemName: "plus")}
+                })
+                : AnyView(EmptyView())
+            )
         }
     }
 }
+
 
 struct DictionaryView_Previews: PreviewProvider {
     static var previews: some View {

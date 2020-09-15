@@ -1,8 +1,10 @@
 
 UI(Not Ranked)
-- LogView - Put Copy and Delete under Elipses menu that is enabled after selection(s)
+X LogView - Put Copy and Delete under Elipses menu that is enabled after selection(s)
 X Dictionary View - Only show names - not calories info etc.
 X Dictionary View and Log View - Elipses names
+- ?? Think about checking/unchecking vs copying paradigm
+- Better display Marco totals in LogView
 
 Features (Randked):
 X Put App on phone
@@ -31,7 +33,7 @@ X Use DecimalInput in DictionaryEntryFullView
 
 Bugs (Not Ranked):
 - Order of log entries should be by date/time descending
-- Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
+X Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
 X DictionaryFullView - Decsirption is first thing in focus
 X DictionaryFullView - click check next to portion triggers unit picker
 X Screen Stutters when switching from dictionaryview to dictionaryentryfullview

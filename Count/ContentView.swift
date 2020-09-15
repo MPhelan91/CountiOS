@@ -11,16 +11,16 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView{
-            LogView()
-                .tabItem{
-                    Image(systemName: "list.bullet")
-                    Text("Calorie Log")
-            }
-            DictionaryView()
-                .tabItem{
-                    Image(systemName: "book.circle")
-                    Text("Dictionary")
-            }
+            NavigationView{
+                LogView()
+            }.tabItem{
+                Image(systemName: "list.bullet")
+                Text("Calorie Log")}
+            NavigationView{
+                DictionaryView()
+            }.tabItem{
+                Image(systemName: "book.circle")
+                Text("Dictionary")}
             SettingsView()
                 .tabItem{
                     Image(systemName: "gear")

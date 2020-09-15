@@ -18,17 +18,7 @@ struct LogEntrySimpleView: View {
         HStack{
             VStack(alignment: .leading){
                 HStack(){
-                    Button(action: {
-                        let isChecked = self.vm.isSelected(objectId: self.logEntry.objectID)
-                        if(!isChecked){
-                            self.vm.selelctEntry(objectId: self.logEntry.objectID)
-                        }
-                        else if(isChecked) {
-                            self.vm.unselectEntry(objectId: self.logEntry.objectID)
-                        }
-                    }){
-                        Image(systemName: vm.isSelected(objectId: self.logEntry.objectID) ? "checkmark.square": "square")
-                    }
+                    Image(systemName: vm.isSelected(objectId: self.logEntry.objectID) ? "checkmark.square": "square")
                     Text(self.logEntry.name ?? "")
                         .font(.headline)
                         .lineLimit(1)
@@ -38,6 +28,14 @@ struct LogEntrySimpleView: View {
                         .font(.caption)
                     Text("Protien: \((self.logEntry.protien ?? 0) as Double, specifier: "%.0f")")
                         .font(.caption)
+                }.onTapGesture {
+                    let isChecked = self.vm.isSelected(objectId: self.logEntry.objectID)
+                    if(!isChecked){
+                        self.vm.selelctEntry(objectId: self.logEntry.objectID)
+                    }
+                    else if(isChecked) {
+                        self.vm.unselectEntry(objectId: self.logEntry.objectID)
+                    }
                 }
             }
         }
