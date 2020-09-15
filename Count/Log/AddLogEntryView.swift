@@ -51,6 +51,6 @@ struct AddLogEntryView : View {
                     }
                 }
             }
-        }.onAppear(perform:{self.vm.clearData()})
+        }
     }
 }

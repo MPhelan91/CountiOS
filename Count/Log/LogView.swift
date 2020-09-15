@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct LogView: View {
+    @EnvironmentObject var vm2 : AddLogEntryVM
+    @EnvironmentObject var vm : LogVM
+    
     @State private var ysys = 0.0
     @State private var action: Int? = 0
     @State private var showToast = false{
@@ -24,7 +27,6 @@ struct LogView: View {
         }
     }
     @State private var toastMessage = ""
-    @EnvironmentObject var vm : LogVM
     
     func dateToString() -> String{
         let dateFormatter = DateFormatter()
@@ -74,7 +76,10 @@ struct LogView: View {
             .navigationBarItems(
                 trailing: HStack{
                     NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
-                        Button(action: {self.action = 1}){
+                        Button(action: {
+                            self.vm2.clearData()
+                            self.action = 1
+                        }){
                             Image(systemName: "plus")
                         }
                     }
