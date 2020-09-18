@@ -48,7 +48,7 @@ struct LogView: View {
                 }
             }
             List{
-                Section(header: Text("Calories: \(self.vm.logEntries.map({$0.calories as! Double}).reduce(0.0, +), specifier: "%.0f") Protien: \(self.vm.logEntries.map({$0.protien as! Double}).reduce(0.0, +), specifier: "%.0f")")){
+                Section(header: LogHeader(logEntries: self.vm.logEntries)){
                     ForEach(self.vm.logEntries){ logEntry in
                         LogEntrySimpleView(logEntry: logEntry)
                             .contextMenu{
@@ -86,5 +86,24 @@ struct LogView: View {
                 }
             )
         }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
+    }
+}
+
+struct LogHeader : View {
+    var logEntries : [LogEntry]
+    
+    func sumValues(_ macroType:Macros) -> Double {
+        switch macroType {
+        case Macros.Calories:
+            return self.logEntries.map({$0.calories as! Double}).reduce(0.0, +)
+        case Macros.Protien:
+            return self.logEntries.map({$0.protien as! Double}).reduce(0.0, +)
+        default:
+            return 0.0
+        }
+    }
+    
+    var body: some View{
+        Text("Calories: \(sumValues(Macros.Calories), specifier: "%.0f") Protien: \(sumValues(Macros.Protien), specifier: "%.0f")")
     }
 }

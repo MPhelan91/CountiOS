@@ -8,6 +8,8 @@
 
 import Foundation
 
+enum Macros { case Calories, Protien, Fat, Sugar }
+
 enum Units : Int, CaseIterable {
     
     case Gram, Ounce, Pound, Liter, Milliliter, Cup

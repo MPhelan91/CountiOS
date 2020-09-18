@@ -3,8 +3,9 @@ UI(Not Ranked)
 X LogView - Put Copy and Delete under Elipses menu that is enabled after selection(s)
 X Dictionary View - Only show names - not calories info etc.
 X Dictionary View and Log View - Elipses names
-- ?? Think about checking/unchecking vs copying paradigm
+- ?? Think about checking/unchecking vs copying paradigm listbackgroundcolor
 - Better display Marco totals in LogView
+- Auto-Focus on filter when choosing dictionary entry in AddLogEntry
 
 Features (Randked):
 X Put App on phone
