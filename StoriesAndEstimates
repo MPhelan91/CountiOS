@@ -11,6 +11,10 @@ Features (Randked):
 X Put App on phone
 X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
 - Add other Macros (Fat and Sugar) (5)
+- Add Settings
+	- Calorie and Macro Goals
+	- Cheat day
+	- current weight
 - Add Ability to have default daily entries (8)
 - Ability to clear dictionary choice in AddEntryView (2)
 - Multi delete functunality in LogView (2)

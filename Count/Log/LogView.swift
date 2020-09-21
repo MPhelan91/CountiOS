@@ -11,6 +11,7 @@ import SwiftUI
 struct LogView: View {
     @EnvironmentObject var vm2 : AddLogEntryVM
     @EnvironmentObject var vm : LogVM
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var ysys = 0.0
     @State private var action: Int? = 0
@@ -40,15 +41,17 @@ struct LogView: View {
         VStack{
             HStack{
                 Button(action:{self.vm.decrementDay()}){
-                    Text("<")
+                    Image(systemName: "arrowtriangle.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+
                 }
-                Text(self.dateToString())
+                Text(self.dateToString()).font(.system(size:20))
                 Button(action:{self.vm.incrementDay()}){
-                    Text(">")
+                    Image(systemName: "arrowtriangle.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
+            LogHeaderView(logEntries: self.vm.logEntries)
             List{
-                Section(header: LogHeader(logEntries: self.vm.logEntries)){
+                //Section(header: LogHeaderTemp(logEntries: self.vm.logEntries)){
                     ForEach(self.vm.logEntries){ logEntry in
                         LogEntrySimpleView(logEntry: logEntry)
                             .contextMenu{
@@ -70,7 +73,7 @@ struct LogView: View {
                     }.onDelete { indexSet in
                         self.vm.deleteEntry(index: indexSet.first!)
                     }
-                }
+                //}
             }
             .navigationBarTitle(Text("Log"))
             .navigationBarItems(
@@ -80,7 +83,7 @@ struct LogView: View {
                             self.vm2.clearData()
                             self.action = 1
                         }){
-                            Image(systemName: "plus")
+                            Image(systemName: "plus").font(.system(size: 25, weight: .bold))
                         }
                     }
                 }
@@ -89,7 +92,7 @@ struct LogView: View {
     }
 }
 
-struct LogHeader : View {
+struct LogHeaderTemp : View {
     var logEntries : [LogEntry]
     
     func sumValues(_ macroType:Macros) -> Double {

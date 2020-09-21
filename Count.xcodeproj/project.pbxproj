@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F06507024FB21600075674A /* CameraEntryPrototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F06506F24FB21600075674A /* CameraEntryPrototype.swift */; };
+		4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F10532515986900DEF6F3 /* LogHeaderView.swift */; };
+		4F0F105625182D9800DEF6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F105525182D9800DEF6F3 /* Constants.swift */; };
 		4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
 		4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		4F06506F24FB21600075674A /* CameraEntryPrototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEntryPrototype.swift; sourceTree = "<group>"; };
+		4F0F10532515986900DEF6F3 /* LogHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeaderView.swift; sourceTree = "<group>"; };
+		4F0F105525182D9800DEF6F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsScanner.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				4F6D297124E83D4F008CEF08 /* DecimalInput.swift */,
 				4F6D298324F87BFB008CEF08 /* MultilineTextField.swift */,
 				4F6D298724FABB84008CEF08 /* IntegerInput.swift */,
+				4F0F105525182D9800DEF6F3 /* Constants.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				4F6D295A24DF5900008CEF08 /* LogVM.swift */,
 				4F6D295424DF0BC3008CEF08 /* AddLogEntryView.swift */,
 				4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */,
+				4F0F10532515986900DEF6F3 /* LogHeaderView.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -419,6 +425,8 @@
 				4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */,
 				4F8E688324C90AED00E8810D /* ContentView.swift in Sources */,
 				4FFF1BAB24A57A59008672D9 /* Count.xcdatamodeld in Sources */,
+				4F0F105625182D9800DEF6F3 /* Constants.swift in Sources */,
+				4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */,
 				4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */,
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
