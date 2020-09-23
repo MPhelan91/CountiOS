@@ -4,13 +4,18 @@ X LogView - Put Copy and Delete under Elipses menu that is enabled after selecti
 X Dictionary View - Only show names - not calories info etc.
 X Dictionary View and Log View - Elipses names
 - ?? Think about checking/unchecking vs copying paradigm listbackgroundcolor
-- Better display Marco totals in LogView
+X Better display Marco totals in LogView
 - Auto-Focus on filter when choosing dictionary entry in AddLogEntry
+- Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat)
 
 Features (Randked):
 X Put App on phone
 X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
 - Add other Macros (Fat and Sugar) (5)
+	x add Fat / Carb to db
+	x add Fat / Carb to dictionaryEntryView
+	- add Fat / Carb to LogEntryView
+	- add Fat Carb to totals and log view
 - Add Settings
 	- Calorie and Macro Goals
 	- Cheat day
@@ -22,8 +27,10 @@ X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
 - App Image (8)
 - Put App on store (13)
 - enforce seperation between mass and volume units`
+- allow user to set which macros to count
 
 TechDebt (Not Ranked):
+- change logentry from decimal to double
 X Use DecimalInput in DictionaryEntryFullView
 - Create ViewModel for DictionaryView 
 - Create ViewModel for DictionaryEntryFullView

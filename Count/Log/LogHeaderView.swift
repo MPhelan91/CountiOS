@@ -19,6 +19,10 @@ struct LogHeaderView: View {
             return self.logEntries.map({$0.calories as! Double}).reduce(0.0, +)
         case Macros.Protien:
             return self.logEntries.map({$0.protien as! Double}).reduce(0.0, +)
+        case Macros.Fat:
+            return self.logEntries.map({$0.fat as! Double}).reduce(0.0, +)
+        case Macros.Carbs:
+            return self.logEntries.map({$0.carbs as! Double}).reduce(0.0, +)
         default:
             return 0.0
         }
@@ -30,13 +34,13 @@ struct LogHeaderView: View {
             VStack{
                 MacroCountView(label: "Calories", total: sumValues(.Calories), goal: 2800)
                 Spacer().frame(height:10)
-                MacroCountView(label: "Fat", total: 40, goal: 77)
+                MacroCountView(label: "Fat", total: sumValues(.Fat), goal: 77)
             }
             Spacer()
             VStack{
                 MacroCountView(label: "Protien", total: sumValues(.Protien), goal: 180)
                 Spacer().frame(height:10)
-                MacroCountView(label: "Carb", total: 200, goal: 325)
+                MacroCountView(label: "Carbs", total: sumValues(.Carbs), goal: 325)
             }
             Spacer()
         }

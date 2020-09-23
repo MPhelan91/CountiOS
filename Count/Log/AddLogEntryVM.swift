@@ -26,6 +26,9 @@ class AddLogEntryVM: ObservableObject {
     }
     @Published var calories:Double? = nil
     @Published var protien:Double? = nil
+    @Published var fat:Double? = nil
+    @Published var carbs:Double? = nil
+    @Published var sugar:Double? = nil
     
     private let context: NSManagedObjectContext
     private var loading = false
@@ -45,6 +48,9 @@ class AddLogEntryVM: ObservableObject {
             self.servingUnit = selectedEntry!.servingUnit != nil ? Units(rawValue: selectedEntry!.servingUnit as! Int) : nil
             self.calories = selectedEntry!.calories as! Double?
             self.protien = selectedEntry!.protien as! Double?
+            self.fat = selectedEntry!.fat as! Double?
+            self.carbs = selectedEntry!.carbs as! Double?
+            self.sugar = selectedEntry!.sugar as! Double?
             self.loading = false
         }
     }
@@ -54,7 +60,7 @@ class AddLogEntryVM: ObservableObject {
             let portionSize = selectedEntry?.servingSize != nil ? (selectedEntry?.servingSize as! Double) : nil
             let portionUnit = selectedEntry?.servingUnit != nil ? Units(rawValue: selectedEntry!.servingUnit as! Int) : nil
             
-            let definition = NutritionalInfo(1, portionSize, portionUnit, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double, 0, 0)
+            let definition = NutritionalInfo(1, portionSize, portionUnit, selectedEntry?.calories as! Double, selectedEntry?.protien as! Double, selectedEntry?.carbs as! Double, selectedEntry?.fat as! Double, selectedEntry?.sugar as! Double)
             
             do{
                 let result = try Conversions.Convert(definition: definition, fieldChanged: dataChanged, newValue: enumToValue(dataChanged), newUnit: self.servingUnit ?? Units.Gram)
@@ -63,6 +69,9 @@ class AddLogEntryVM: ObservableObject {
                 self.servingSize = result.PortionSize
                 self.calories = result.Calories
                 self.protien = result.Protien
+                self.fat = result.Fat
+                self.carbs = result.Carbs
+                self.sugar = result.Sugar
                 self.servings = result.NumberOfServings
                 self.loading = false
             }
@@ -82,6 +91,12 @@ class AddLogEntryVM: ObservableObject {
             return self.calories ?? 0
         case ChangedData.Protien:
             return self.protien ?? 0
+        case ChangedData.Fat:
+            return self.fat ?? 0
+        case ChangedData.Carbs:
+            return self.carbs ?? 0
+        case ChangedData.Sugar:
+            return self.sugar ?? 0
         }
     }
     
@@ -91,6 +106,9 @@ class AddLogEntryVM: ObservableObject {
         newEntry.name = self.name.isEmpty ? "Manual Entry" : self.name
         newEntry.calories = NSDecimalNumber(value: self.calories ?? 0)
         newEntry.protien = NSDecimalNumber(value: self.protien ?? 0)
+        newEntry.fat = NSDecimalNumber(value: self.fat ?? 0)
+        newEntry.carbs = NSDecimalNumber(value: self.carbs ?? 0)
+        newEntry.sugar = NSDecimalNumber(value: self.sugar ?? 0)
         newEntry.entryDate = date
         
         do{
@@ -110,5 +128,8 @@ class AddLogEntryVM: ObservableObject {
         self.servingUnit = Units.Gram
         self.calories = nil
         self.protien = nil
+        self.fat = nil
+        self.carbs = nil
+        self.sugar = nil
     }
 }

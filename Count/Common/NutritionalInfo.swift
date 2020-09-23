@@ -16,10 +16,11 @@ struct NutritionalInfo{
     var Protien:Double = 0
     var Carbs:Double = 0
     var Fat:Double = 0
+    var Sugar:Double = 0
     
     init(){}
     
-    init(_ numberOfServings: Double, _ portionSize: Double?, _ poritionUnit: Units?, _ calories: Double, _ protien: Double, _ carbs: Double, _ fat: Double){
+    init(_ numberOfServings: Double, _ portionSize: Double?, _ poritionUnit: Units?, _ calories: Double, _ protien: Double, _ carbs: Double, _ fat: Double, _ sugar: Double){
         self.NumberOfServings = numberOfServings
         self.PortionSize = portionSize
         self.PortionUnit = poritionUnit
@@ -27,5 +28,6 @@ struct NutritionalInfo{
         self.Protien = protien
         self.Carbs = carbs
         self.Fat = fat
+        self.Sugar = sugar
     }
 }

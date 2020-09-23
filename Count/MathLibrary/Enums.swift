@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Macros { case Calories, Protien, Fat, Sugar }
+enum Macros { case Calories, Protien, Fat, Carbs, Sugar }
 
 enum Units : Int, CaseIterable {
     
@@ -39,7 +39,7 @@ enum Units : Int, CaseIterable {
 }
 
 enum ChangedData : CaseIterable{
-    case NumberOfServings, Portion, Calorie, Protien
+    case NumberOfServings, Portion, Calorie, Protien, Fat, Carbs, Sugar
 }
 
 enum CountError: Error {

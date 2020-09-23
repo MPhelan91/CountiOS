@@ -14,6 +14,9 @@ public class LogEntry:NSManagedObject,Identifiable{
     @NSManaged public var name:String?
     @NSManaged public var calories:NSDecimalNumber?
     @NSManaged public var protien:NSDecimalNumber?
+    @NSManaged public var carbs:NSDecimalNumber?
+    @NSManaged public var fat:NSDecimalNumber?
+    @NSManaged public var sugar:NSDecimalNumber?
 }
 
 extension LogEntry{

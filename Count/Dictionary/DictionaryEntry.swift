@@ -14,6 +14,9 @@ public class DictionaryEntry:NSManagedObject,Identifiable{
     @NSManaged public var definition:String?
     @NSManaged public var calories:NSNumber?
     @NSManaged public var protien:NSNumber?
+    @NSManaged public var fat:NSNumber?
+    @NSManaged public var carbs:NSNumber?
+    @NSManaged public var sugar:NSNumber?
     @NSManaged public var servingUnit:NSNumber?
     @NSManaged public var servingSize:NSNumber?
 }

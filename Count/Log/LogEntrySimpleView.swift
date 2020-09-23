@@ -25,13 +25,13 @@ struct LogEntrySimpleView: View {
             }
             HStack{
                 Spacer()
-                Text("Calories: \((self.logEntry.calories ?? 0) as Double, specifier: "%.0f")")
+                Text("Calories: \((self.logEntry.calories ?? 0) as! Double, specifier: "%.0f")")
                     .font(.caption)
-                Text("Protien: \((self.logEntry.protien ?? 0) as Double, specifier: "%.0f")")
+                Text("Protien: \((self.logEntry.protien ?? 0) as! Double, specifier: "%.0f")")
                     .font(.caption)
-                Text("Fat: \((0) as Double, specifier: "%.0f")")
+                Text("Fat: \((self.logEntry.fat ?? 0) as! Double, specifier: "%.0f")")
                     .font(.caption)
-                Text("Sugar: \((0) as Double, specifier: "%.0f")")
+                Text("Carbs: \((self.logEntry.carbs ?? 0) as! Double, specifier: "%.0f")")
                     .font(.caption)
             }
         }

@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="DictionaryEntry" representedClassName=".DictionaryEntry" syncable="YES">
         <attribute name="calories" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="carbs" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="definition" optional="YES" attributeType="String"/>
+        <attribute name="fat" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="protien" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="servingSize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="servingUnit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sugar" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="LogEntry" representedClassName=".LogEntry" syncable="YES">
         <attribute name="calories" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="carbs" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="entryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fat" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="protien" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="sugar" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
     <elements>
-        <element name="DictionaryEntry" positionX="-63" positionY="9" width="128" height="133"/>
-        <element name="LogEntry" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="DictionaryEntry" positionX="-63" positionY="9" width="128" height="178"/>
+        <element name="LogEntry" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

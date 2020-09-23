@@ -20,6 +20,9 @@ struct DictionaryEntryFullView : View {
     @State private var servingUnit : Units? = nil
     @State private var calories:Int? =  nil
     @State private var protien:Int? =  nil
+    @State private var carbs:Int? =  nil
+    @State private var sugar:Int? =  nil
+    @State private var fat:Int? =  nil
     
     private var entryToEdit : DictionaryEntry? = nil
     
@@ -30,6 +33,9 @@ struct DictionaryEntryFullView : View {
         _servingUnit = entry.servingSize == nil ? State(initialValue: nil) : State(initialValue: Units(rawValue: entry.servingUnit as! Int) ?? Units.Gram)
         _calories = entry.calories == nil ? State(initialValue: nil) : State(initialValue: (entry.calories as! Int))
         _protien = entry.protien == nil ? State(initialValue: nil) : State(initialValue: (entry.protien as! Int))
+        _carbs = entry.carbs == nil ? State(initialValue: nil) : State(initialValue: (entry.carbs as! Int))
+        _fat = entry.fat == nil ? State(initialValue: nil) : State(initialValue: (entry.fat as! Int))
+        _sugar = entry.sugar == nil ? State(initialValue: nil) : State(initialValue: (entry.sugar as! Int))
         entryToEdit = entry
     }
     
@@ -49,6 +55,9 @@ struct DictionaryEntryFullView : View {
             }
             IntegerInput(label:"Calories", value: self.$calories)
             IntegerInput(label:"Protien", value: self.$protien)
+            IntegerInput(label:"Carbs", value: self.$carbs)
+            IntegerInput(label:"Fat", value: self.$fat)
+            IntegerInput(label:"Sugar", value: self.$sugar)
             Button(action : {
                 let dictionaryEntry = self.entryToEdit ?? DictionaryEntry(context: self.managedObjectContext)
                 
@@ -58,6 +67,9 @@ struct DictionaryEntryFullView : View {
                 dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
                 dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
                 dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
+                dictionaryEntry.carbs = NSNumber(value: self.carbs ?? 0)
+                dictionaryEntry.fat = NSNumber(value: self.fat ?? 0)
+                dictionaryEntry.sugar = NSNumber(value: self.sugar ?? 0)
                 
                 do{
                     try self.managedObjectContext.save()
@@ -71,6 +83,9 @@ struct DictionaryEntryFullView : View {
                 self.servingSize = nil
                 self.calories = nil
                 self.protien = nil
+                self.carbs = nil
+                self.fat = nil
+                self.sugar = nil
                 
                 self.presentationMode.wrappedValue.dismiss()
             }){
@@ -94,6 +109,9 @@ struct DictionaryEntryFullView : View {
                     self.servingSize = servingInfo != nil ? servingInfo!.0 : nil
                     self.calories = nutritionLabel.getSubstringAfter("calories")?.getFirstIntegerValue()
                     self.protien = nutritionLabel.getSubstringAfter("protein")?.getFirstIntegerValue()
+                    self.carbs = nutritionLabel.getSubstringAfter("total carb")?.getFirstIntegerValue()
+                    self.fat = nutritionLabel.getSubstringAfter("total fat")?.getFirstIntegerValue()
+                    self.sugar = nutritionLabel.getSubstringAfter("total sugar")?.getFirstIntegerValue()
                 }
             })
         }

@@ -42,6 +42,9 @@ struct AddLogEntryView : View {
                     TextField("Name", text: $vm.name)
                     DecimalInput(label: "Calories", value: $vm.calories, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Calorie)})
                     DecimalInput(label: "Protien", value: $vm.protien, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Protien)})
+                    DecimalInput(label: "Fat", value: $vm.fat, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Fat)})
+                    DecimalInput(label: "Carbs", value: $vm.carbs, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Carbs)})
+                    DecimalInput(label: "Sugar", value: $vm.sugar, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Sugar)})
                     Button(action: {
                         self.vm.addEntry(date:self.vm2.dateForCurrentEntries)
                         self.vm2.fetchEntries()

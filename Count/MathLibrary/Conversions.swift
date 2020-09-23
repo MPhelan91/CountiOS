@@ -62,6 +62,9 @@ class Conversions{
         result.NumberOfServings *= ratio
         result.Calories *= ratio
         result.Protien *= ratio
+        result.Carbs *= ratio
+        result.Fat *= ratio
+        result.Sugar *= ratio
         if(portionInfoExists){
             result.PortionSize! *= ratio
             result.PortionUnit = newUnit
@@ -90,6 +93,12 @@ class Conversions{
             return definition.Calories
         case ChangedData.Protien:
             return definition.Protien
+        case ChangedData.Sugar:
+            return definition.Sugar
+        case ChangedData.Fat:
+            return definition.Fat
+        case ChangedData.Carbs:
+            return definition.Carbs
         }
     }
 }
