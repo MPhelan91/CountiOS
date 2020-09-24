@@ -7,24 +7,27 @@ X Dictionary View and Log View - Elipses names
 X Better display Marco totals in LogView
 - Auto-Focus on filter when choosing dictionary entry in AddLogEntry
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat)
+- Review Log UI for ios 14
 
 Features (Randked):
 X Put App on phone
 X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
-- Add other Macros (Fat and Sugar) (5)
+X Add other Macros (Fat and Sugar) (5)
 	x add Fat / Carb to db
 	x add Fat / Carb to dictionaryEntryView
-	- add Fat / Carb to LogEntryView
-	- add Fat Carb to totals and log view
+	X add Fat / Carb to LogEntryView
+	X add Fat Carb to totals and log view
+	X Read new macros from camera
 - Add Settings
+	- Add Ability to have default daily entries (8)
 	- Calorie and Macro Goals
+	- Default Unit (mass vs volume)
 	- Cheat day
-	- current weight
-- Add Ability to have default daily entries (8)
-- Ability to clear dictionary choice in AddEntryView (2)
+	- Weight
 - Multi delete functunality in LogView (2)
 - Create meal from selected entries in LogView (5)
 - App Image (8)
+- Ability to clear dictionary choice in AddEntryView (2)
 - Put App on store (13)
 - enforce seperation between mass and volume units`
 - allow user to set which macros to count
@@ -44,6 +47,8 @@ X Use DecimalInput in DictionaryEntryFullView
 - Change serving size in dictionary entry to be decimal/double in CoreData
 
 Bugs (Not Ranked):
+- copy selected doesnt copy all macros
+- two scans to populate new dictionary entry
 - Order of log entries should be by date/time descending
 X Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
 X DictionaryFullView - Decsirption is first thing in focus

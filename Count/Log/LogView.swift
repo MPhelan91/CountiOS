@@ -42,39 +42,39 @@ struct LogView: View {
             HStack{
                 Button(action:{self.vm.decrementDay()}){
                     Image(systemName: "arrowtriangle.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-
+                    
                 }
                 Text(self.dateToString()).font(.system(size:20))
                 Button(action:{self.vm.incrementDay()}){
                     Image(systemName: "arrowtriangle.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
+            Spacer()
             LogHeaderView(logEntries: self.vm.logEntries)
             List{
-                //Section(header: LogHeaderTemp(logEntries: self.vm.logEntries)){
-                    ForEach(self.vm.logEntries){ logEntry in
-                        LogEntrySimpleView(logEntry: logEntry)
-                            .contextMenu{
-                                Button("Copy Selected to Today",action:{
-                                    if(self.vm.copySelected()){
-                                        self.toastMessage = "Copied to Today"
-                                        self.showToast = true
-                                    }
-                                })
-                                Button("Delete Selected",action:{
-                                    self.toastMessage = "Not Implemented"
+                ForEach(self.vm.logEntries){ logEntry in
+                    LogEntrySimpleView(logEntry: logEntry)
+                        .contextMenu{
+                            Button("Copy Selected to Today",action:{
+                                if(self.vm.copySelected()){
+                                    self.toastMessage = "Copied to Today"
                                     self.showToast = true
-                                })
-                                Button("Make Dictionary Entry From Selected",action:{
-                                    self.toastMessage = "Not Implemented"
-                                    self.showToast = true
-                                })
+                                }
+                            })
+                            Button("Delete Selected",action:{
+                                self.toastMessage = "Not Implemented"
+                                self.showToast = true
+                            })
+                            Button("Make Dictionary Entry From Selected",action:{
+                                self.toastMessage = "Not Implemented"
+                                self.showToast = true
+                            })
                         }
-                    }.onDelete { indexSet in
-                        self.vm.deleteEntry(index: indexSet.first!)
-                    }
-                //}
+                }.onDelete { indexSet in
+                    self.vm.deleteEntry(index: indexSet.first!)
+                }
             }
+            .listStyle(PlainListStyle())
             .navigationBarTitle(Text("Log"))
             .navigationBarItems(
                 trailing: HStack{
