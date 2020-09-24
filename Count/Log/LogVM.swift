@@ -71,6 +71,9 @@ class LogVM: ObservableObject {
                 newEntry.name = entry.name
                 newEntry.calories = entry.calories
                 newEntry.protien = entry.protien
+                newEntry.fat = entry.fat
+                newEntry.carbs = entry.carbs
+                newEntry.sugar = entry.sugar
                 newEntry.entryDate = Date()
                 
                 do{
