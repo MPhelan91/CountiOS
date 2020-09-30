@@ -28,7 +28,7 @@ struct DictionaryView: View {
     var body: some View {
         VStack{
             List{
-                Section(header: Text("Dictionary")){
+                Section{
                     HStack{
                         TextField("Filter", text:self.$filter)
                         Button(action:{self.filter = ""}){
@@ -59,6 +59,7 @@ struct DictionaryView: View {
                     }
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationBarTitle(Text("Dictionary"))
             .navigationBarItems(trailing: self.onEntryClick == nil
                 ? AnyView(HStack{

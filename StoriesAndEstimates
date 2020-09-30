@@ -18,19 +18,19 @@ X Add other Macros (Fat and Sugar) (5)
 	X add Fat / Carb to LogEntryView
 	X add Fat Carb to totals and log view
 	X Read new macros from camera
-- Add Settings
+- Settings
 	- Add Ability to have default daily entries (8)
-	- Calorie and Macro Goals
-	- Default Unit (mass vs volume)
-	- Cheat day
-	- Weight
+	- Choose Macros to count (5)
+	- Calorie and Macro Goals (5)
+	- Default Unit (mass vs volume) (3)
+	- Cheat day (5)
+	- Weight (5)
 - Multi delete functunality in LogView (2)
 - Create meal from selected entries in LogView (5)
 - App Image (8)
 - Ability to clear dictionary choice in AddEntryView (2)
 - Put App on store (13)
-- enforce seperation between mass and volume units`
-- allow user to set which macros to count
+- enforce seperation between mass and volume units(?)
 
 TechDebt (Not Ranked):
 - change logentry from decimal to double
@@ -47,7 +47,7 @@ X Use DecimalInput in DictionaryEntryFullView
 - Change serving size in dictionary entry to be decimal/double in CoreData
 
 Bugs (Not Ranked):
-- copy selected doesnt copy all macros
+X copy selected doesnt copy all macros
 - two scans to populate new dictionary entry
 - Order of log entries should be by date/time descending
 X Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
