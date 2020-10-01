@@ -30,7 +30,7 @@ struct DictionaryView: View {
             List{
                 Section{
                     HStack{
-                        TextField("Filter", text:self.$filter)
+                        TextFieldWithFirstFocus(text:self.$filter, placeHolder:"Filter", isFirstResponder: self.onEntryClick != nil)
                         Button(action:{self.filter = ""}){
                             Image(systemName: "xmark")
                         }
@@ -64,7 +64,9 @@ struct DictionaryView: View {
             .navigationBarItems(trailing: self.onEntryClick == nil
                 ? AnyView(HStack{
                     NavigationLink(destination:DictionaryEntryFullView(), tag: 1, selection: $action){EmptyView()}
-                    Button(action: {self.action = 1}){Image(systemName: "plus")}
+                    Button(action: {self.action = 1}){
+                        Image(systemName: "plus").font(.system(size: 25, weight: .bold))
+                    }
                 })
                 : AnyView(EmptyView())
             )

@@ -5,9 +5,14 @@ X Dictionary View - Only show names - not calories info etc.
 X Dictionary View and Log View - Elipses names
 - ?? Think about checking/unchecking vs copying paradigm listbackgroundcolor
 X Better display Marco totals in LogView
-- Auto-Focus on filter when choosing dictionary entry in AddLogEntry
+x Auto-Focus on filter when choosing dictionary entry in AddLogEntry
+	X Auto-focus
+	x close keyboard
+- Tab between decimal inputs
+- Close keyboard on decimal without button
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat)
-- Review Log UI for ios 14
+X Review Log UI for ios 14
+- Revisit Decimal Input and numeric keyboard functionality
 
 Features (Randked):
 X Put App on phone
@@ -48,6 +53,7 @@ X Use DecimalInput in DictionaryEntryFullView
 
 Bugs (Not Ranked):
 X copy selected doesnt copy all macros
+- dictionary view => when filter and select => details view is drawn strangely
 - two scans to populate new dictionary entry
 - Order of log entries should be by date/time descending
 X Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
