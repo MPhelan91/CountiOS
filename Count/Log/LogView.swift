@@ -13,7 +13,6 @@ struct LogView: View {
     @EnvironmentObject var vm : LogVM
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var ysys = 0.0
     @State private var action: Int? = 0
     @State private var showToast = false{
         didSet{
