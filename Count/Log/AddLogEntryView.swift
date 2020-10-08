@@ -29,10 +29,12 @@ struct AddLogEntryView : View {
                 }
                 DecimalInput(label: "Servings", value: $vm.servings, onFinishedEditing: { self.vm.RecalcNutrition(ChangedData.NumberOfServings) })
                 if(vm.selectedEntry?.servingSize != nil){
-                    DecimalInput(label: "Serving Size", value: $vm.servingSize, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Portion)})
-                    Picker(selection: $vm.servingUnit, label: Text("Unit")) {
-                        ForEach(Units.allCases, id: \.self) { unit in
-                            Text(unit.abbreviation).tag(unit as Units?)
+                    HStack{
+                        DecimalInput(label: "Portion", value: $vm.servingSize, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Portion)})
+                        Picker(selection: $vm.servingUnit, label: Text("Unit")) {
+                            ForEach(Units.allCases, id: \.self) { unit in
+                                Text(unit.abbreviation).tag(unit as Units?)
+                            }
                         }
                     }
                 }

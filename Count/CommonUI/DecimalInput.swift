@@ -61,18 +61,12 @@ struct DecimalInput:View{
     var body: some View{
         return HStack{
             Text("\(label): ")
-            TextField("", text: self.$vm.stringRepresentation, onEditingChanged: {x in self.updateBinding(x)})
-                .keyboardType(.decimalPad)
-            Button(action: {self.hideKeyboard()}){
-                Image(systemName: "checkmark")
-            }
+            TextFieldWithToolBar(text: self.$vm.stringRepresentation, onFinishedEditing: self.updateBinding, keyboardType: .decimalPad)
         }
     }
     
-    private func updateBinding(_ editingChangedBool:Bool){
-        if(!editingChangedBool){
-            self.value = self.vm.numericRepresentation
-            if(self.onFinishedEditing != nil) {self.onFinishedEditing!()}
-        }
+    private func updateBinding(){
+        self.value = self.vm.numericRepresentation
+        if(self.onFinishedEditing != nil) {self.onFinishedEditing!()}
     }
 }

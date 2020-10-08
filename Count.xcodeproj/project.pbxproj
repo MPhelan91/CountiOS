@@ -32,7 +32,7 @@
 		4F8E688E24CA6D3D00E8810D /* DictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688D24CA6D3D00E8810D /* DictionaryEntry.swift */; };
 		4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688F24CE0C4200E8810D /* DictionaryEntryFullView.swift */; };
 		4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E689224CE0F6F00E8810D /* Enums.swift */; };
-		4F983543252AA2AD00E8F746 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F983542252AA2AD00E8F746 /* Test.swift */; };
+		4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */; };
 		4FFF1BA624A57A59008672D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA524A57A59008672D9 /* AppDelegate.swift */; };
 		4FFF1BA824A57A59008672D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA724A57A59008672D9 /* SceneDelegate.swift */; };
 		4FFF1BAB24A57A59008672D9 /* Count.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA924A57A59008672D9 /* Count.xcdatamodeld */; };
@@ -89,7 +89,7 @@
 		4F8E688D24CA6D3D00E8810D /* DictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntry.swift; sourceTree = "<group>"; };
 		4F8E688F24CE0C4200E8810D /* DictionaryEntryFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryFullView.swift; sourceTree = "<group>"; };
 		4F8E689224CE0F6F00E8810D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		4F983542252AA2AD00E8F746 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBar.swift; sourceTree = "<group>"; };
 		4FFF1BA224A57A59008672D9 /* Count.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Count.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFF1BA524A57A59008672D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FFF1BA724A57A59008672D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				4F6D298724FABB84008CEF08 /* IntegerInput.swift */,
 				4F0F105525182D9800DEF6F3 /* Constants.swift */,
 				4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */,
-				4F983542252AA2AD00E8F746 /* Test.swift */,
+				4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				4F6D298424F87BFB008CEF08 /* MultilineTextField.swift in Sources */,
 				4F8E688724C90E9C00E8810D /* SettingsView.swift in Sources */,
 				4F8E688E24CA6D3D00E8810D /* DictionaryEntry.swift in Sources */,
-				4F983543252AA2AD00E8F746 /* Test.swift in Sources */,
+				4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */,
 				4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */,
 				4F8E688324C90AED00E8810D /* ContentView.swift in Sources */,
 				4FFF1BAB24A57A59008672D9 /* Count.xcdatamodeld in Sources */,

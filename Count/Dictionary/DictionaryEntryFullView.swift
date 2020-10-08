@@ -46,7 +46,7 @@ struct DictionaryEntryFullView : View {
             TextField("Name", text: self.$name)
             MultilineTextField("Description", text:self.$definition )
             HStack{
-                IntegerInput(label:"Protion", value: self.$servingSize)
+                IntegerInput(label:"Portion", value: self.$servingSize)
                 Picker(selection: $servingUnit, label: Text("Unit")) {
                     ForEach(Units.allCases, id: \.self) { unit in
                         Text(unit.abbreviation).tag(unit as Units?)

@@ -8,12 +8,16 @@
 
 import SwiftUI
 
-struct TestTextfield: UIViewRepresentable {
+struct TextFieldWithToolBar: UIViewRepresentable {
+    
     @Binding var text: String
+    var onFinishedEditing: () -> Void
+    var keyboardType: UIKeyboardType
     
     func makeUIView(context: Context) -> UITextField {
         let textfield = UITextField()
-        textfield.keyboardType = .numberPad//keyType
+        textfield.delegate = context.coordinator
+        textfield.keyboardType = keyboardType
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textfield.frame.size.width, height: 44))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil);
         let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(textfield.doneButtonTapped(button:)))
@@ -25,6 +29,28 @@ struct TestTextfield: UIViewRepresentable {
     
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
+    }
+    
+    final class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
+        var onFinishedEditing: () -> Void
+
+        init(text: Binding<String>, onFinishedEditing: @escaping () ->Void) {
+            _text = text
+            self.onFinishedEditing = onFinishedEditing
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            onFinishedEditing()
+        }
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = textField.text ?? ""
+        }
+    }
+    
+    func makeCoordinator() -> TextFieldWithToolBar.Coordinator {
+        return Coordinator(text: $text, onFinishedEditing: onFinishedEditing)
     }
 }
 
