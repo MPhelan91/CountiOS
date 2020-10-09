@@ -24,10 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let addEntryVM = AddLogEntryVM(context: context)
         let logVM = LogVM(context: context)
+        let settingsVM = SettingsVM(context: context)
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(addEntryVM).environmentObject(logVM)
+        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(addEntryVM).environmentObject(logVM).environmentObject(settingsVM)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

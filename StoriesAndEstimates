@@ -1,45 +1,27 @@
 
-UI(Not Ranked)
-X LogView - Put Copy and Delete under Elipses menu that is enabled after selection(s)
-X Dictionary View - Only show names - not calories info etc.
-X Dictionary View and Log View - Elipses names
-- ?? Think about checking/unchecking vs copying paradigm listbackgroundcolor
-X Better display Marco totals in LogView
-x Auto-Focus on filter when choosing dictionary entry in AddLogEntry
-	X Auto-focus
-	x close keyboard
-- Tab between decimal inputs
-- Close keyboard on decimal without button
-- Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat)
-X Review Log UI for ios 14
-- Revisit Decimal Input and numeric keyboard functionality
+UI(Ranked)
+- Think about checking/unchecking vs copying paradigm listbackgroundcolor (8)
+- Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
+- Tab between decimal inputs (13)
 
 Features (Randked):
-X Put App on phone
-X Add ability to use camera to pre-enter nutrional info to AddEntry View (13)
-X Add other Macros (Fat and Sugar) (5)
-	x add Fat / Carb to db
-	x add Fat / Carb to dictionaryEntryView
-	X add Fat / Carb to LogEntryView
-	X add Fat Carb to totals and log view
-	X Read new macros from camera
-- Settings
-	- Add Ability to have default daily entries (8)
-	- Choose Macros to count (5)
-	- Calorie and Macro Goals (5)
-	- Default Unit (mass vs volume) (3)
-	- Cheat day (5)
-	- Weight (5)
-- Multi delete functunality in LogView (2)
+- Delete old log entries (3)
+
+- Settings: Default Unit (mass vs volume) (5)
+- Settings: Add Ability to have default daily entries (20)
+	- requires sub stories
 - Create meal from selected entries in LogView (5)
+- Settings: Choose Macros to count (5)
+- Settings: Calorie and Macro Goals (5)
+- enforce seperation between mass and volume units(5)
+- Settings: Weight (13)
+	- requires sub stories
+- Settings: Cheat day (5)
 - App Image (8)
-- Ability to clear dictionary choice in AddEntryView (2)
 - Put App on store (13)
-- enforce seperation between mass and volume units(?)
 
 TechDebt (Not Ranked):
 - change logentry from decimal to double
-X Use DecimalInput in DictionaryEntryFullView
 - Create ViewModel for DictionaryView 
 - Create ViewModel for DictionaryEntryFullView
 - Require both portion and unit to be set if one if set in DictionaryEntryFullView
@@ -52,13 +34,8 @@ X Use DecimalInput in DictionaryEntryFullView
 - Change serving size in dictionary entry to be decimal/double in CoreData
 
 Bugs (Not Ranked):
-X copy selected doesnt copy all macros
 - dictionary view => when filter and select => details view is drawn strangely
 - two scans to populate new dictionary entry
 - Order of log entries should be by date/time descending
-X Two Navigation Links for back shown on AddLogEntryView when you go to choose a dictionary entry
-X DictionaryFullView - Decsirption is first thing in focus
-X DictionaryFullView - click check next to portion triggers unit picker
-X Screen Stutters when switching from dictionaryview to dictionaryentryfullview
 
 

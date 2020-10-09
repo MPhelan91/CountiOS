@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var vm : SettingsVM
+
     var body: some View {
-        Text("This will be the settings page")
+        VStack{
+            Button(action: {self.vm.deleteOldEntries()}){
+                Text("Delete Old Entries")
+            }
+        }
     }
 }
 
