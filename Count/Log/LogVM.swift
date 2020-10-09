@@ -63,30 +63,53 @@ class LogVM: ObservableObject {
         return selectedEntries.contains(where: {$0.objectID.isEqual(objectId)})
     }
     
-    public func copySelected() -> Bool {
+    private func bulkOperation(_ operation:() throws->Void) -> Bool{
         if(self.selectedEntries.count > 0){
-            for entry in self.selectedEntries {
-                let newEntry = LogEntry(context: self.context)
-                
-                newEntry.name = entry.name
-                newEntry.calories = entry.calories
-                newEntry.protien = entry.protien
-                newEntry.fat = entry.fat
-                newEntry.carbs = entry.carbs
-                newEntry.sugar = entry.sugar
-                newEntry.entryDate = Date()
-                
-                do{
-                    try self.context.save()
-                }catch{
-                    print(error)
-                    return false
-                }
+            do{
+                try operation()
+            }catch{
+                print(error)
+                return false
             }
             selectedEntries.removeAll()
             fetchEntries()
             return true
         }
-        return false
+        return false;
+    }
+    
+    private func copySelected() throws {
+        for entry in self.selectedEntries {
+            let newEntry = LogEntry(context: self.context)
+            
+            newEntry.name = entry.name
+            newEntry.calories = entry.calories
+            newEntry.protien = entry.protien
+            newEntry.fat = entry.fat
+            newEntry.carbs = entry.carbs
+            newEntry.sugar = entry.sugar
+            newEntry.entryDate = Date()
+        }
+        try self.context.save()
+    }
+    
+    public func performCopySelected() -> Bool {
+        return bulkOperation(copySelected)
+    }
+    
+    private func deleteEntries() throws {
+        let ids = selectedEntries.map({x in x.objectID})
+        let deleteRequest = NSBatchDeleteRequest(objectIDs: ids)
+        deleteRequest.resultType = .resultTypeObjectIDs
+
+        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
+        let changes: [AnyHashable: Any] = [
+            NSDeletedObjectsKey: result.result as! [NSManagedObjectID]
+        ]
+        NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+    }
+    
+    public func performDeleteEntries() -> Bool {
+        return bulkOperation(deleteEntries)
     }
 }

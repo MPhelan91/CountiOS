@@ -3,4 +3,70 @@
    uuid = "DCA31567-E703-44D4-9744-BA4A423C48F9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CD40937-9750-4D32-B8EE-1F9BDB07DAB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Count/Log/LogView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C947D813-75B5-48D0-8B6E-BDAE9C0305CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Count/Log/LogVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "deleteEntries()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C947D813-75B5-48D0-8B6E-BDAE9C0305CC - 50d8e63aeb77d75e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Count.LogVM.(deleteEntries in _E3C234C2E9808EC68222CA2C41033219)() throws -&gt; ()"
+                  moduleName = "Count"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelphelan/Documents/Count/Count/Log/LogVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "C947D813-75B5-48D0-8B6E-BDAE9C0305CC - 5fcf54799aba8be9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Count.LogEntry) -&gt; __C.NSManagedObjectID in Count.LogVM.(deleteEntries in _E3C234C2E9808EC68222CA2C41033219)() throws -&gt; ()"
+                  moduleName = "Count"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelphelan/Documents/Count/Count/Log/LogVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

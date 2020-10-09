@@ -55,14 +55,16 @@ struct LogView: View {
                     LogEntrySimpleView(logEntry: logEntry)
                         .contextMenu{
                             Button("Copy Selected to Today",action:{
-                                if(self.vm.copySelected()){
+                                if(self.vm.performCopySelected()){
                                     self.toastMessage = "Copied to Today"
                                     self.showToast = true
                                 }
                             })
                             Button("Delete Selected",action:{
-                                self.toastMessage = "Not Implemented"
-                                self.showToast = true
+                                if(self.vm.performDeleteEntries()){
+                                    self.toastMessage = "Deleted"
+                                    self.showToast = true
+                                }
                             })
                             Button("Make Dictionary Entry From Selected",action:{
                                 self.toastMessage = "Not Implemented"
