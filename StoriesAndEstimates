@@ -5,20 +5,17 @@ UI(Ranked)
 - Tab between decimal inputs (13)
 
 Features (Randked):
-- Settings: Default Unit (mass vs volume) (5)
-	X Core Data
-	X Edit and Save from settings page
-	X Be able to set them to nil
-	- key off default values in log entry
-- Settings: Add Ability to have default daily entries (20)
-	- requires sub stories
-- Create meal from selected entries in LogView (5)
-- Settings: Choose Macros to count (8)
+- Settings: Choose Macros to count (13)
+	- limit macros shown in addentry
+	- Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc
 - Settings: Calorie and Macro Goals (5)
+- enforce seperation between mass and volume units(3)
+- Create meal from selected entries in LogView (5)
+- Settings: Add Ability to have default daily entries (20)
+	- requires sub stories
 - maintenance task to delete older entries rather than button (???)
 	- BGTaskScheduler ??
-- enforce seperation between mass and volume units(5)
 - Settings: Weight (13)
 	- requires sub stories
 - Settings: Cheat day (5)

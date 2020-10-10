@@ -8,7 +8,19 @@
 
 import Foundation
 
-enum Macros { case Calories, Protien, Fat, Carbs, Sugar }
+enum Macros : Int, CaseIterable{
+    case Calories, Protien, Fat, Carbs, Sugar
+    
+    var getString:String{
+        switch self{
+        case.Calories: return "Calories"
+        case.Protien: return "Protien"
+        case.Fat: return "Fat"
+        case.Carbs: return "Carbohydrate"
+        case.Sugar: return "Sugar"
+        }
+    }
+}
 
 enum Units : Int, CaseIterable {
     

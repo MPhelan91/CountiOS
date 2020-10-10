@@ -21,6 +21,13 @@ class SettingsVM : ObservableObject{
             saveSettings()
         }
     }
+    @Published var selectedMacro:Macros? = nil{
+        didSet{
+            if(selectedMacro != nil){
+                print(selectedMacro?.getString)
+            }
+        }
+    }
 
     private var settings : Settings? = nil
     private let context: NSManagedObjectContext

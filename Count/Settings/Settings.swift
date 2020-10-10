@@ -13,6 +13,11 @@ import CoreData
 public class Settings: NSManagedObject {
     @NSManaged public var massUnit: NSNumber?
     @NSManaged public var volumeUnit: NSNumber?
+    @NSManaged public var countCalories: NSNumber?
+    @NSManaged public var countProtien: NSNumber?
+    @NSManaged public var countCarbs: NSNumber?
+    @NSManaged public var countFat: NSNumber?
+    @NSManaged public var countSugar: NSNumber?
 }
 
 import Foundation
@@ -24,6 +29,11 @@ extension Settings {
         let defaultSettings = Settings(context: context)
         defaultSettings.massUnit = nil
         defaultSettings.volumeUnit = nil
+        defaultSettings.countCalories = 1
+        defaultSettings.countProtien = 1
+        defaultSettings.countCarbs = 0
+        defaultSettings.countFat = 0
+        defaultSettings.countSugar = 0
         return defaultSettings
     }
     

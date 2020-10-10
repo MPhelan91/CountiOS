@@ -24,6 +24,11 @@ struct SettingsView: View {
                         Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
+                Picker(selection: $vm.selectedMacro, label: Text("Macros")) {
+                    ForEach(Macros.allCases, id: \.self) { unit in
+                        Text(unit.getString).tag(unit as Macros?)
+                    }
+                }
             }
             Text("Temp Buttons")
             VStack{
