@@ -46,7 +46,6 @@ struct LogHeaderView: View {
         }
         .frame(height: 65)
         .background(colorScheme == .dark ? darkModeGray : lightModeGray)
-        //.background(Color(red: 240 / 255, green: 237 / 255, blue: 237 / 255))
     }
 }
 

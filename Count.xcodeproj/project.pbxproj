@@ -10,6 +10,7 @@
 		4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F10532515986900DEF6F3 /* LogHeaderView.swift */; };
 		4F0F105625182D9800DEF6F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F105525182D9800DEF6F3 /* Constants.swift */; };
 		4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0C22530F01100691A7D /* SettingsVM.swift */; };
+		4F26D0D42531282000691A7D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0D22531282000691A7D /* Settings.swift */; };
 		4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */; };
 		4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
@@ -65,6 +66,7 @@
 		4F0F10532515986900DEF6F3 /* LogHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeaderView.swift; sourceTree = "<group>"; };
 		4F0F105525182D9800DEF6F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4F26D0C22530F01100691A7D /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
+		4F26D0D22531282000691A7D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsScanner.swift; sourceTree = "<group>"; };
 		4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithFirstFocus.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		4F8E688C24CA669500E8810D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4F26D0D22531282000691A7D /* Settings.swift */,
 				4F8E688624C90E9C00E8810D /* SettingsView.swift */,
 				4F26D0C22530F01100691A7D /* SettingsVM.swift */,
 			);
@@ -438,6 +441,7 @@
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
+				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,
 				4FFF1BC324A67EC1008672D9 /* LogEntrySimpleView.swift in Sources */,
 				4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */,

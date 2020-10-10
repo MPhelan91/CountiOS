@@ -31,7 +31,7 @@ extension LogEntry{
     
     static func getLogEntriesForDate(date:Date) -> NSFetchRequest<LogEntry> {
         let request: NSFetchRequest<LogEntry> = LogEntry.fetchRequest() as! NSFetchRequest<LogEntry>
-        
+
         let sortDescriptor = NSSortDescriptor(key: "entryDate", ascending: false)
         request.sortDescriptors = [sortDescriptor]
         

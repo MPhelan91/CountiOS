@@ -21,10 +21,11 @@ struct ContentView: View {
             }.tabItem{
                 Image(systemName: "book.circle")
                 Text("Dictionary")}
-            SettingsView()
-                .tabItem{
-                    Image(systemName: "gear")
-                    Text("Settings")
+            NavigationView{
+                SettingsView()
+            }.tabItem{
+                Image(systemName: "gear")
+                Text("Settings")
             }
         }
     }

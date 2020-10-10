@@ -25,6 +25,14 @@ enum Units : Int, CaseIterable {
         }
     }
     
+    static func massUnits()->[Units]{
+        return [.Gram, .Ounce, .Pound]
+    }
+    
+    static func volumeUnits()->[Units]{
+        return [.Cup, .Liter, .Milliliter]
+    }
+    
     static func AbbreviationToEnum(_ abbrev:String) -> Units?{
         switch abbrev {
         case "g":   return .Gram
