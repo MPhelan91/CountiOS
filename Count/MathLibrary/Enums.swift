@@ -12,7 +12,7 @@ enum Macros { case Calories, Protien, Fat, Carbs, Sugar }
 
 enum Units : Int, CaseIterable {
     
-    case Gram, Ounce, Pound, Liter, Milliliter, Cup
+    case Gram, Ounce, Pound, Liter, Milliliter, Cup, Undefined
     
     var abbreviation: String {
         switch self {
@@ -22,15 +22,20 @@ enum Units : Int, CaseIterable {
         case .Liter : return "L"
         case .Milliliter : return "mL"
         case .Cup : return "c"
+        case .Undefined: return ""
         }
     }
     
+    static func onlyUnits() -> [Units]{
+        return [.Gram, .Ounce, .Pound, .Liter, .Milliliter, .Cup]
+    }
+    
     static func massUnits()->[Units]{
-        return [.Gram, .Ounce, .Pound]
+        return [.Undefined, .Gram, .Ounce, .Pound]
     }
     
     static func volumeUnits()->[Units]{
-        return [.Cup, .Liter, .Milliliter]
+        return [.Undefined, .Cup, .Liter, .Milliliter]
     }
     
     static func AbbreviationToEnum(_ abbrev:String) -> Units?{

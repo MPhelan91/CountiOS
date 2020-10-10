@@ -58,7 +58,7 @@ class ExtensionTests: XCTestCase {
     func test_StringExtension_GetServingInfo() throws {
         let testCases:[(String,(Int,Units)?)] = [
             ("There is no info", nil),
-            ("yada yada Serving Size 1 Pack(21g)", (21, Units.Gram)),
+            ("yada yada serving size 1 pack(21g)", (21, Units.Gram)),
         ]
         
         for testCase in testCases{

@@ -9,15 +9,15 @@
 import CoreData
 
 class SettingsVM : ObservableObject{
-    @Published var massUnit:Units?=nil{
+    @Published var massUnit:Units = .Undefined{
         didSet{
-            self.settings?.massUnit = massUnit != nil ? NSNumber(value:massUnit!.rawValue) : nil
+            self.settings?.massUnit = massUnit != .Undefined ? NSNumber(value:massUnit.rawValue) : nil
             saveSettings()
         }
     }
-    @Published var volumeUnit:Units?=nil{
+    @Published var volumeUnit:Units = .Undefined{
         didSet{
-            self.settings?.volumeUnit = volumeUnit != nil ? NSNumber(value:volumeUnit!.rawValue) : nil
+            self.settings?.volumeUnit = volumeUnit != .Undefined ? NSNumber(value:volumeUnit.rawValue) : nil
             saveSettings()
         }
     }
@@ -45,8 +45,8 @@ class SettingsVM : ObservableObject{
                 ? Settings.getDefaultSettings(context: self.context)
                 : settings.first
             
-            massUnit = self.settings!.massUnit != nil ? Units(rawValue: self.settings!.massUnit as! Int) : nil
-            volumeUnit = self.settings!.volumeUnit != nil ? Units(rawValue: self.settings!.volumeUnit as! Int) : nil
+            massUnit = self.settings!.massUnit != nil ? Units(rawValue: self.settings!.massUnit as! Int)! : .Undefined
+            volumeUnit = self.settings!.volumeUnit != nil ? Units(rawValue: self.settings!.volumeUnit as! Int)! : .Undefined
         } catch {
             print(error)
         }

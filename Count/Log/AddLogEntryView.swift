@@ -32,7 +32,7 @@ struct AddLogEntryView : View {
                     HStack{
                         DecimalInput(label: "Portion", value: $vm.servingSize, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Portion)})
                         Picker(selection: $vm.servingUnit, label: Text("Unit")) {
-                            ForEach(Units.allCases, id: \.self) { unit in
+                            ForEach(Units.onlyUnits(), id: \.self) { unit in
                                 Text(unit.abbreviation).tag(unit as Units?)
                             }
                         }

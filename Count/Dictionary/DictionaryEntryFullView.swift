@@ -48,7 +48,7 @@ struct DictionaryEntryFullView : View {
             HStack{
                 IntegerInput(label:"Portion", value: self.$servingSize)
                 Picker(selection: $servingUnit, label: Text("Unit")) {
-                    ForEach(Units.allCases, id: \.self) { unit in
+                    ForEach(Units.onlyUnits(), id: \.self) { unit in
                         Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
