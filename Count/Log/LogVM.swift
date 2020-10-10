@@ -18,9 +18,11 @@ class LogVM: ObservableObject {
     @Published var selectedEntries: [LogEntry] = []
     
     private let context: NSManagedObjectContext
-    
-    init(context: NSManagedObjectContext){
+    private var settingsVM : SettingsVM
+
+    init(context: NSManagedObjectContext, settings: SettingsVM){
         self.context = context
+        self.settingsVM = settings
         fetchEntries()
     }
     

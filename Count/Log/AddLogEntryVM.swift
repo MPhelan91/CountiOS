@@ -31,11 +31,13 @@ class AddLogEntryVM: ObservableObject {
     @Published var sugar:Double? = nil
     
     private let context: NSManagedObjectContext
+    private var settingsVM : SettingsVM
     private var loading = false
     
-    init(context: NSManagedObjectContext){
+    init(context: NSManagedObjectContext, settings: SettingsVM){
         self.context = context
         self.selectedEntry = nil
+        self.settingsVM = settings
     }
     
     func setFieldsFromEntry(){
@@ -52,6 +54,18 @@ class AddLogEntryVM: ObservableObject {
             self.carbs = selectedEntry!.carbs as! Double?
             self.sugar = selectedEntry!.sugar as! Double?
             self.loading = false
+            
+            setDefaultUnit()
+        }
+    }
+    
+    private func setDefaultUnit(){
+        if(self.servingUnit != nil){
+            let isMassUnit = Units.massUnits().contains(self.servingUnit!)
+            let defaultUnit = isMassUnit ? settingsVM.massUnit : settingsVM.volumeUnit
+            if(defaultUnit != .Undefined){
+                self.servingUnit = defaultUnit
+            }
         }
     }
     
