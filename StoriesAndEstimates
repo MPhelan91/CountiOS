@@ -6,6 +6,8 @@ UI(Ranked)
 
 Features (Randked):
 - Settings: Choose Macros to count (13)
+	X add macro booleans to core Data
+	X create multli picker to pick values
 	- limit macros shown in addentry
 	- Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc

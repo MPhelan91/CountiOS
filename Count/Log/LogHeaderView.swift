@@ -32,13 +32,13 @@ struct LogHeaderView: View {
         HStack{
             Spacer()
             VStack{
-                MacroCountView(label: "Calories", total: sumValues(.Calories), goal: 2800)
+                MacroCountView(label: "Calories", total: sumValues(.Calories), goal: 2600)
                 Spacer().frame(height:10)
                 MacroCountView(label: "Fat", total: sumValues(.Fat), goal: 77)
             }
             Spacer()
             VStack{
-                MacroCountView(label: "Protien", total: sumValues(.Protien), goal: 180)
+                MacroCountView(label: "Protien", total: sumValues(.Protien), goal: 195)
                 Spacer().frame(height:10)
                 MacroCountView(label: "Carbs", total: sumValues(.Carbs), goal: 325)
             }

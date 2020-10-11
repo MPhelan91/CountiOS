@@ -21,16 +21,22 @@ class SettingsVM : ObservableObject{
             saveSettings()
         }
     }
-    @Published var selectedMacro:Macros? = nil{
+    @Published var macros:[Macros] = []{
         didSet{
-            if(selectedMacro != nil){
-                print(selectedMacro?.getString)
+            if(!loadingMacros){
+                self.settings?.countCalories = macros.contains(Macros.Calories) ? 1 : 0
+                self.settings?.countProtien = macros.contains(Macros.Protien) ? 1 : 0
+                self.settings?.countFat = macros.contains(Macros.Fat) ? 1 : 0
+                self.settings?.countSugar = macros.contains(Macros.Sugar) ? 1 : 0
+                self.settings?.countCarbs = macros.contains(Macros.Carbs) ? 1 : 0
+                saveSettings()
             }
         }
     }
 
     private var settings : Settings? = nil
     private let context: NSManagedObjectContext
+    private var loadingMacros = false
     
     init(context: NSManagedObjectContext){
         self.context = context
@@ -54,6 +60,14 @@ class SettingsVM : ObservableObject{
             
             massUnit = self.settings!.massUnit != nil ? Units(rawValue: self.settings!.massUnit as! Int)! : .Undefined
             volumeUnit = self.settings!.volumeUnit != nil ? Units(rawValue: self.settings!.volumeUnit as! Int)! : .Undefined
+            
+            self.loadingMacros = true
+            if(self.settings!.countCalories == 1){macros.append(Macros.Calories)}
+            if(self.settings!.countProtien == 1){macros.append(Macros.Protien)}
+            if(self.settings!.countSugar == 1){macros.append(Macros.Sugar)}
+            if(self.settings!.countFat == 1){macros.append(Macros.Fat)}
+            if(self.settings!.countCarbs == 1){macros.append(Macros.Carbs)}
+            self.loadingMacros = false
         } catch {
             print(error)
         }
