@@ -8,9 +8,7 @@
 
 import SwiftUI
 
-protocol IdentifiableAndEquitable: Hashable, Equatable {}
-
-struct Multipicker<T:IdentifiableAndEquitable>:View{
+struct Multipicker<T:Hashable>:View{
     @Binding var selectedValues: [T]
     var values: [T]
     var label: String
@@ -35,7 +33,7 @@ struct Multipicker<T:IdentifiableAndEquitable>:View{
     }
 }
 
-struct MultipickerTable<T:IdentifiableAndEquitable>:View{
+struct MultipickerTable<T:Hashable>:View{
     var values: [T]
     @Binding var selectedValues: [T]
     var stringAccesor: (T)->String

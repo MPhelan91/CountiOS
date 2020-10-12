@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Macros : Int, CaseIterable, IdentifiableAndEquitable{
+enum Macros : Int, CaseIterable, Hashable{
     
     case Calories, Protien, Fat, Carbs, Sugar
     
