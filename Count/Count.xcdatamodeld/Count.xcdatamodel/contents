@@ -21,12 +21,12 @@
         <attribute name="sugar" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
     <entity name="Settings" representedClassName=".Settings" syncable="YES">
-        <attribute name="countCalories" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="countCarbs" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="countFat" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="countProtien" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="countSugar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="calorieGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="carbGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="fatGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="massUnit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="protienGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="sugarGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="volumeUnit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>

@@ -5,13 +5,15 @@ UI(Ranked)
 - Tab between decimal inputs (13)
 
 Features (Randked):
-- Settings: Choose Macros to count (13)
+- Settings: Choose Macros to count (20)
 	X add macro booleans to core Data
 	X create multli picker to pick values
+	- Settings: Calorie and Macro Goals
+		- Turn booleans to integers
+		- change multi picker to add integer values
 	- limit macros shown in addentry
 	- Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc
-- Settings: Calorie and Macro Goals (5)
 - enforce seperation between mass and volume units(3)
 - Create meal from selected entries in LogView (5)
 - Settings: Add Ability to have default daily entries (20)
