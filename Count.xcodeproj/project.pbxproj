@@ -12,6 +12,7 @@
 		4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0C22530F01100691A7D /* SettingsVM.swift */; };
 		4F26D0D42531282000691A7D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0D22531282000691A7D /* Settings.swift */; };
 		4F26D0E3253257E200691A7D /* Multipicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0E2253257E200691A7D /* Multipicker.swift */; };
+		4F26D100253669CA00691A7D /* MacroPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0FF253669CA00691A7D /* MacroPicker.swift */; };
 		4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */; };
 		4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
@@ -68,6 +69,7 @@
 		4F26D0C22530F01100691A7D /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
 		4F26D0D22531282000691A7D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4F26D0E2253257E200691A7D /* Multipicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipicker.swift; sourceTree = "<group>"; };
+		4F26D0FF253669CA00691A7D /* MacroPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPicker.swift; sourceTree = "<group>"; };
 		4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsScanner.swift; sourceTree = "<group>"; };
 		4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithFirstFocus.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F26D0FE253669B800691A7D /* MacroPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4F26D0FF253669CA00691A7D /* MacroPicker.swift */,
+			);
+			path = MacroPicker;
+			sourceTree = "<group>";
+		};
 		4F2D3A4524FC73DB00A8B4C2 /* LabelScanning */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 		4F8E688C24CA669500E8810D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4F26D0FE253669B800691A7D /* MacroPicker */,
 				4F26D0D22531282000691A7D /* Settings.swift */,
 				4F8E688624C90E9C00E8810D /* SettingsView.swift */,
 				4F26D0C22530F01100691A7D /* SettingsVM.swift */,
@@ -451,6 +462,7 @@
 				4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */,
 				4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */,
 				4F6D297224E83D4F008CEF08 /* DecimalInput.swift in Sources */,
+				4F26D100253669CA00691A7D /* MacroPicker.swift in Sources */,
 				4F6D296024E19425008CEF08 /* Toast.swift in Sources */,
 				4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */,
 				4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */,

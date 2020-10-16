@@ -29,8 +29,8 @@ extension Settings {
         let defaultSettings = Settings(context: context)
         defaultSettings.massUnit = nil
         defaultSettings.volumeUnit = nil
-        defaultSettings.calorieGoal = 1
-        defaultSettings.protienGoal = 1
+        defaultSettings.calorieGoal = 2600
+        defaultSettings.protienGoal = 190
         defaultSettings.carbGoal = 0
         defaultSettings.fatGoal = 0
         defaultSettings.sugarGoal = 0

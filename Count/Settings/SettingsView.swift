@@ -24,7 +24,7 @@ struct SettingsView: View {
                         Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
-                Multipicker(label: "Macros", selectedValues: self.$vm.macros, values: Macros.allCases, stringAccesor: {macro in return macro.getString})
+                MacroPicker(macroGoals: self.$vm.macroGoals)
             }
             Text("Temp Buttons")
             VStack{

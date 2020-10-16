@@ -11,36 +11,48 @@ import CoreData
 class SettingsVM : ObservableObject{
     @Published var massUnit:Units = .Undefined{
         didSet{
-            self.settings?.massUnit = massUnit != .Undefined ? NSNumber(value:massUnit.rawValue) : nil
+            self.settings.massUnit = massUnit != .Undefined ? NSNumber(value:massUnit.rawValue) : nil
             saveSettings()
         }
     }
     @Published var volumeUnit:Units = .Undefined{
         didSet{
-            self.settings?.volumeUnit = volumeUnit != .Undefined ? NSNumber(value:volumeUnit.rawValue) : nil
+            self.settings.volumeUnit = volumeUnit != .Undefined ? NSNumber(value:volumeUnit.rawValue) : nil
             saveSettings()
         }
     }
-    @Published var macros:[Macros] = []{
+    @Published var macroGoals:[MacroGoal] = []{
         didSet{
-            if(!loadingMacros){
-                self.settings?.calorieGoal = macros.contains(Macros.Calories) ? 1 : 0
-                self.settings?.protienGoal = macros.contains(Macros.Protien) ? 1 : 0
-                self.settings?.fatGoal = macros.contains(Macros.Fat) ? 1 : 0
-                self.settings?.sugarGoal = macros.contains(Macros.Sugar) ? 1 : 0
-                self.settings?.carbGoal = macros.contains(Macros.Carbs) ? 1 : 0
+            if(!loadingMacroGoals){
+                updateMacroGoals()
                 saveSettings()
             }
         }
     }
 
-    private var settings : Settings? = nil
+    private var settings : Settings
     private let context: NSManagedObjectContext
-    private var loadingMacros = false
+    private var loadingMacroGoals = false
     
     init(context: NSManagedObjectContext){
         self.context = context
-        fetchSettings()
+        do{
+            let settings = try context.fetch(Settings.fetchRequest())
+            if(settings.count > 1){
+                print("Error: More than one Setting Row Found")
+            }
+            
+            if(settings.count == 0){
+                self.settings = Settings.getDefaultSettings(context: context)
+                saveSettings() //Save default settings for first time
+            } else{
+                self.settings = settings.first as! Settings
+            }
+            loadSettings()
+        } catch {
+            self.settings = Settings()
+            print(error)
+        }
     }
     
     private func saveSettings(){
@@ -51,32 +63,45 @@ class SettingsVM : ObservableObject{
         }
     }
     
-    private func fetchSettings(){
-        do{
-            let settings = try context.fetch(Settings.getSettings())
-            self.settings = settings.count == 0
-                ? Settings.getDefaultSettings(context: self.context)
-                : settings.first
-            
-            massUnit = self.settings!.massUnit != nil ? Units(rawValue: self.settings!.massUnit as! Int)! : .Undefined
-            volumeUnit = self.settings!.volumeUnit != nil ? Units(rawValue: self.settings!.volumeUnit as! Int)! : .Undefined
-            
-            self.loadingMacros = true
-            if(self.settings!.calorieGoal == 1){macros.append(Macros.Calories)}
-            if(self.settings!.protienGoal == 1){macros.append(Macros.Protien)}
-            if(self.settings!.sugarGoal == 1){macros.append(Macros.Sugar)}
-            if(self.settings!.fatGoal == 1){macros.append(Macros.Fat)}
-            if(self.settings!.carbGoal == 1){macros.append(Macros.Carbs)}
-            self.loadingMacros = false
-        } catch {
-            print(error)
-        }
+    private func loadSettings(){
+        massUnit = self.settings.massUnit != nil ? Units(rawValue: self.settings.massUnit as! Int)! : .Undefined
+        volumeUnit = self.settings.volumeUnit != nil ? Units(rawValue: self.settings.volumeUnit as! Int)! : .Undefined
+        
+        self.loadingMacroGoals = true
+        self.macroGoals = createMacroGoalList()
+        self.loadingMacroGoals = false
+
+    }
+    
+    private func createMacroGoalList() -> [MacroGoal]{
+        var goals : [MacroGoal] = []
+        goals.append(MacroGoal(Macros.Calories, self.settings.calorieGoal as! Int))
+        goals.append(MacroGoal(Macros.Protien, self.settings.protienGoal as! Int))
+        goals.append(MacroGoal(Macros.Fat, self.settings.fatGoal as! Int))
+        goals.append(MacroGoal(Macros.Carbs, self.settings.carbGoal as! Int))
+        goals.append(MacroGoal(Macros.Sugar, self.settings.sugarGoal as! Int))
+        return goals
+    }
+    
+    private func updateMacroGoals(){
+        self.settings.calorieGoal = NSNumber(value:getGoal(Macros.Calories))
+        self.settings.carbGoal = NSNumber(value:getGoal(Macros.Carbs))
+        self.settings.sugarGoal = NSNumber(value:getGoal(Macros.Sugar))
+        self.settings.fatGoal = NSNumber(value:getGoal(Macros.Fat))
+        self.settings.protienGoal = NSNumber(value:getGoal(Macros.Protien))
+    }
+    
+    private func getGoal(_ macro: Macros) -> Int{
+        return macroGoals.first(where: {x in x.macro == macro})!.goal ?? 0
     }
     
     public func deleteSettings(){
-        if(self.settings != nil){
-            context.delete(self.settings!)
+        do{
+            let allSettings = try context.fetch(Settings.fetchRequest()) as! [NSManagedObject]
+            allSettings.forEach({x in context.delete(x)})
             saveSettings()
+        } catch{
+            print(error)
         }
     }
     

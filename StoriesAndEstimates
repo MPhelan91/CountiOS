@@ -8,9 +8,10 @@ Features (Randked):
 - Settings: Choose Macros to count (20)
 	X add macro booleans to core Data
 	X create multli picker to pick values
-	- Settings: Calorie and Macro Goals
-		- Turn booleans to integers
-		- change multi picker to add integer values
+	X Settings: Calorie and Macro Goals
+		X Turn booleans to integers
+		X change multi picker to add integer values
+	- Set Macro totals based on Settings
 	- limit macros shown in addentry
 	- Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc
@@ -18,14 +19,17 @@ Features (Randked):
 - Create meal from selected entries in LogView (5)
 - Settings: Add Ability to have default daily entries (20)
 	- requires sub stories
+- HIlight text on focus in integer and decimal inputs(8)
 - maintenance task to delete older entries rather than button (???)
 	- BGTaskScheduler ??
-- Settings: Weight (13)
-	- requires sub stories
-- Settings: Cheat day (5)
 - App Image (8)
 - Put App on store (13)
 - Better Nutrion label scanning (20)
+
+POST RELEASE FEATURES
+- Settings: Weight (13)
+	- requires sub stories
+- Settings: Cheat day (5)
 
 TechDebt (Not Ranked):
 - change logentry from decimal to double
