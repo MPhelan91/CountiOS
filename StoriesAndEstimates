@@ -32,6 +32,7 @@ POST RELEASE FEATURES
 - Settings: Cheat day (5)
 
 TechDebt (Not Ranked):
+- use map for macro goals
 - change logentry from decimal to double
 - Create ViewModel for DictionaryView 
 - Create ViewModel for DictionaryEntryFullView

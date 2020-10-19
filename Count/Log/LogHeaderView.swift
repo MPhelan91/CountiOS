@@ -12,6 +12,12 @@ struct LogHeaderView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var logEntries : [LogEntry]
+    var macroGoals : [MacroGoal]
+    
+    init(_ logEntries: [LogEntry], _ macroGoals : [MacroGoal]) {
+        self.logEntries = logEntries
+        self.macroGoals = macroGoals.filter({x in x.goal != nil && x.goal! > 0})
+    }
     
     func sumValues(_ macroType:Macros) -> Double {
         switch macroType {
@@ -29,23 +35,86 @@ struct LogHeaderView: View {
     }
     
     var body: some View {
-        HStack{
-            Spacer()
-            VStack{
-                MacroCountView(label: "Calories", total: sumValues(.Calories), goal: 2600)
-                Spacer().frame(height:10)
-                MacroCountView(label: "Fat", total: sumValues(.Fat), goal: 77)
+        if(self.macroGoals.count == 1){
+            HStack{
+                Spacer()
+                MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[0].goal!)
+                Spacer()
             }
-            Spacer()
-            VStack{
-                MacroCountView(label: "Protien", total: sumValues(.Protien), goal: 195)
-                Spacer().frame(height:10)
-                MacroCountView(label: "Carbs", total: sumValues(.Carbs), goal: 325)
-            }
-            Spacer()
+            .frame(height: 40)
+            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
         }
-        .frame(height: 65)
-        .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+        else if(self.macroGoals.count == 2){
+            HStack{
+                Spacer()
+                MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[0].goal!)
+                Spacer()
+                MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[1].goal!)
+                Spacer()
+            }
+            .frame(height: 40)
+            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+        }
+        else if(self.macroGoals.count == 3){
+            HStack{
+                Spacer()
+                VStack{
+                    Spacer()
+                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[0].goal!)
+                    Spacer()
+                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[2].goal!)
+                    Spacer()
+                }
+                Spacer()
+                MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[1].goal!)
+                Spacer()
+            }
+            .frame(height: 65)
+            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+        }
+        else if(self.macroGoals.count == 4) {
+            HStack{
+                Spacer()
+                VStack{
+                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[0].goal!)
+                    Spacer().frame(height:10)
+                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[2].goal!)
+                }
+                Spacer()
+                VStack{
+                    MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[1].goal!)
+                    Spacer().frame(height:10)
+                    MacroCountView(label: self.macroGoals[3].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[3].goal!)
+                }
+                Spacer()
+            }
+            .frame(height: 65)
+            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+        }
+        else if(self.macroGoals.count == 5){
+            HStack{
+                Spacer()
+                VStack{
+                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[0].goal!)
+                    Spacer().frame(height:10)
+                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[2].goal!)
+                }
+                Spacer()
+                VStack{
+                    MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[1].goal!)
+                    Spacer().frame(height:10)
+                    MacroCountView(label: self.macroGoals[3].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[3].goal!)
+                }
+                Spacer()
+                MacroCountView(label: self.macroGoals[4].macro.getString, total: sumValues(.Calories), goal: self.macroGoals[4].goal!)
+                Spacer()
+            }
+            .frame(height: 65)
+            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+        }
+        else{
+            EmptyView()
+        }
     }
 }
 
@@ -64,6 +133,14 @@ struct MacroCountView : View{
 
 struct LogHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        LogHeaderView(logEntries: [])
+        let macroGoals : [MacroGoal] = [
+            MacroGoal(Macros.Calories, 2600),
+            MacroGoal(Macros.Protien, 195),
+            MacroGoal(Macros.Fat, 200),
+            MacroGoal(Macros.Carbs, 600),
+            MacroGoal(Macros.Sugar, 20),
+        ]
+        
+        LogHeaderView([], macroGoals)
     }
 }

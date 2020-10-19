@@ -17,7 +17,7 @@ enum Macros : Int, CaseIterable, Hashable{
         case.Calories: return "Calories"
         case.Protien: return "Protien"
         case.Fat: return "Fat"
-        case.Carbs: return "Carbohydrates"
+        case.Carbs: return "Carbs"
         case.Sugar: return "Sugar"
         }
     }

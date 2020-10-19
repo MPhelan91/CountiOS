@@ -11,6 +11,7 @@ import SwiftUI
 struct LogView: View {
     @EnvironmentObject var vm2 : AddLogEntryVM
     @EnvironmentObject var vm : LogVM
+    @EnvironmentObject var settings : SettingsVM
     @Environment(\.colorScheme) var colorScheme
     
     @State private var action: Int? = 0
@@ -49,7 +50,7 @@ struct LogView: View {
                 }
             }
             Spacer()
-            LogHeaderView(logEntries: self.vm.logEntries)
+            LogHeaderView(self.vm.logEntries, self.settings.macroGoals)
             List{
                 ForEach(self.vm.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry: logEntry)
