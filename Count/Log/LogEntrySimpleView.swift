@@ -13,6 +13,22 @@ struct LogEntrySimpleView: View {
     @EnvironmentObject var vm : LogVM
     
     var logEntry:LogEntry
+    var macros:[Macros]
+    
+    func getMacroAmount(_ macro: Macros) -> Double{
+        switch(macro){
+        case Macros.Calories:
+            return (self.logEntry.calories ?? 0) as! Double
+        case Macros.Protien:
+            return (self.logEntry.protien ?? 0) as! Double
+        case Macros.Fat:
+            return (self.logEntry.fat ?? 0) as! Double
+        case Macros.Carbs:
+            return (self.logEntry.carbs ?? 0) as! Double
+        case Macros.Sugar:
+            return (self.logEntry.sugar ?? 0) as! Double
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading){
@@ -25,14 +41,10 @@ struct LogEntrySimpleView: View {
             }
             HStack{
                 Spacer()
-                Text("Calories: \((self.logEntry.calories ?? 0) as! Double, specifier: "%.0f")")
-                    .font(.caption)
-                Text("Protien: \((self.logEntry.protien ?? 0) as! Double, specifier: "%.0f")")
-                    .font(.caption)
-                Text("Fat: \((self.logEntry.fat ?? 0) as! Double, specifier: "%.0f")")
-                    .font(.caption)
-                Text("Carbs: \((self.logEntry.carbs ?? 0) as! Double, specifier: "%.0f")")
-                    .font(.caption)
+                ForEach(self.macros, id:\.self){ macro in
+                    Text("\(macro.getString): \(getMacroAmount(macro), specifier: "%.0f")")
+                        .font(.caption)
+                }
             }
         }
         .contentShape(Rectangle())

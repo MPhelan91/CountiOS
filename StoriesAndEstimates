@@ -11,15 +11,18 @@ Features (Randked):
 	X Settings: Calorie and Macro Goals
 		X Turn booleans to integers
 		X change multi picker to add integer values
-	- Set Macro totals based on Settings
+	X Set Macro totals based on Settings
 	- limit macros shown in addentry
-	- Limit MAcros shown in Total Bar
+	X Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc
 - enforce seperation between mass and volume units(3)
 - Create meal from selected entries in LogView (5)
 - Settings: Add Ability to have default daily entries (20)
 	- requires sub stories
-- HIlight text on focus in integer and decimal inputs(8)
+- Decimal and Integer Input stories:
+	- HIlight text on focus in integer and decimal inputs(8)
+	- Add x button to clear value on integer and decimal inputs (3)
+	- DEcide whether to default value to 0 or nil
 - maintenance task to delete older entries rather than button (???)
 	- BGTaskScheduler ??
 - App Image (8)

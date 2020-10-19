@@ -95,6 +95,10 @@ class SettingsVM : ObservableObject{
         return macroGoals.first(where: {x in x.macro == macro})!.goal ?? 0
     }
     
+    public func macrosCounted() -> [Macros]{
+        return self.macroGoals.filter({x in x.goal != nil && x.goal! > 0}).map({$0.macro})
+    }
+    
     public func deleteSettings(){
         do{
             let allSettings = try context.fetch(Settings.fetchRequest()) as! [NSManagedObject]

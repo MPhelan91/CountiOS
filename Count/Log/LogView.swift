@@ -53,7 +53,7 @@ struct LogView: View {
             LogHeaderView(self.vm.logEntries, self.settings.macroGoals)
             List{
                 ForEach(self.vm.logEntries){ logEntry in
-                    LogEntrySimpleView(logEntry: logEntry)
+                    LogEntrySimpleView(logEntry: logEntry, macros: self.settings.macrosCounted())
                         .contextMenu{
                             Button("Copy Selected to Today",action:{
                                 if(self.vm.performCopySelected()){
