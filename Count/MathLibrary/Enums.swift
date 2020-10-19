@@ -66,6 +66,21 @@ enum Units : Int, CaseIterable {
 
 enum ChangedData : CaseIterable{
     case NumberOfServings, Portion, Calorie, Protien, Fat, Carbs, Sugar
+    
+    static func MacroToChangedData(_ macro: Macros) -> ChangedData{
+        switch macro {
+        case Macros.Calories:
+            return ChangedData.Calorie
+        case Macros.Protien:
+            return ChangedData.Protien
+        case Macros.Fat:
+            return ChangedData.Fat
+        case Macros.Carbs:
+            return ChangedData.Carbs
+        case Macros.Sugar:
+            return ChangedData.Sugar
+        }
+    }
 }
 
 enum CountError: Error {

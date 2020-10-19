@@ -13,8 +13,10 @@ Features (Randked):
 		X change multi picker to add integer values
 	X Set Macro totals based on Settings
 	- limit macros shown in addentry
+	X limit macros shown in logentryview
 	X Limit MAcros shown in Total Bar
 	- Revist Conversion Class and tests for refeactoring etc
+	- JUST REVIEW CODE CAUSE IT SEEMS MESSY
 - enforce seperation between mass and volume units(3)
 - Create meal from selected entries in LogView (5)
 - Settings: Add Ability to have default daily entries (20)

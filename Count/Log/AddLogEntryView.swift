@@ -13,6 +13,22 @@ struct AddLogEntryView : View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var vm : AddLogEntryVM
     @EnvironmentObject var vm2 : LogVM
+    @EnvironmentObject var settings : SettingsVM
+    
+    func getMacroBinding(_ macro:Macros) -> Binding<Double?>{
+        switch macro {
+        case Macros.Calories:
+            return self.$vm.calories
+        case Macros.Protien:
+            return self.$vm.protien
+        case Macros.Fat:
+            return self.$vm.fat
+        case Macros.Carbs:
+            return self.$vm.carbs
+        case Macros.Sugar:
+            return self.$vm.sugar
+        }
+    }
     
     var body: some View{
         Form {
@@ -42,11 +58,9 @@ struct AddLogEntryView : View {
             Section(header: Text("New Entry")){
                 Group{
                     TextField("Name", text: $vm.name)
-                    DecimalInput(label: "Calories", value: $vm.calories, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Calorie)})
-                    DecimalInput(label: "Protien", value: $vm.protien, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Protien)})
-                    DecimalInput(label: "Fat", value: $vm.fat, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Fat)})
-                    DecimalInput(label: "Carbs", value: $vm.carbs, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Carbs)})
-                    DecimalInput(label: "Sugar", value: $vm.sugar, onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.Sugar)})
+                    ForEach(self.settings.macrosCounted(), id:\.self){ macro in
+                        DecimalInput(label: macro.getString, value: getMacroBinding(macro), onFinishedEditing: {self.vm.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
+                    }
                     Button(action: {
                         self.vm.addEntry(date:self.vm2.dateForCurrentEntries)
                         self.vm2.fetchEntries()

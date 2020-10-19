@@ -29,8 +29,8 @@ struct LogHeaderView: View {
             return self.logEntries.map({$0.fat as! Double}).reduce(0.0, +)
         case Macros.Carbs:
             return self.logEntries.map({$0.carbs as! Double}).reduce(0.0, +)
-        default:
-            return 0.0
+        case Macros.Sugar:
+            return self.logEntries.map({$0.sugar as! Double}).reduce(0.0, +)
         }
     }
     
