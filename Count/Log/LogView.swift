@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct LogView: View {
-    @EnvironmentObject var vm2 : AddLogEntryVM
-    @EnvironmentObject var vm : LogVM
+    @EnvironmentObject var entryVM : AddLogEntryVM
+    @EnvironmentObject var logVM : LogVM
     @EnvironmentObject var settings : SettingsVM
     @Environment(\.colorScheme) var colorScheme
     
@@ -34,35 +34,35 @@ struct LogView: View {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US")
-        return dateFormatter.string(from: vm.dateForCurrentEntries)
+        return dateFormatter.string(from: logVM.dateForCurrentEntries)
     }
     
     var body: some View {
         VStack{
             HStack{
-                Button(action:{self.vm.decrementDay()}){
+                Button(action:{self.logVM.decrementDay()}){
                     Image(systemName: "arrowtriangle.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
                 Text(self.dateToString()).font(.system(size:20))
-                Button(action:{self.vm.incrementDay()}){
+                Button(action:{self.logVM.incrementDay()}){
                     Image(systemName: "arrowtriangle.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
             Spacer()
-            LogHeaderView(self.vm.logEntries, self.settings.macroGoals)
+            LogHeaderView(self.logVM.logEntries, self.settings.macroGoals)
             List{
-                ForEach(self.vm.logEntries){ logEntry in
+                ForEach(self.logVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry: logEntry, macros: self.settings.macrosCounted())
                         .contextMenu{
                             Button("Copy Selected to Today",action:{
-                                if(self.vm.performCopySelected()){
+                                if(self.logVM.performCopySelected()){
                                     self.toastMessage = "Copied to Today"
                                     self.showToast = true
                                 }
                             })
                             Button("Delete Selected",action:{
-                                if(self.vm.performDeleteEntries()){
+                                if(self.logVM.performDeleteEntries()){
                                     self.toastMessage = "Deleted"
                                     self.showToast = true
                                 }
@@ -73,7 +73,7 @@ struct LogView: View {
                             })
                         }
                 }.onDelete { indexSet in
-                    self.vm.deleteEntry(index: indexSet.first!)
+                    self.logVM.deleteEntry(index: indexSet.first!)
                 }
             }
             .listStyle(PlainListStyle())
@@ -82,7 +82,7 @@ struct LogView: View {
                 trailing: HStack{
                     NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
                         Button(action: {
-                            self.vm2.clearData()
+                            self.entryVM.clearData()
                             self.action = 1
                         }){
                             Image(systemName: "plus").font(.system(size: 25, weight: .bold))

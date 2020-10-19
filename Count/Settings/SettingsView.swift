@@ -9,27 +9,27 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var vm : SettingsVM
+    @EnvironmentObject var settings : SettingsVM
 
     var body: some View {
         VStack{
             Form{
-                Picker(selection: $vm.massUnit, label: Text("Default Mass Unit")) {
+                Picker(selection: $settings.massUnit, label: Text("Default Mass Unit")) {
                     ForEach(Units.massUnits(), id: \.self) { unit in
                         Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
-                Picker(selection: $vm.volumeUnit, label: Text("Default Volume Unit")) {
+                Picker(selection: $settings.volumeUnit, label: Text("Default Volume Unit")) {
                     ForEach(Units.volumeUnits(), id: \.self) { unit in
                         Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
-                MacroPicker(macroGoals: self.$vm.macroGoals)
+                MacroPicker(macroGoals: self.$settings.macroGoals)
             }
             Text("Temp Buttons")
             VStack{
-                Button(action:{self.vm.deleteOldEntries()}){Text("Delete Old Entries")}
-                Button(action:{self.vm.deleteSettings()}){Text("Delete Settings")}
+                Button(action:{self.settings.deleteOldEntries()}){Text("Delete Old Entries")}
+                Button(action:{self.settings.deleteSettings()}){Text("Delete Settings")}
 
             }
         }

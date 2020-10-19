@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 struct LogEntrySimpleView: View {
-    @EnvironmentObject var vm : LogVM
+    @EnvironmentObject var logVM : LogVM
     
     var logEntry:LogEntry
     var macros:[Macros]
@@ -33,7 +33,7 @@ struct LogEntrySimpleView: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack(){
-                Image(systemName: vm.isSelected(objectId: self.logEntry.objectID) ? "checkmark.square": "square")
+                Image(systemName: logVM.isSelected(objectId: self.logEntry.objectID) ? "checkmark.square": "square")
                 Text(self.logEntry.name ?? "")
                     .font(.headline)
                     .lineLimit(1)
@@ -49,12 +49,12 @@ struct LogEntrySimpleView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            let isChecked = self.vm.isSelected(objectId: self.logEntry.objectID)
+            let isChecked = self.logVM.isSelected(objectId: self.logEntry.objectID)
             if(!isChecked){
-                self.vm.selelctEntry(objectId: self.logEntry.objectID)
+                self.logVM.selelctEntry(objectId: self.logEntry.objectID)
             }
             else if(isChecked) {
-                self.vm.unselectEntry(objectId: self.logEntry.objectID)
+                self.logVM.unselectEntry(objectId: self.logEntry.objectID)
             }
         }
     }

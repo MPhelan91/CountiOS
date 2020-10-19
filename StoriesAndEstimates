@@ -5,20 +5,9 @@ UI(Ranked)
 - Tab between decimal inputs (13)
 
 Features (Randked):
-- Settings: Choose Macros to count (20)
-	X add macro booleans to core Data
-	X create multli picker to pick values
-	X Settings: Calorie and Macro Goals
-		X Turn booleans to integers
-		X change multi picker to add integer values
-	X Set Macro totals based on Settings
-	- limit macros shown in addentry
-	X limit macros shown in logentryview
-	X Limit MAcros shown in Total Bar
-	- Revist Conversion Class and tests for refeactoring etc
-	- JUST REVIEW CODE CAUSE IT SEEMS MESSY
-- enforce seperation between mass and volume units(3)
+- Review/Refactor Code around macros
 - Create meal from selected entries in LogView (5)
+- enforce seperation between mass and volume units(3)
 - Settings: Add Ability to have default daily entries (20)
 	- requires sub stories
 - Decimal and Integer Input stories:
@@ -30,6 +19,7 @@ Features (Randked):
 - App Image (8)
 - Put App on store (13)
 - Better Nutrion label scanning (20)
+- research error handling convention for ios apps 
 
 POST RELEASE FEATURES
 - Settings: Weight (13)

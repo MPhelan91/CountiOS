@@ -44,7 +44,7 @@ class SettingsVM : ObservableObject{
             
             if(settings.count == 0){
                 self.settings = Settings.getDefaultSettings(context: context)
-                saveSettings() //Save default settings for first time
+                saveSettings()
             } else{
                 self.settings = settings.first as! Settings
             }
