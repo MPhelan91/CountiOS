@@ -59,7 +59,7 @@ struct AddLogEntryView : View {
                 Group{
                     TextField("Name", text: $entryVM.name)
                     ForEach(self.settings.macrosCounted(), id:\.self){ macro in
-                        DecimalInput(label: macro.getString, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
+                        DecimalInput(label: macro.getFullName, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
                     }
                     Button(action: {
                         self.entryVM.addEntry(date:self.logVM.dateForCurrentEntries)

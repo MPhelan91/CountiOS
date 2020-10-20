@@ -12,10 +12,20 @@ enum Macros : Int, CaseIterable, Hashable{
     
     case Calories, Protien, Fat, Carbs, Sugar
     
-    var getString:String{
+    var getFullName:String{
         switch self{
         case.Calories: return "Calories"
         case.Protien: return "Protien"
+        case.Fat: return "Fat"
+        case.Carbs: return "Carbs"
+        case.Sugar: return "Sugar"
+        }
+    }
+    
+    var getShortName:String{
+        switch self{
+        case.Calories: return "Cal"
+        case.Protien: return "Pro"
         case.Fat: return "Fat"
         case.Carbs: return "Carbs"
         case.Sugar: return "Sugar"

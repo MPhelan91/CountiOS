@@ -42,7 +42,7 @@ struct LogEntrySimpleView: View {
             HStack{
                 Spacer()
                 ForEach(self.macros, id:\.self){ macro in
-                    Text("\(macro.getString): \(getMacroAmount(macro), specifier: "%.0f")")
+                    Text("\(macro.getFullName): \(getMacroAmount(macro), specifier: "%.0f")")
                         .font(.caption)
                 }
             }

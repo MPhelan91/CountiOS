@@ -38,7 +38,7 @@ struct LogHeaderView: View {
         if(self.macroGoals.count == 1){
             HStack{
                 Spacer()
-                MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
+                MacroCountView(label: self.macroGoals[0].macro.getFullName, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
                 Spacer()
             }
             .frame(height: 40)
@@ -47,9 +47,9 @@ struct LogHeaderView: View {
         else if(self.macroGoals.count == 2){
             HStack{
                 Spacer()
-                MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
+                MacroCountView(label: self.macroGoals[0].macro.getFullName, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
                 Spacer()
-                MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
+                MacroCountView(label: self.macroGoals[1].macro.getFullName, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
                 Spacer()
             }
             .frame(height: 40)
@@ -60,13 +60,13 @@ struct LogHeaderView: View {
                 Spacer()
                 VStack{
                     Spacer()
-                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
+                    MacroCountView(label: self.macroGoals[0].macro.getFullName, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
                     Spacer()
-                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
+                    MacroCountView(label: self.macroGoals[2].macro.getFullName, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
                     Spacer()
                 }
                 Spacer()
-                MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
+                MacroCountView(label: self.macroGoals[1].macro.getFullName, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
                 Spacer()
             }
             .frame(height: 65)
@@ -76,15 +76,15 @@ struct LogHeaderView: View {
             HStack{
                 Spacer()
                 VStack{
-                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
+                    MacroCountView(label: self.macroGoals[0].macro.getFullName, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
                     Spacer().frame(height:10)
-                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
+                    MacroCountView(label: self.macroGoals[2].macro.getFullName, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
                 }
                 Spacer()
                 VStack{
-                    MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
+                    MacroCountView(label: self.macroGoals[1].macro.getFullName, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
                     Spacer().frame(height:10)
-                    MacroCountView(label: self.macroGoals[3].macro.getString, total: sumValues(self.macroGoals[3].macro), goal: self.macroGoals[3].goal!)
+                    MacroCountView(label: self.macroGoals[3].macro.getFullName, total: sumValues(self.macroGoals[3].macro), goal: self.macroGoals[3].goal!)
                 }
                 Spacer()
             }
@@ -95,18 +95,18 @@ struct LogHeaderView: View {
             HStack{
                 Spacer()
                 VStack{
-                    MacroCountView(label: self.macroGoals[0].macro.getString, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
+                    MacroCountView(label: self.macroGoals[0].macro.getShortName, total: sumValues(self.macroGoals[0].macro), goal: self.macroGoals[0].goal!)
                     Spacer().frame(height:10)
-                    MacroCountView(label: self.macroGoals[2].macro.getString, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
+                    MacroCountView(label: self.macroGoals[2].macro.getShortName, total: sumValues(self.macroGoals[2].macro), goal: self.macroGoals[2].goal!)
                 }
                 Spacer()
                 VStack{
-                    MacroCountView(label: self.macroGoals[1].macro.getString, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
+                    MacroCountView(label: self.macroGoals[1].macro.getShortName, total: sumValues(self.macroGoals[1].macro), goal: self.macroGoals[1].goal!)
                     Spacer().frame(height:10)
-                    MacroCountView(label: self.macroGoals[3].macro.getString, total: sumValues(self.macroGoals[3].macro), goal: self.macroGoals[3].goal!)
+                    MacroCountView(label: self.macroGoals[3].macro.getShortName, total: sumValues(self.macroGoals[3].macro), goal: self.macroGoals[3].goal!)
                 }
                 Spacer()
-                MacroCountView(label: self.macroGoals[4].macro.getString, total: sumValues(self.macroGoals[4].macro), goal: self.macroGoals[4].goal!)
+                MacroCountView(label: self.macroGoals[4].macro.getShortName, total: sumValues(self.macroGoals[4].macro), goal: self.macroGoals[4].goal!)
                 Spacer()
             }
             .frame(height: 65)
