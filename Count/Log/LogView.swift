@@ -14,7 +14,9 @@ struct LogView: View {
     @EnvironmentObject var settings : SettingsVM
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var action: Int? = 0
+    
+    @State private var navSelection: String? = nil
+    
     @State private var showToast = false{
         didSet{
             //TODO: try and do this in the Toast class itself
@@ -39,6 +41,7 @@ struct LogView: View {
     
     var body: some View {
         VStack{
+            NavigationLink(destination:DictionaryEntryFullView(self.logVM.selectedEntries).onDisappear{self.logVM.selectedEntries.removeAll()}, tag: "Dictionary Entry", selection: $navSelection){EmptyView()}
             HStack{
                 Button(action:{self.logVM.decrementDay()}){
                     Image(systemName: "arrowtriangle.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
@@ -68,8 +71,10 @@ struct LogView: View {
                                 }
                             })
                             Button("Make Dictionary Entry From Selected",action:{
-                                self.toastMessage = "Not Implemented"
-                                self.showToast = true
+                                if(self.logVM.selectedEntries.count > 0){
+                                    self.navSelection = "Dictionary Entry"
+                                    //unselectValues? => or pass callback that clears it
+                                }
                             })
                         }
                 }.onDelete { indexSet in
@@ -80,10 +85,10 @@ struct LogView: View {
             .navigationBarTitle(Text("Log"))
             .navigationBarItems(
                 trailing: HStack{
-                    NavigationLink(destination: AddLogEntryView(), tag: 1, selection: $action) {
+                    NavigationLink(destination: AddLogEntryView(), tag: "Add Entry", selection: $navSelection) {
                         Button(action: {
                             self.entryVM.clearData()
-                            self.action = 1
+                            self.navSelection = "Add Entry"
                         }){
                             Image(systemName: "plus").font(.system(size: 25, weight: .bold))
                         }

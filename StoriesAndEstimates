@@ -5,21 +5,21 @@ UI(Ranked)
 - Tab between decimal inputs (13)
 
 Features (Randked):
-- Review/Refactor Code around macros
-- Create meal from selected entries in LogView (5)
-- enforce seperation between mass and volume units(3)
 - Settings: Add Ability to have default daily entries (20)
 	- requires sub stories
-- Decimal and Integer Input stories:
-	- HIlight text on focus in integer and decimal inputs(8)
-	- Add x button to clear value on integer and decimal inputs (3)
-	- DEcide whether to default value to 0 or nil
 - maintenance task to delete older entries rather than button (???)
 	- BGTaskScheduler ??
 - App Image (8)
 - Put App on store (13)
 - Better Nutrion label scanning (20)
 - research error handling convention for ios apps 
+
+POLISH
+- enforce seperation between mass and volume units(3)
+- Decimal and Integer Input stories:
+	- HIlight text on focus in integer and decimal inputs(8)
+	- Add x button to clear value on integer and decimal inputs (3)
+	- DEcide whether to default value to 0 or nil
 
 POST RELEASE FEATURES
 - Settings: Weight (13)

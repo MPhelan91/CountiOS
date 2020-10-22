@@ -15,6 +15,7 @@
 		4F26D100253669CA00691A7D /* MacroPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0FF253669CA00691A7D /* MacroPicker.swift */; };
 		4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */; };
 		4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */; };
+		4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE19253FB312008027B9 /* HelperFunctions.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
 		4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */; };
 		4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */; };
@@ -72,6 +73,7 @@
 		4F26D0FF253669CA00691A7D /* MacroPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPicker.swift; sourceTree = "<group>"; };
 		4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsScanner.swift; sourceTree = "<group>"; };
 		4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithFirstFocus.swift; sourceTree = "<group>"; };
+		4F43AE19253FB312008027B9 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogEntryVM.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */,
 				4F6D295624DF491E008CEF08 /* Extensions.swift */,
+				4F43AE19253FB312008027B9 /* HelperFunctions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,
 				4FFF1BC324A67EC1008672D9 /* LogEntrySimpleView.swift in Sources */,
+				4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */,
 				4F26D0E3253257E200691A7D /* Multipicker.swift in Sources */,
 				4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */,
 				4F6D295724DF491E008CEF08 /* Extensions.swift in Sources */,

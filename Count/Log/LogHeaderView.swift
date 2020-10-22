@@ -20,18 +20,7 @@ struct LogHeaderView: View {
     }
     
     func sumValues(_ macroType:Macros) -> Double {
-        switch macroType {
-        case Macros.Calories:
-            return self.logEntries.map({$0.calories as! Double}).reduce(0.0, +)
-        case Macros.Protien:
-            return self.logEntries.map({$0.protien as! Double}).reduce(0.0, +)
-        case Macros.Fat:
-            return self.logEntries.map({$0.fat as! Double}).reduce(0.0, +)
-        case Macros.Carbs:
-            return self.logEntries.map({$0.carbs as! Double}).reduce(0.0, +)
-        case Macros.Sugar:
-            return self.logEntries.map({$0.sugar as! Double}).reduce(0.0, +)
-        }
+        return HelperFunctions.sumMacros(macroType, self.logEntries)
     }
     
     var body: some View {

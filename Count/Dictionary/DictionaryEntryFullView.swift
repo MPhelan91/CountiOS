@@ -39,7 +39,23 @@ struct DictionaryEntryFullView : View {
         entryToEdit = entry
     }
     
+    init(_ logEntries: [LogEntry]){//, _ callBack: ()->Void){
+        _name = State(initialValue: "")
+        _definition = State(initialValue: logEntries.compactMap({x in x.name}).joined(separator: "\n"))
+        _servingSize = State(initialValue: nil)
+        _servingUnit = State(initialValue: nil)
+        _calories =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Calories, logEntries))))
+        _protien =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Protien, logEntries))))
+        _fat =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Fat, logEntries))))
+        _carbs =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Carbs, logEntries))))
+        _sugar =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Sugar, logEntries))))
+    }
+    
     init(){}
+    
+    private func toInt(_ value: Double) -> Int{
+        return Int(round(value))
+    }
     
     var body : some View{
         Form{
