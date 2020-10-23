@@ -47,7 +47,7 @@ struct LogView: View {
                     Image(systemName: "chevron.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
-                Text(self.dateToString()).font(.system(size:20))
+                Text(self.dateToString()).font(.system(size:20)).frame(width: 130)
                 Button(action:{self.logVM.incrementDay()}){
                     Image(systemName: "chevron.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
