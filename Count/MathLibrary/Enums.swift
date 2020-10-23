@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum Schedule : Int{
+    case Everyday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+}
+
 enum Macros : Int, CaseIterable, Hashable{    
     
     case Calories, Protien, Fat, Carbs, Sugar

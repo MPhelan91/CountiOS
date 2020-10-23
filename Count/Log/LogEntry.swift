@@ -17,6 +17,7 @@ public class LogEntry:NSManagedObject,Identifiable{
     @NSManaged public var carbs:NSDecimalNumber?
     @NSManaged public var fat:NSDecimalNumber?
     @NSManaged public var sugar:NSDecimalNumber?
+    @NSManaged public var scheduledFor:NSNumber?
 }
 
 extension LogEntry{
@@ -38,7 +39,7 @@ extension LogEntry{
         let startDate = date.onlyDate as! Date
         let endDate = startDate.addingTimeInterval(24*60*60)
         
-        request.predicate = NSPredicate(format: "(entryDate >= %@) AND (entryDate <= %@)", startDate as NSDate, endDate as NSDate)
+        request.predicate = NSPredicate(format: "(entryDate != nil) AND (entryDate >= %@) AND (entryDate <= %@)", startDate as NSDate, endDate as NSDate)
         
         return request
     }
