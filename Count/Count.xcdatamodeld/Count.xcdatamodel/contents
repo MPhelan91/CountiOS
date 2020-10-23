@@ -18,7 +18,7 @@
         <attribute name="fat" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="protien" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="scheduledFor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="scheduledFor" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="sugar" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
     </entity>
     <entity name="Settings" representedClassName=".Settings" syncable="YES">
@@ -32,7 +32,7 @@
     </entity>
     <elements>
         <element name="DictionaryEntry" positionX="-63" positionY="9" width="128" height="178"/>
-        <element name="LogEntry" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="LogEntry" positionX="-63" positionY="-18" width="128" height="28"/>
         <element name="Settings" positionX="-63" positionY="63" width="128" height="148"/>
     </elements>
 </model>

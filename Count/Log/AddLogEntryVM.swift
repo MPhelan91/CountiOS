@@ -114,23 +114,36 @@ class AddLogEntryVM: ObservableObject {
         }
     }
     
-    func addEntry(date:Date = Date()){
-        let newEntry = LogEntry(context: self.context)
-        
-        newEntry.name = self.name.isEmpty ? "Manual Entry" : self.name
-        newEntry.calories = NSDecimalNumber(value: self.calories ?? 0)
-        newEntry.protien = NSDecimalNumber(value: self.protien ?? 0)
-        newEntry.fat = NSDecimalNumber(value: self.fat ?? 0)
-        newEntry.carbs = NSDecimalNumber(value: self.carbs ?? 0)
-        newEntry.sugar = NSDecimalNumber(value: self.sugar ?? 0)
+    func addScheduledEntry(day:Day){
+        let newEntry = createEntry()
+        newEntry.scheduledFor = NSNumber(value: day.rawValue)
+        saveAndClearData()
+    }
+    
+    func addEntry(date:Date){
+        let newEntry = createEntry()
         newEntry.entryDate = date
-        
+        saveAndClearData()
+    }
+    
+    private func saveAndClearData(){
         do{
             try self.context.save()
         }catch{
             print(error)
         }
         clearData()
+    }
+    
+    private func createEntry() -> LogEntry{
+        let newEntry = LogEntry(context: self.context)
+        newEntry.name = self.name.isEmpty ? "Manual Entry" : self.name
+        newEntry.calories = NSDecimalNumber(value: self.calories ?? 0)
+        newEntry.protien = NSDecimalNumber(value: self.protien ?? 0)
+        newEntry.fat = NSDecimalNumber(value: self.fat ?? 0)
+        newEntry.carbs = NSDecimalNumber(value: self.carbs ?? 0)
+        newEntry.sugar = NSDecimalNumber(value: self.sugar ?? 0)
+        return newEntry
     }
     
     func clearData(){

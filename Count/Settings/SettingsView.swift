@@ -25,6 +25,9 @@ struct SettingsView: View {
                     }
                 }
                 MacroPicker(macroGoals: self.$settings.macroGoals)
+                NavigationLink(destination: EntrySchedulerView()){
+                    Text("Scheduled Entries")
+                }
             }
             Text("Temp Buttons")
             VStack{

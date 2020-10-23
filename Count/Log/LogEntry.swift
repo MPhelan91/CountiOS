@@ -43,4 +43,12 @@ extension LogEntry{
         
         return request
     }
+    
+    static func getLogEntriesScheduledFor(day:Day) -> NSFetchRequest<LogEntry> {
+        let request: NSFetchRequest<LogEntry> = LogEntry.fetchRequest() as! NSFetchRequest<LogEntry>
+                
+        request.predicate = NSPredicate(format: "(scheduledFor != nil) AND (scheduledFor == %d)", day.rawValue)
+        
+        return request
+    }
 }

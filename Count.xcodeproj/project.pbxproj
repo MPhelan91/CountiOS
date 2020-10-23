@@ -16,6 +16,8 @@
 		4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */; };
 		4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */; };
 		4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE19253FB312008027B9 /* HelperFunctions.swift */; };
+		4F43AE2025434FA2008027B9 /* EntrySchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */; };
+		4F43AE2525434FBB008027B9 /* EntrySchedulerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
 		4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */; };
 		4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */; };
@@ -74,6 +76,8 @@
 		4F2D3A4624FC746F00A8B4C2 /* NutritionFactsScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionFactsScanner.swift; sourceTree = "<group>"; };
 		4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithFirstFocus.swift; sourceTree = "<group>"; };
 		4F43AE19253FB312008027B9 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerView.swift; sourceTree = "<group>"; };
+		4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerVM.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogEntryVM.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 			path = LabelScanning;
 			sourceTree = "<group>";
 		};
+		4F43AE1E25434F85008027B9 /* EntryScheduler */ = {
+			isa = PBXGroup;
+			children = (
+				4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */,
+				4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */,
+			);
+			path = EntryScheduler;
+			sourceTree = "<group>";
+		};
 		4F45E66E24D23C0E0085A951 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +236,7 @@
 		4F8E688C24CA669500E8810D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4F43AE1E25434F85008027B9 /* EntryScheduler */,
 				4F26D0FE253669B800691A7D /* MacroPicker */,
 				4F26D0D22531282000691A7D /* Settings.swift */,
 				4F8E688624C90E9C00E8810D /* SettingsView.swift */,
@@ -439,6 +453,7 @@
 			files = (
 				4F8E688524C90E3A00E8810D /* DictionaryView.swift in Sources */,
 				4FFF1BA624A57A59008672D9 /* AppDelegate.swift in Sources */,
+				4F43AE2525434FBB008027B9 /* EntrySchedulerVM.swift in Sources */,
 				4F6D295524DF0BC4008CEF08 /* AddLogEntryView.swift in Sources */,
 				4F8E688224C90AE800E8810D /* LogView.swift in Sources */,
 				4F6D298424F87BFB008CEF08 /* MultilineTextField.swift in Sources */,
@@ -470,6 +485,7 @@
 				4F6D296024E19425008CEF08 /* Toast.swift in Sources */,
 				4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */,
 				4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */,
+				4F43AE2025434FA2008027B9 /* EntrySchedulerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

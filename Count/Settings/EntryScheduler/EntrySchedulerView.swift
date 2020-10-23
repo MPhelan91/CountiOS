@@ -1,17 +1,16 @@
 //
-//  LogView.swift
+//  EntrySchedulerView.swift
 //  Count
 //
-//  Created by Michael Phelan on 7/22/20.
+//  Created by Michael Phelan on 10/23/20.
 //  Copyright © 2020 MichaelPhelan. All rights reserved.
 //
 
 import SwiftUI
 
-struct LogView: View {
+struct EntrySchedulerView: View {
     @EnvironmentObject var entryVM : AddLogEntryVM
-    @EnvironmentObject var logVM : LogVM
-    @EnvironmentObject var settings : SettingsVM
+    @EnvironmentObject var schedulerVM : EntrySchedulerVM
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -31,54 +30,32 @@ struct LogView: View {
     }
     @State private var toastMessage = ""
     
-    func dateToString() -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "en_US")
-        return dateFormatter.string(from: logVM.dateForCurrentEntries)
-    }
-    
     var body: some View {
         VStack{
-            NavigationLink(destination:DictionaryEntryFullView(self.logVM.selectedEntries).onDisappear{self.logVM.selectedEntries.removeAll()}, tag: "Dictionary Entry", selection: $navSelection){EmptyView()}
             HStack{
-                Button(action:{self.logVM.decrementDay()}){
+                Button(action:{self.schedulerVM.previousDay()}){
                     Image(systemName: "chevron.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
-                Text(self.dateToString()).font(.system(size:20))
-                Button(action:{self.logVM.incrementDay()}){
+                Text(self.schedulerVM.day.asString).font(.system(size:20)).frame(width:120)
+                Button(action:{self.schedulerVM.nextDay()}){
                     Image(systemName: "chevron.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
             Spacer()
-            LogHeaderView(self.logVM.logEntries, self.settings.macroGoals)
             List{
-                ForEach(self.logVM.logEntries){ logEntry in
-                    LogEntrySimpleView(logEntry: logEntry, macros: self.settings.macrosCounted())
+                ForEach(self.schedulerVM.logEntries){ logEntry in
+                    LogEntrySimpleView(logEntry: logEntry, macros: [])
                         .contextMenu{
-                            Button("Copy Selected to Today",action:{
-                                if(self.logVM.performCopySelected()){
-                                    self.toastMessage = "Copied to Today"
-                                    self.showToast = true
-                                }
-                            })
                             Button("Delete Selected",action:{
-                                if(self.logVM.performDeleteEntries()){
+                                if(self.schedulerVM.performDeleteEntries()){
                                     self.toastMessage = "Deleted"
                                     self.showToast = true
                                 }
                             })
-                            Button("Make Dictionary Entry From Selected",action:{
-                                if(self.logVM.selectedEntries.count > 0){
-                                    self.navSelection = "Dictionary Entry"
-                                    //unselectValues? => or pass callback that clears it
-                                }
-                            })
                         }
                 }.onDelete { indexSet in
-                    self.logVM.deleteEntry(index: indexSet.first!)
+                    self.schedulerVM.deleteEntry(index: indexSet.first!)
                 }
             }
             .listStyle(PlainListStyle())
@@ -98,3 +75,4 @@ struct LogView: View {
         }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }
+

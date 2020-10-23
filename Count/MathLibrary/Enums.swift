@@ -8,8 +8,21 @@
 
 import Foundation
 
-enum Schedule : Int{
-    case Everyday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+enum Day : Int, CaseIterable{
+    case Everyday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+    
+    var asString:String{
+        switch self{
+        case.Everyday: return "Everyday"
+        case.Sunday: return "Sunday"
+        case.Monday: return "Monday"
+        case.Tuesday: return "Tuesday"
+        case.Wednesday: return "Wednesday"
+        case.Thursday: return "Thursday"
+        case.Friday: return "Friday"
+        case.Saturday: return "Saturday"
+        }
+    }
 }
 
 enum Macros : Int, CaseIterable, Hashable{    
