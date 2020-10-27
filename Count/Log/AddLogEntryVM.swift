@@ -116,6 +116,7 @@ class AddLogEntryVM: ObservableObject {
     
     func addScheduledEntry(day:Day){
         let newEntry = createEntry()
+        newEntry.entryDate = nil
         newEntry.scheduledFor = NSNumber(value: day.rawValue)
         saveAndClearData()
     }
@@ -123,6 +124,7 @@ class AddLogEntryVM: ObservableObject {
     func addEntry(date:Date){
         let newEntry = createEntry()
         newEntry.entryDate = date
+        newEntry.scheduledFor = nil
         saveAndClearData()
     }
     

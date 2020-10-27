@@ -18,6 +18,8 @@
 		4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE19253FB312008027B9 /* HelperFunctions.swift */; };
 		4F43AE2025434FA2008027B9 /* EntrySchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */; };
 		4F43AE2525434FBB008027B9 /* EntrySchedulerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */; };
+		4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE312543A187008027B9 /* EntryFetcher.swift */; };
+		4F43AE372543A27A008027B9 /* FetcherForLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE362543A27A008027B9 /* FetcherForLogView.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
 		4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */; };
 		4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */; };
@@ -78,6 +80,8 @@
 		4F43AE19253FB312008027B9 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerView.swift; sourceTree = "<group>"; };
 		4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerVM.swift; sourceTree = "<group>"; };
+		4F43AE312543A187008027B9 /* EntryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFetcher.swift; sourceTree = "<group>"; };
+		4F43AE362543A27A008027B9 /* FetcherForLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherForLogView.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogEntryVM.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */,
 				4F6D295624DF491E008CEF08 /* Extensions.swift */,
 				4F43AE19253FB312008027B9 /* HelperFunctions.swift */,
+				4F43AE312543A187008027B9 /* EntryFetcher.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				4F6D295424DF0BC3008CEF08 /* AddLogEntryView.swift */,
 				4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */,
 				4F0F10532515986900DEF6F3 /* LogHeaderView.swift */,
+				4F43AE362543A27A008027B9 /* FetcherForLogView.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -462,12 +468,14 @@
 				4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */,
 				4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */,
 				4F8E688324C90AED00E8810D /* ContentView.swift in Sources */,
+				4F43AE372543A27A008027B9 /* FetcherForLogView.swift in Sources */,
 				4FFF1BAB24A57A59008672D9 /* Count.xcdatamodeld in Sources */,
 				4F0F105625182D9800DEF6F3 /* Constants.swift in Sources */,
 				4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */,
 				4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */,
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
+				4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,

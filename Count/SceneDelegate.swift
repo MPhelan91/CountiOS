@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let settingsVM = SettingsVM(context: context)
         let addEntryVM = AddLogEntryVM(context: context, settings: settingsVM)
-        let logVM = LogVM(context: context, settings: settingsVM)
+        let logVM = LogVM<FetcherForLogView>(context: context, settings: settingsVM, fetcher: FetcherForLogView())
         let schedulerVM = EntrySchedulerVM(context: context)
 
         

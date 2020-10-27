@@ -8,35 +8,41 @@
 
 import CoreData
 
-class LogVM: ObservableObject {
-    @Published var dateForCurrentEntries = Date(){
+class LogVM<F:EntryFetcher>: ObservableObject {
+    @Published var criteria : F.criteriaType{
         didSet{
-            fetchEntries()
-        }
+            self.fetch()
+       }
     }
     @Published var logEntries: [LogEntry] = []
     @Published var selectedEntries: [LogEntry] = []
     
     private let context: NSManagedObjectContext
     private var settingsVM : SettingsVM
+    private let fetcher : F
 
-    init(context: NSManagedObjectContext, settings: SettingsVM){
+    init(context: NSManagedObjectContext, settings: SettingsVM, fetcher: F){
         self.context = context
         self.settingsVM = settings
-        fetchEntries()
+        self._criteria = Published(initialValue: fetcher.startingCriteria)
+        self.fetcher = fetcher
+        self.fetch()
     }
     
-    public func decrementDay(){
-        self.dateForCurrentEntries = self.dateForCurrentEntries.addingTimeInterval(-24*60*60);
+    public func fetch(){
+        logEntries = self.fetcher.fetchEntries(context: context, curr: self.criteria)
     }
     
-    public func incrementDay(){
-        self.dateForCurrentEntries = self.dateForCurrentEntries.addingTimeInterval(24*60*60);
+    public func critAsString()->String{
+        return self.fetcher.criteriaToString(crit: self.criteria)
     }
     
-    public func fetchEntries(){
-        let y = try? context.fetch(LogEntry.getLogEntriesForDate(date:dateForCurrentEntries))
-        self.logEntries = y ?? []
+    public func previous(){
+        self.criteria = self.fetcher.previous(curr: self.criteria)
+    }
+    
+    public func next(){
+        self.criteria = self.fetcher.next(curr: self.criteria)
     }
     
     public func deleteEntry(index: Int ){
@@ -49,7 +55,7 @@ class LogVM: ObservableObject {
             print(error)
         }
         
-        fetchEntries()
+        self.fetch()
     }
     
     public func selelctEntry(objectId:NSManagedObjectID){
@@ -74,7 +80,7 @@ class LogVM: ObservableObject {
                 return false
             }
             selectedEntries.removeAll()
-            fetchEntries()
+            self.fetch()
             return true
         }
         return false;

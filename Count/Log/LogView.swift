@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LogView: View {
     @EnvironmentObject var entryVM : AddLogEntryVM
-    @EnvironmentObject var logVM : LogVM
+    @EnvironmentObject var logVM : LogVM<FetcherForLogView>
     @EnvironmentObject var settings : SettingsVM
     @Environment(\.colorScheme) var colorScheme
     
@@ -31,24 +31,16 @@ struct LogView: View {
     }
     @State private var toastMessage = ""
     
-    func dateToString() -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "en_US")
-        return dateFormatter.string(from: logVM.dateForCurrentEntries)
-    }
-    
     var body: some View {
         VStack{
             NavigationLink(destination:DictionaryEntryFullView(self.logVM.selectedEntries).onDisappear{self.logVM.selectedEntries.removeAll()}, tag: "Dictionary Entry", selection: $navSelection){EmptyView()}
             HStack{
-                Button(action:{self.logVM.decrementDay()}){
+                Button(action:{self.logVM.previous()}){
                     Image(systemName: "chevron.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
-                Text(self.dateToString()).font(.system(size:20)).frame(width: 130)
-                Button(action:{self.logVM.incrementDay()}){
+                Text(self.logVM.critAsString()).font(.system(size:20)).frame(width: 130)
+                Button(action:{self.logVM.next()}){
                     Image(systemName: "chevron.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }

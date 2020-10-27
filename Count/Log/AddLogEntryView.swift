@@ -12,7 +12,7 @@ import CoreData
 struct AddLogEntryView : View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var entryVM : AddLogEntryVM
-    @EnvironmentObject var logVM : LogVM
+    @EnvironmentObject var logVM : LogVM<FetcherForLogView>
     @EnvironmentObject var settings : SettingsVM
     
     func getMacroBinding(_ macro:Macros) -> Binding<Double?>{
@@ -62,8 +62,9 @@ struct AddLogEntryView : View {
                         DecimalInput(label: macro.getFullName, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
                     }
                     Button(action: {
-                        self.entryVM.addEntry(date:self.logVM.dateForCurrentEntries)
-                        self.logVM.fetchEntries()
+                        self.entryVM.addEntry(date:self.logVM.criteria)
+                        //self.entryVM.addScheduledEntry(day: <#T##Day#>)
+                        self.logVM.fetch()
                         self.presentationMode.wrappedValue.dismiss()
                     }){
                         Text("Add")

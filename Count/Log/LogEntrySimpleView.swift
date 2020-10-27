@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 struct LogEntrySimpleView: View {
-    @EnvironmentObject var logVM : LogVM
+    @EnvironmentObject var logVM : LogVM<FetcherForLogView>
     
     var logEntry:LogEntry
     var macros:[Macros]
