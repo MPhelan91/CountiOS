@@ -33,6 +33,7 @@ struct LogView: View {
     
     var body: some View {
         VStack{
+            NavigationLink(destination: AddLogEntryView(self.logVM), tag: "Add Entry", selection: $navSelection) {EmptyView()}
             NavigationLink(destination:DictionaryEntryFullView(self.logVM.selectedEntries).onDisappear{self.logVM.selectedEntries.removeAll()}, tag: "Dictionary Entry", selection: $navSelection){EmptyView()}
             HStack{
                 Button(action:{self.logVM.previous()}){
@@ -77,15 +78,11 @@ struct LogView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle(Text("Log"))
         .navigationBarItems(
-            trailing: HStack{
-                NavigationLink(destination: AddLogEntryView(self.logVM), tag: "Add Entry", selection: $navSelection) {
-                    Button(action: {
-                        self.entryVM.clearData()
-                        self.navSelection = "Add Entry"
-                    }){
-                        Image(systemName: "plus").font(.system(size: 25, weight: .bold))
-                    }
-                }
+            trailing: Button(action: {
+                self.entryVM.clearData()
+                self.navSelection = "Add Entry"
+            }){
+                Image(systemName: "plus").font(.system(size: 25, weight: .bold))
             }
         )
         .toast(isShowing: self.$showToast, text: Text(self.toastMessage))

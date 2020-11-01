@@ -65,13 +65,11 @@ struct EntrySchedulerView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle(Text("Scheduler"))
         .navigationBarItems(
-            trailing: HStack{
-                Button(action: {
-                    self.entryVM.clearData()
-                    self.navSelection = "Add Entry"
-                }){
-                    Image(systemName: "plus").font(.system(size: 25, weight: .bold))
-                }
+            trailing: Button(action: {
+                self.entryVM.clearData()
+                self.navSelection = "Add Entry"
+            }){
+                Image(systemName: "plus").font(.system(size: 25, weight: .bold))
             }
         )
         .toast(isShowing: self.$showToast, text: Text(self.toastMessage))
