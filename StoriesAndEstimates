@@ -6,10 +6,13 @@ UI(Ranked)
 
 Features (Randked):
 - Settings: Add Ability to have default daily entries (20)
-	- requires sub stories
-	- HOW DO I GET EnrtyView to get right LogViewModel!! - Pass it in?
+	- add entries with scheule enum
+	- add last opened date to settings
+	- in start up set last opened date
+	- if last opened date is not today => copy scheduled entries for the day over
 - maintenance task to delete older entries rather than button (???)
 	- BGTaskScheduler ??
+	- add last cleaning date to settings
 	- Check Date saved in coredata on startup!!!*
 - App Image (8)
 - Put App on store (13)

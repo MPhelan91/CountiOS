@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Get the managed object context from the shared persistent container.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
+        //Fetch Settings
         let settingsVM = SettingsVM(context: context)
         let addEntryVM = AddLogEntryVM(context: context, settings: settingsVM)
         let logVM = LogVM<FetcherForLogView>(context: context, settings: settingsVM, fetcher: FetcherForLogView())

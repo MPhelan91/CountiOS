@@ -25,6 +25,8 @@
         <attribute name="calorieGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="carbGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="fatGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="lastCleaning" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastOpened" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="massUnit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="protienGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
         <attribute name="sugarGoal" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
@@ -33,6 +35,6 @@
     <elements>
         <element name="DictionaryEntry" positionX="-63" positionY="9" width="128" height="178"/>
         <element name="LogEntry" positionX="-63" positionY="-18" width="128" height="28"/>
-        <element name="Settings" positionX="-63" positionY="63" width="128" height="148"/>
+        <element name="Settings" positionX="-63" positionY="63" width="128" height="178"/>
     </elements>
 </model>

@@ -14,7 +14,6 @@ struct LogView: View {
     @EnvironmentObject var settings : SettingsVM
     @Environment(\.colorScheme) var colorScheme
     
-    
     @State private var navSelection: String? = nil
     
     @State private var showToast = false{

@@ -18,6 +18,8 @@ public class Settings: NSManagedObject {
     @NSManaged public var carbGoal: NSNumber?
     @NSManaged public var fatGoal: NSNumber?
     @NSManaged public var sugarGoal: NSNumber?
+    @NSManaged public var lastCleaning: Date?
+    @NSManaged public var lastOpened: Date?
 }
 
 import Foundation
@@ -34,6 +36,8 @@ extension Settings {
         defaultSettings.carbGoal = 0
         defaultSettings.fatGoal = 0
         defaultSettings.sugarGoal = 0
+        defaultSettings.lastOpened = Date()
+        defaultSettings.lastCleaning = Date()
         return defaultSettings
     }
     
