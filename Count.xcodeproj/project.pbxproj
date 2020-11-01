@@ -17,7 +17,6 @@
 		4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */; };
 		4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE19253FB312008027B9 /* HelperFunctions.swift */; };
 		4F43AE2025434FA2008027B9 /* EntrySchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */; };
-		4F43AE2525434FBB008027B9 /* EntrySchedulerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */; };
 		4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE312543A187008027B9 /* EntryFetcher.swift */; };
 		4F43AE372543A27A008027B9 /* FetcherForLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE362543A27A008027B9 /* FetcherForLogView.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
@@ -33,6 +32,7 @@
 		4F6D297A24E99453008CEF08 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D297924E99453008CEF08 /* ExtensionTests.swift */; };
 		4F6D298424F87BFB008CEF08 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D298324F87BFB008CEF08 /* MultilineTextField.swift */; };
 		4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D298724FABB84008CEF08 /* IntegerInput.swift */; };
+		4F732F632548E46400C9E53C /* FetcherForScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F732F622548E46400C9E53C /* FetcherForScheduler.swift */; };
 		4F8E688224C90AE800E8810D /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E687B24C9086D00E8810D /* LogView.swift */; };
 		4F8E688324C90AED00E8810D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BAC24A57A59008672D9 /* ContentView.swift */; };
 		4F8E688524C90E3A00E8810D /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688424C90E3A00E8810D /* DictionaryView.swift */; };
@@ -79,7 +79,6 @@
 		4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithFirstFocus.swift; sourceTree = "<group>"; };
 		4F43AE19253FB312008027B9 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerView.swift; sourceTree = "<group>"; };
-		4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerVM.swift; sourceTree = "<group>"; };
 		4F43AE312543A187008027B9 /* EntryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFetcher.swift; sourceTree = "<group>"; };
 		4F43AE362543A27A008027B9 /* FetcherForLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherForLogView.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		4F6D297B24E99453008CEF08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F6D298324F87BFB008CEF08 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		4F6D298724FABB84008CEF08 /* IntegerInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerInput.swift; sourceTree = "<group>"; };
+		4F732F622548E46400C9E53C /* FetcherForScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherForScheduler.swift; sourceTree = "<group>"; };
 		4F8E687B24C9086D00E8810D /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		4F8E688424C90E3A00E8810D /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		4F8E688624C90E9C00E8810D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */,
-				4F43AE2425434FBB008027B9 /* EntrySchedulerVM.swift */,
+				4F732F622548E46400C9E53C /* FetcherForScheduler.swift */,
 			);
 			path = EntryScheduler;
 			sourceTree = "<group>";
@@ -459,7 +459,6 @@
 			files = (
 				4F8E688524C90E3A00E8810D /* DictionaryView.swift in Sources */,
 				4FFF1BA624A57A59008672D9 /* AppDelegate.swift in Sources */,
-				4F43AE2525434FBB008027B9 /* EntrySchedulerVM.swift in Sources */,
 				4F6D295524DF0BC4008CEF08 /* AddLogEntryView.swift in Sources */,
 				4F8E688224C90AE800E8810D /* LogView.swift in Sources */,
 				4F6D298424F87BFB008CEF08 /* MultilineTextField.swift in Sources */,
@@ -476,6 +475,7 @@
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
 				4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */,
+				4F732F632548E46400C9E53C /* FetcherForScheduler.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,

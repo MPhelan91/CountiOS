@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let settingsVM = SettingsVM(context: context)
         let addEntryVM = AddLogEntryVM(context: context, settings: settingsVM)
         let logVM = LogVM<FetcherForLogView>(context: context, settings: settingsVM, fetcher: FetcherForLogView())
-        let schedulerVM = EntrySchedulerVM(context: context)
+        let schedulerVM = LogVM<FetcherForScheduler>(context: context, settings: settingsVM, fetcher: FetcherForScheduler())
 
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.

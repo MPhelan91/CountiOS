@@ -10,7 +10,8 @@ import SwiftUI
 
 struct EntrySchedulerView: View {
     @EnvironmentObject var entryVM : AddLogEntryVM
-    @EnvironmentObject var schedulerVM : EntrySchedulerVM
+    @EnvironmentObject var settings : SettingsVM
+    @EnvironmentObject var schedulerVM : LogVM<FetcherForScheduler>
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -32,17 +33,19 @@ struct EntrySchedulerView: View {
     
     var body: some View {
         VStack{
+            NavigationLink(destination: AddLogEntryView(self.schedulerVM), tag: "Add Entry", selection: $navSelection) {EmptyView()}
             HStack{
-                Button(action:{self.schedulerVM.previousDay()}){
+                Button(action:{self.schedulerVM.previous()}){
                     Image(systemName: "chevron.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                 }
-                Text(self.schedulerVM.day.asString).font(.system(size:20)).frame(width:120)
-                Button(action:{self.schedulerVM.nextDay()}){
+                Text(self.schedulerVM.critAsString()).font(.system(size:20)).frame(width:120)
+                Button(action:{self.schedulerVM.next()}){
                     Image(systemName: "chevron.right").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
             Spacer()
+            LogHeaderView(self.schedulerVM.logEntries, self.settings.macroGoals)
             List{
                 ForEach(self.schedulerVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry: logEntry, macros: [])
@@ -58,21 +61,20 @@ struct EntrySchedulerView: View {
                     self.schedulerVM.deleteEntry(index: indexSet.first!)
                 }
             }
-            .listStyle(PlainListStyle())
-            .navigationBarTitle(Text("Log"))
-            .navigationBarItems(
-                trailing: HStack{
-                    NavigationLink(destination: AddLogEntryView(), tag: "Add Entry", selection: $navSelection) {
-                        Button(action: {
-                            self.entryVM.clearData()
-                            self.navSelection = "Add Entry"
-                        }){
-                            Image(systemName: "plus").font(.system(size: 25, weight: .bold))
-                        }
-                    }
+        }
+        .listStyle(PlainListStyle())
+        .navigationBarTitle(Text("Scheduler"))
+        .navigationBarItems(
+            trailing: HStack{
+                Button(action: {
+                    self.entryVM.clearData()
+                    self.navSelection = "Add Entry"
+                }){
+                    Image(systemName: "plus").font(.system(size: 25, weight: .bold))
                 }
-            )
-        }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
+            }
+        )
+        .toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }
 

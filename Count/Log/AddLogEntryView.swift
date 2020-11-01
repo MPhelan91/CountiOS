@@ -12,8 +12,19 @@ import CoreData
 struct AddLogEntryView : View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var entryVM : AddLogEntryVM
-    @EnvironmentObject var logVM : LogVM<FetcherForLogView>
     @EnvironmentObject var settings : SettingsVM
+    
+    private var logVM : LogVM<FetcherForLogView>? = nil
+    private var schedulerVM : LogVM<FetcherForScheduler>? = nil
+
+    
+    init(_ logVm: LogVM<FetcherForLogView>){
+        self.logVM = logVm
+    }
+    
+    init(_ schedulerVm: LogVM<FetcherForScheduler>){
+        self.schedulerVM = schedulerVm
+    }
     
     func getMacroBinding(_ macro:Macros) -> Binding<Double?>{
         switch macro {
@@ -31,7 +42,7 @@ struct AddLogEntryView : View {
     }
     
     var body: some View{
-        Form {
+        Form{
             NavigationLink(destination: DictionaryView(onEntryClick: {(entry) in
                 self.entryVM.selectedEntry = entry
             })){
@@ -62,9 +73,14 @@ struct AddLogEntryView : View {
                         DecimalInput(label: macro.getFullName, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
                     }
                     Button(action: {
-                        self.entryVM.addEntry(date:self.logVM.criteria)
-                        //self.entryVM.addScheduledEntry(day: <#T##Day#>)
-                        self.logVM.fetch()
+                        if(self.logVM != nil){
+                            self.entryVM.addEntry(date:self.logVM!.criteria)
+                            self.logVM!.fetch()
+                        }
+                        else{
+                            self.entryVM.addScheduledEntry(day: self.schedulerVM!.criteria)
+                            self.schedulerVM!.fetch()
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }){
                         Text("Add")

@@ -73,20 +73,21 @@ struct LogView: View {
                     self.logVM.deleteEntry(index: indexSet.first!)
                 }
             }
-            .listStyle(PlainListStyle())
-            .navigationBarTitle(Text("Log"))
-            .navigationBarItems(
-                trailing: HStack{
-                    NavigationLink(destination: AddLogEntryView(), tag: "Add Entry", selection: $navSelection) {
-                        Button(action: {
-                            self.entryVM.clearData()
-                            self.navSelection = "Add Entry"
-                        }){
-                            Image(systemName: "plus").font(.system(size: 25, weight: .bold))
-                        }
+        }
+        .listStyle(PlainListStyle())
+        .navigationBarTitle(Text("Log"))
+        .navigationBarItems(
+            trailing: HStack{
+                NavigationLink(destination: AddLogEntryView(self.logVM), tag: "Add Entry", selection: $navSelection) {
+                    Button(action: {
+                        self.entryVM.clearData()
+                        self.navSelection = "Add Entry"
+                    }){
+                        Image(systemName: "plus").font(.system(size: 25, weight: .bold))
                     }
                 }
-            )
-        }.toast(isShowing: self.$showToast, text: Text(self.toastMessage))
+            }
+        )
+        .toast(isShowing: self.$showToast, text: Text(self.toastMessage))
     }
 }
