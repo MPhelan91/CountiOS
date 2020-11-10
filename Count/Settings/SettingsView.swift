@@ -31,7 +31,6 @@ struct SettingsView: View {
             }
             Text("Temp Buttons")
             VStack{
-                Button(action:{self.settings.deleteOldEntries()}){Text("Delete Old Entries")}
                 Button(action:{self.settings.deleteSettings()}){Text("Delete Settings")}
 
             }

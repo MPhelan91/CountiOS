@@ -51,4 +51,30 @@ class StartupTask{
         }
     
     }
+    
+    static func cleanOldEntries(_ context:NSManagedObjectContext){
+        do{
+            let response = try context.fetch(Settings.fetchRequest())
+            let settings = response.first as! Settings
+            let threeWeeksAgo = Calendar.current.date(byAdding: .day, value: -21, to: Date())!
+            
+            if(settings.lastCleaning == nil || settings.lastCleaning! < threeWeeksAgo){
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LogEntry")
+                let predicate = NSPredicate(format: "entryDate < %@", threeWeeksAgo as NSDate)
+                fetchRequest.predicate = predicate
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                deleteRequest.resultType = .resultTypeObjectIDs
+                let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
+                let changes: [AnyHashable: Any] = [
+                    NSDeletedObjectsKey: result.result as! [NSManagedObjectID]
+                ]
+                NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+                
+                settings.lastCleaning = Date()
+                try context.save()
+            }
+        }catch{
+            print(error)
+        }
+    }
 }

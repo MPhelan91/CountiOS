@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //Startup Tasks
         StartupTask.ensureSettingsExist(context)
         StartupTask.logScheduledEntries(context)
+        StartupTask.cleanOldEntries(context)
         
         //Create view models
         let settingsVM = SettingsVM(context: context)
