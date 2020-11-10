@@ -88,15 +88,7 @@ class LogVM<F:EntryFetcher>: ObservableObject {
     
     private func copySelected() throws {
         for entry in self.selectedEntries {
-            let newEntry = LogEntry(context: self.context)
-            
-            newEntry.name = entry.name
-            newEntry.calories = entry.calories
-            newEntry.protien = entry.protien
-            newEntry.fat = entry.fat
-            newEntry.carbs = entry.carbs
-            newEntry.sugar = entry.sugar
-            newEntry.entryDate = Date()
+            _ = HelperFunctions.copyEntry(context: self.context, entry: entry)
         }
         try self.context.save()
     }

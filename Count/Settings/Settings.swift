@@ -36,8 +36,8 @@ extension Settings {
         defaultSettings.carbGoal = 0
         defaultSettings.fatGoal = 0
         defaultSettings.sugarGoal = 0
-        defaultSettings.lastOpened = Date()
-        defaultSettings.lastCleaning = Date()
+        defaultSettings.lastOpened = nil
+        defaultSettings.lastCleaning = nil
         return defaultSettings
     }
     

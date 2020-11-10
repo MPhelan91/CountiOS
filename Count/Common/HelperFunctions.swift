@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class HelperFunctions{
     static func sumMacros(_ macroType:Macros, _ entries: [LogEntry]) -> Double {
@@ -22,5 +23,19 @@ class HelperFunctions{
         case Macros.Sugar:
             return entries.map({$0.sugar as! Double}).reduce(0.0, +)
         }
+    }
+    
+    static func copyEntry(context: NSManagedObjectContext, entry: LogEntry, date: Date = Date()) -> LogEntry{
+        let newEntry = LogEntry(context: context)
+        
+        newEntry.name = entry.name
+        newEntry.calories = entry.calories
+        newEntry.protien = entry.protien
+        newEntry.fat = entry.fat
+        newEntry.carbs = entry.carbs
+        newEntry.sugar = entry.sugar
+        newEntry.entryDate = date
+        
+        return newEntry
     }
 }

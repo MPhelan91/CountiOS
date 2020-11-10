@@ -23,6 +23,20 @@ enum Day : Int, CaseIterable{
         case.Saturday: return "Saturday"
         }
     }
+    
+    static func getDayFromDate(_ date:Date) -> Day{
+        let weekDay = Calendar.current.component(.weekday, from: date)
+        switch weekDay{
+        case 1: return .Sunday
+        case 2: return .Monday
+        case 3: return .Tuesday
+        case 4: return .Wednesday
+        case 5: return .Thursday
+        case 6: return .Friday
+        case 7: return .Saturday
+        default: return .Everyday
+        }
+    }
 }
 
 enum Macros : Int, CaseIterable, Hashable{    

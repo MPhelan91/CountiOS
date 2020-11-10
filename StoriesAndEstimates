@@ -6,13 +6,12 @@ UI(Ranked)
 
 Features (Randked):
 - Settings: Add Ability to have default daily entries (20)
-	- add entries with scheule enum
-	- add last opened date to settings
-	- in start up set last opened date
-	- if last opened date is not today => copy scheduled entries for the day over
+	X add entries with scheule enum
+	X add last opened date to settings
+	X in start up set last opened date
+	X if last opened date is not today => copy scheduled entries for the day over
 - maintenance task to delete older entries rather than button (???)
-	- BGTaskScheduler ??
-	- add last cleaning date to settings
+	X add last cleaning date to settings
 	- Check Date saved in coredata on startup!!!*
 - App Image (8)
 - Put App on store (13)
@@ -20,6 +19,7 @@ Features (Randked):
 - research error handling convention for ios apps 
 
 POLISH
+- have uniform behavior for bugs
 - enforce seperation between mass and volume units(3)
 - Decimal and Integer Input stories:
 	- HIlight text on focus in integer and decimal inputs(8)
@@ -46,6 +46,7 @@ TechDebt (Not Ranked):
 - Change serving size in dictionary entry to be decimal/double in CoreData
 
 Bugs (Not Ranked):
+- select in scheduled entries causes bug
 - Portion value does not stay if edit and then click on unit picker
 - dictionary view => when filter and select => details view is drawn strangely
 - two scans to populate new dictionary entry

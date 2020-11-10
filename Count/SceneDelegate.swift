@@ -21,13 +21,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        //Fetch Settings
+        
+        //Startup Tasks
+        StartupTask.ensureSettingsExist(context)
+        StartupTask.logScheduledEntries(context)
+        
+        //Create view models
         let settingsVM = SettingsVM(context: context)
         let addEntryVM = AddLogEntryVM(context: context, settings: settingsVM)
         let logVM = LogVM<FetcherForLogView>(context: context, settings: settingsVM, fetcher: FetcherForLogView())
         let schedulerVM = LogVM<FetcherForScheduler>(context: context, settings: settingsVM, fetcher: FetcherForScheduler())
-
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.

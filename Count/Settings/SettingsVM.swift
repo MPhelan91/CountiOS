@@ -30,7 +30,7 @@ class SettingsVM : ObservableObject{
         }
     }
 
-    private var settings : Settings
+    public var settings : Settings
     private let context: NSManagedObjectContext
     private var loadingMacroGoals = false
     
@@ -38,16 +38,7 @@ class SettingsVM : ObservableObject{
         self.context = context
         do{
             let settings = try context.fetch(Settings.fetchRequest())
-            if(settings.count > 1){
-                print("Error: More than one Setting Row Found")
-            }
-            
-            if(settings.count == 0){
-                self.settings = Settings.getDefaultSettings(context: context)
-                saveSettings()
-            } else{
-                self.settings = settings.first as! Settings
-            }
+            self.settings = settings.first as! Settings
             loadSettings()
         } catch {
             self.settings = Settings()
