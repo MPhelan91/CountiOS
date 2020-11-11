@@ -27,6 +27,7 @@ struct DictionaryView: View {
     
     var body: some View {
         VStack{
+            NavigationLink(destination:DictionaryEntryFullView(), tag: 1, selection: $action){EmptyView()}
             List{
                 Section{
                     HStack{
@@ -63,7 +64,6 @@ struct DictionaryView: View {
             .navigationBarTitle(Text("Dictionary"))
             .navigationBarItems(trailing: self.onEntryClick == nil
                 ? AnyView(HStack{
-                    NavigationLink(destination:DictionaryEntryFullView(), tag: 1, selection: $action){EmptyView()}
                     Button(action: {self.action = 1}){
                         Image(systemName: "plus").font(.system(size: 25, weight: .bold))
                     }
