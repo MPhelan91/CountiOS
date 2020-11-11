@@ -48,7 +48,7 @@ struct EntrySchedulerView: View {
             LogHeaderView(self.schedulerVM.logEntries, self.settings.macroGoals)
             List{
                 ForEach(self.schedulerVM.logEntries){ logEntry in
-                    LogEntrySimpleView(logEntry: logEntry, macros: [])
+                    LogEntrySimpleView(logEntry, [], false)
                         .contextMenu{
                             Button("Delete Selected",action:{
                                 if(self.schedulerVM.performDeleteEntries()){
