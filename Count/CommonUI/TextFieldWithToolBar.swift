@@ -40,6 +40,12 @@ struct TextFieldWithToolBar: UIViewRepresentable {
             self.onFinishedEditing = onFinishedEditing
         }
         
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            DispatchQueue.main.async {
+                textField.selectAll(nil)
+            }
+        }
+        
         func textFieldDidEndEditing(_ textField: UITextField) {
             onFinishedEditing()
         }

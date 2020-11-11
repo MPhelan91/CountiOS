@@ -1,4 +1,3 @@
-
 UI(Ranked)
 - Think about checking/unchecking vs copying paradigm listbackgroundcolor (8)
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
@@ -14,8 +13,8 @@ POLISH
 - have uniform behavior for bugs
 - enforce seperation between mass and volume units(3)
 - Decimal and Integer Input stories:
-	- HIlight text on focus in integer and decimal inputs(8)
-	- Add x button to clear value on integer and decimal inputs (3)
+	X HIlight text on focus in integer and decimal inputs(8)
+	X Add x button to clear value on integer and decimal inputs (3)
 	- DEcide whether to default value to 0 or nil
 
 Bugs (Not Ranked):

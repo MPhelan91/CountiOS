@@ -43,6 +43,15 @@ class DecimalInputVM : ObservableObject {
     init(_ numericRepresentation: Double?){
         self.numericRepresentation = numericRepresentation
     }
+    
+    func clearValue(){
+        self.ignoreStringSet = true;
+        self.ignoreNumericSet = true;
+        self.stringRepresentation = "";
+        self.numericRepresentation = nil;
+        self.ignoreNumericSet = false;
+        self.ignoreStringSet = false;
+    }
 }
 
 struct DecimalInput:View{
@@ -62,6 +71,12 @@ struct DecimalInput:View{
         return HStack{
             Text("\(label): ")
             TextFieldWithToolBar(text: self.$vm.stringRepresentation, onFinishedEditing: self.updateBinding, keyboardType: .decimalPad)
+            Button(action:{
+                self.vm.clearValue()
+                self.updateBinding()
+            }){
+                Image(systemName: "xmark")
+            }
         }
     }
     

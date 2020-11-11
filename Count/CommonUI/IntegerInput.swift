@@ -37,6 +37,15 @@ class IntegerInputVM : ObservableObject {
     init(_ numericRepresentation: Int?){
         self.numericRepresentation = numericRepresentation
     }
+    
+    func clearValue(){
+        self.ignoreStringSet = true;
+        self.ignoreNumericSet = true;
+        self.stringRepresentation = "";
+        self.numericRepresentation = nil;
+        self.ignoreNumericSet = false;
+        self.ignoreStringSet = false;
+    }
 }
 
 struct IntegerInput:View{
@@ -56,6 +65,12 @@ struct IntegerInput:View{
         return HStack{
             Text("\(label): ")
             TextFieldWithToolBar(text: self.$vm.stringRepresentation, onFinishedEditing: self.updateBinding, keyboardType: .numberPad)
+            Button(action:{
+                self.vm.clearValue()
+                self.updateBinding()
+            }){
+                Image(systemName: "xmark")
+            }
         }
     }
     
