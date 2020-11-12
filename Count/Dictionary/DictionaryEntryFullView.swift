@@ -57,58 +57,75 @@ struct DictionaryEntryFullView : View {
         return Int(round(value))
     }
     
+    private func addNewEntry(){
+        let dictionaryEntry = self.entryToEdit ?? DictionaryEntry(context: self.managedObjectContext)
+        
+        dictionaryEntry.name = self.name
+        dictionaryEntry.definition = self.definition
+        dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSNumber(value: self.servingSize ?? 0)
+        dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
+        dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
+        dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
+        dictionaryEntry.carbs = NSNumber(value: self.carbs ?? 0)
+        dictionaryEntry.fat = NSNumber(value: self.fat ?? 0)
+        dictionaryEntry.sugar = NSNumber(value: self.sugar ?? 0)
+        
+        do{
+            try self.managedObjectContext.save()
+        }catch{
+            print(error)
+        }
+        
+        self.name = ""
+        self.definition = ""
+        self.servingUnit = nil
+        self.servingSize = nil
+        self.calories = nil
+        self.protien = nil
+        self.carbs = nil
+        self.fat = nil
+        self.sugar = nil
+        
+        self.presentationMode.wrappedValue.dismiss()
+    }
+    
     var body : some View{
-        Form{
-            TextField("Name", text: self.$name)
-            MultilineTextField("Description", text:self.$definition )
-            HStack{
-                IntegerInput(label:"Portion", value: self.$servingSize)
-                Picker(selection: $servingUnit, label: Text("Unit")) {
-                    ForEach(Units.onlyUnits(), id: \.self) { unit in
-                        Text(unit.abbreviation).tag(unit as Units?)
+        VStack{
+            Form{
+                TextField("Name", text: self.$name)
+                MultilineTextField("Description", text:self.$definition )
+                HStack{
+                    IntegerInput(label:"Portion", value: self.$servingSize)
+                    Picker(selection: $servingUnit, label: Text("Unit")) {
+                        ForEach(Units.onlyUnits(), id: \.self) { unit in
+                            Text(unit.abbreviation).tag(unit as Units?)
+                        }
                     }
                 }
-            }
-            IntegerInput(label:"Calories", value: self.$calories)
-            IntegerInput(label:"Protien", value: self.$protien)
-            IntegerInput(label:"Carbs", value: self.$carbs)
-            IntegerInput(label:"Fat", value: self.$fat)
-            IntegerInput(label:"Sugar", value: self.$sugar)
-            Button(action : {
-                let dictionaryEntry = self.entryToEdit ?? DictionaryEntry(context: self.managedObjectContext)
-                
-                dictionaryEntry.name = self.name
-                dictionaryEntry.definition = self.definition
-                dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSNumber(value: self.servingSize ?? 0)
-                dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
-                dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
-                dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
-                dictionaryEntry.carbs = NSNumber(value: self.carbs ?? 0)
-                dictionaryEntry.fat = NSNumber(value: self.fat ?? 0)
-                dictionaryEntry.sugar = NSNumber(value: self.sugar ?? 0)
-                
-                do{
-                    try self.managedObjectContext.save()
-                }catch{
-                    print(error)
-                }
-                
-                self.name = ""
-                self.definition = ""
-                self.servingUnit = nil
-                self.servingSize = nil
-                self.calories = nil
-                self.protien = nil
-                self.carbs = nil
-                self.fat = nil
-                self.sugar = nil
-                
-                self.presentationMode.wrappedValue.dismiss()
-            }){
-                Text(self.entryToEdit == nil ? "Add" : "Edit")
-            }
-            Button(action:{self.showScanner = true}){
-                Image(systemName: "camera")
+                IntegerInput(label:"Calories", value: self.$calories)
+                IntegerInput(label:"Protien", value: self.$protien)
+                IntegerInput(label:"Carbs", value: self.$carbs)
+                IntegerInput(label:"Fat", value: self.$fat)
+                IntegerInput(label:"Sugar", value: self.$sugar)
+                HStack{
+                    Spacer()
+                    Button(action:{self.showScanner = true}){
+                        VStack{
+                            Image(systemName: "camera")
+                                .font(.system(size: 40))
+                            Text("Scan").padding(2)
+                        }
+                    }.buttonStyle(BorderlessButtonStyle())
+                    Spacer().frame(width:150)
+                    Button(action : {self.addNewEntry()}){
+                        VStack{
+                            Image(systemName: "plus")
+                                .font(.system(size: 40))
+                            Text(self.entryToEdit == nil ? "Add" : "Edit").padding(2)
+                        }
+                    }.buttonStyle(BorderlessButtonStyle())
+                    Spacer()
+                }.frame(height:125)
             }
         }.sheet(isPresented: self.$showScanner){
             NutritionFactScanner(completion: {(args) in

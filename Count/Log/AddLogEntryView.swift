@@ -41,6 +41,18 @@ struct AddLogEntryView : View {
         }
     }
     
+    func addEntry(){
+        if(self.logVM != nil){
+            self.entryVM.addEntry(date:self.logVM!.criteria)
+            self.logVM!.fetch()
+        }
+        else{
+            self.entryVM.addScheduledEntry(day: self.schedulerVM!.criteria)
+            self.schedulerVM!.fetch()
+        }
+        self.presentationMode.wrappedValue.dismiss()
+    }
+    
     var body: some View{
         Form{
             NavigationLink(destination: DictionaryView(onEntryClick: {(entry) in
@@ -72,19 +84,17 @@ struct AddLogEntryView : View {
                     ForEach(self.settings.macrosCounted(), id:\.self){ macro in
                         DecimalInput(label: macro.getFullName, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
                     }
-                    Button(action: {
-                        if(self.logVM != nil){
-                            self.entryVM.addEntry(date:self.logVM!.criteria)
-                            self.logVM!.fetch()
+                    HStack{
+                        Spacer()
+                        Button(action : {self.addEntry()}){
+                            VStack{
+                                Image(systemName: "plus")
+                                    .font(.system(size: 40))
+                                Text("Add").padding(2)
+                            }
                         }
-                        else{
-                            self.entryVM.addScheduledEntry(day: self.schedulerVM!.criteria)
-                            self.schedulerVM!.fetch()
-                        }
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        Text("Add")
-                    }
+                        Spacer()
+                    }.frame(height:125)
                 }
             }
         }
