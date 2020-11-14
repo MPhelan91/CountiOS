@@ -60,7 +60,7 @@ struct DecimalInput:View{
     var onFinishedEditing: (() -> Void)?
     var label: String
     
-    init(label: String, value: Binding<Double?>, onFinishedEditing: (() -> Void)?) {
+    init(label: String, value: Binding<Double?>, onFinishedEditing: (() -> Void)? = nil) {
         self._value = value
         self.onFinishedEditing = onFinishedEditing
         self.label = label

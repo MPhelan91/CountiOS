@@ -16,7 +16,7 @@ struct DictionaryEntryFullView : View {
     
     @State private var name = ""
     @State private var definition = ""
-    @State private var servingSize:Int? = nil
+    @State private var servingSize:Double? = nil
     @State private var servingUnit : Units? = nil
     @State private var calories:Int? =  nil
     @State private var protien:Int? =  nil
@@ -29,7 +29,7 @@ struct DictionaryEntryFullView : View {
     init(_ entry: DictionaryEntry) {
         _name = State(initialValue: entry.name!)
         _definition = State(initialValue: entry.definition!)
-        _servingSize = entry.servingSize == nil ? State(initialValue: nil) : State(initialValue: (entry.servingSize as! Int))
+        _servingSize = entry.servingSize == nil ? State(initialValue: nil) : State(initialValue: (entry.servingSize as! Double))
         _servingUnit = entry.servingSize == nil ? State(initialValue: nil) : State(initialValue: Units(rawValue: entry.servingUnit as! Int) ?? Units.Gram)
         _calories = entry.calories == nil ? State(initialValue: nil) : State(initialValue: (entry.calories as! Int))
         _protien = entry.protien == nil ? State(initialValue: nil) : State(initialValue: (entry.protien as! Int))
@@ -62,7 +62,7 @@ struct DictionaryEntryFullView : View {
         
         dictionaryEntry.name = self.name
         dictionaryEntry.definition = self.definition
-        dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSNumber(value: self.servingSize ?? 0)
+        dictionaryEntry.servingSize = self.servingSize == nil ? nil : NSDecimalNumber(value: self.servingSize ?? 0)
         dictionaryEntry.servingUnit = self.servingSize == nil ? nil : NSNumber(value: self.servingUnit!.rawValue)
         dictionaryEntry.calories = NSNumber(value: self.calories ?? 0)
         dictionaryEntry.protien = NSNumber(value: self.protien ?? 0)
@@ -95,7 +95,7 @@ struct DictionaryEntryFullView : View {
                 TextField("Name", text: self.$name)
                 MultilineTextField("Description", text:self.$definition )
                 HStack{
-                    IntegerInput(label:"Portion", value: self.$servingSize)
+                    DecimalInput(label:"Portion", value: self.$servingSize)
                     Picker(selection: $servingUnit, label: Text("Unit")) {
                         ForEach(Units.onlyUnits(), id: \.self) { unit in
                             Text(unit.abbreviation).tag(unit as Units?)
@@ -139,7 +139,7 @@ struct DictionaryEntryFullView : View {
                     let nutritionLabel = args![0].lowercased();
                     let servingInfo = nutritionLabel.getServingSizeInfo()
                     self.servingUnit = servingInfo != nil ? servingInfo!.1 : nil
-                    self.servingSize = servingInfo != nil ? servingInfo!.0 : nil
+                    self.servingSize = servingInfo != nil ? Double(servingInfo!.0) : nil
                     self.calories = nutritionLabel.getSubstringAfter("calories")?.getFirstIntegerValue()
                     self.protien = nutritionLabel.getSubstringAfter("protein")?.getFirstIntegerValue()
                     self.carbs = nutritionLabel.getSubstringAfter("total carb")?.getFirstIntegerValue()

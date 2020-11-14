@@ -1,42 +1,34 @@
 UI(Ranked)
 - Think about checking/unchecking vs copying paradigm listbackgroundcolor (8)
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
-- Tab between decimal inputs (13)
 
 Features (Randked):
 - App Image (8)
 - Put App on store (13)
 - Better Nutrion label scanning (20)
-- research error handling convention for ios apps 
 
 POLISH
-- have uniform behavior for bugs
-- enforce seperation between mass and volume units(3)
-- Decimal and Integer Input stories:
-	X HIlight text on focus in integer and decimal inputs(8)
-	X Add x button to clear value on integer and decimal inputs (3)
-	- DEcide whether to default value to 0 or nil
-
-Bugs (Not Ranked):
-- select in scheduled entries causes bug
-- Portion value does not stay if edit and then click on unit picker
-- dictionary view => when filter and select => details view is drawn strangely
-- two scans to populate new dictionary entry
+- Change serving size in dictionary entry to be decimal/double in CoreData
 - Order of log entries should be by date/time descending
+- Portion value does not stay if edit and then click on unit picker
+- enforce seperation between mass and volume units(3)
+- dictionary view => when filter and select => details view is drawn strangely
+
+- Enforce needed values for logEntry/Dictionary Entry (LogEntry needs calores, Dictionary Entry needs name and calories)
+	- Require at least name and calories to be set in DictionaryEntryFullView
+		- Default protien to 0
+		- Make name and calories no nullable in CoreData
+	- Require at least calories to be set in AddLogEntry
+		- Deafult protien to 0
+		- Make name and cloaires be non nullable in CoreData
+	- Require both portion and unit to be set if one if set in DictionaryEntryFullView
+- have uniform behavior for errors (research error convention for ios apps)
 
 TechDebt (Not Ranked):
-- use map for macro goals
-- change logentry from decimal to double
 - Create ViewModel for DictionaryView 
 - Create ViewModel for DictionaryEntryFullView
-- Require both portion and unit to be set if one if set in DictionaryEntryFullView
-- Require at least name and calories to be set in DictionaryEntryFullView
-	- Default protien to 0
-	- Make name and calories no nullable in CoreData
-- Require at least calories to be set in AddLogEntry
-	- Deafult protien to 0
-	- Make name and cloaires be non nullable in CoreData
-- Change serving size in dictionary entry to be decimal/double in CoreData
+- use map for macro goals
+- change logentry from decimal to double
 
 POST RELEASE FEATURES
 - Settings: Weight (13)

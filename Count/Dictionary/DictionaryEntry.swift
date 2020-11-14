@@ -18,7 +18,7 @@ public class DictionaryEntry:NSManagedObject,Identifiable{
     @NSManaged public var carbs:NSNumber?
     @NSManaged public var sugar:NSNumber?
     @NSManaged public var servingUnit:NSNumber?
-    @NSManaged public var servingSize:NSNumber?
+    @NSManaged public var servingSize:NSDecimalNumber?
 }
 
 extension DictionaryEntry{
