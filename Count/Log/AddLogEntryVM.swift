@@ -40,6 +40,17 @@ class AddLogEntryVM: ObservableObject {
         self.settingsVM = settings
     }
     
+    var atLeastOneMacroSet: Bool {
+        get {
+            return settingsVM.macroGoals.count == 0
+                || calories != nil
+                || protien != nil
+                || fat != nil
+                || carbs != nil
+                || sugar != nil
+        }
+    }
+    
     func setFieldsFromEntry(){
         if(selectedEntry != nil){
             self.loading = true
