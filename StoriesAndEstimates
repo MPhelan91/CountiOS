@@ -8,18 +8,11 @@ Features (Randked):
 - Better Nutrion label scanning (20)
 
 POLISH
+- *Require both portion and unit to be set if one if set in DictionaryEntryFullView
 - Portion value does not stay if edit and then click on unit picker
 	-On lost focus of inputs => data should be saved
 - dictionary view => when filter and select => details view is drawn strangely
 
-- Enforce needed values for logEntry/Dictionary Entry (LogEntry needs calores, Dictionary Entry needs name and calories)
-	- Require at least name and calories to be set in DictionaryEntryFullView
-		- Default protien to 0
-		- Make name and calories no nullable in CoreData
-	- Require at least calories to be set in AddLogEntry
-		- Deafult protien to 0
-		- Make name and cloaires be non nullable in CoreData
-	- *Require both portion and unit to be set if one if set in DictionaryEntryFullView
 - have uniform behavior for errors (research error convention for ios apps)
 
 TechDebt (Not Ranked):
@@ -32,3 +25,13 @@ POST RELEASE FEATURES
 - Settings: Weight (13)
 	- requires sub stories
 - Settings: Cheat day (5)
+
+
+Meh?
+- Enforce needed values for logEntry/Dictionary Entry (LogEntry needs calores, Dictionary Entry needs name and calories)
+	- Require at least name and calories to be set in DictionaryEntryFullView
+		- Default protien to 0
+		- Make name and calories no nullable in CoreData
+	- Require at least calories to be set in AddLogEntry
+		- Deafult protien to 0
+		- Make name and cloaires be non nullable in CoreData

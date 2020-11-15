@@ -17,7 +17,7 @@ struct DictionaryEntryFullView : View {
     @State private var name = ""
     @State private var definition = ""
     @State private var servingSize:Double? = nil
-    @State private var servingUnit : Units? = nil
+    @State private var servingUnit:Units? = nil
     @State private var calories:Int? =  nil
     @State private var protien:Int? =  nil
     @State private var carbs:Int? =  nil
@@ -115,7 +115,8 @@ struct DictionaryEntryFullView : View {
                                 .font(.system(size: 40))
                             Text("Scan").padding(2)
                         }
-                    }.buttonStyle(BorderlessButtonStyle())
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
                     Spacer().frame(width:150)
                     Button(action : {self.addNewEntry()}){
                         VStack{
@@ -123,7 +124,10 @@ struct DictionaryEntryFullView : View {
                                 .font(.system(size: 40))
                             Text(self.entryToEdit == nil ? "Add" : "Edit").padding(2)
                         }
-                    }.buttonStyle(BorderlessButtonStyle())
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .disabled(((self.servingSize == nil || self.servingSize == 0) && self.servingUnit != nil)
+                                || (self.servingSize != nil && self.servingSize! > 0 && self.servingUnit == nil))
                     Spacer()
                 }.frame(height:125)
             }
