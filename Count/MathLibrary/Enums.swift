@@ -80,8 +80,16 @@ enum Units : Int, CaseIterable {
         }
     }
     
-    static func onlyUnits() -> [Units]{
-        return [.Gram, .Ounce, .Pound, .Liter, .Milliliter, .Cup]
+    static func compatibleWith(_ unit:Units?) -> [Units]{
+        if(unit == nil || unit == .Undefined){
+            return [.Gram, .Ounce, .Pound, .Liter, .Milliliter, .Cup]
+        }
+        if(massUnits().contains(unit!)){
+            return massUnits().filter({unit in unit != .Undefined})
+        }
+        else{
+            return volumeUnits().filter({unit in unit != .Undefined})
+        }
     }
     
     static func massUnits()->[Units]{

@@ -71,7 +71,7 @@ struct AddLogEntryView : View {
                     HStack{
                         DecimalInput(label: "Portion", value: $entryVM.servingSize, onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.Portion)})
                         Picker(selection: $entryVM.servingUnit, label: Text("Unit")) {
-                            ForEach(Units.onlyUnits(), id: \.self) { unit in
+                            ForEach(Units.compatibleWith(entryVM.servingUnit!), id: \.self) { unit in
                                 Text(unit.abbreviation).tag(unit as Units?)
                             }
                         }
