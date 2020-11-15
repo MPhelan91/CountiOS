@@ -123,7 +123,7 @@ class AddLogEntryVM: ObservableObject {
     
     func addEntry(date:Date){
         let newEntry = createEntry()
-        newEntry.entryDate = date
+        newEntry.entryDate = HelperFunctions.calcEntryDate(date)
         newEntry.scheduledFor = nil
         saveAndClearData()
     }

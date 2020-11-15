@@ -12,13 +12,20 @@ extension Date {
 
     var onlyDate: Date? {
         get {
-            let calender = Calendar.current
-            var dateComponents = calender.dateComponents([.year, .month, .day], from: self)
-            dateComponents.timeZone = NSTimeZone.system
-            return calender.date(from: dateComponents)
+            let cal = Calendar.current
+            return cal.startOfDay(for: self)
         }
     }
 
+    var atEndOfDay: Date? {
+        get {
+            let cal = Calendar.current
+            let nextDay = cal.date(byAdding: .day, value: 1, to: self)!
+            let nextDayStart = cal.startOfDay(for:nextDay)
+            let endOfDay = cal.date(byAdding: .minute, value:-1, to: nextDayStart)
+            return endOfDay
+        }
+    }
 }
 
 extension String {

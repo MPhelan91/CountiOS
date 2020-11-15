@@ -8,8 +8,8 @@ Features (Randked):
 - Better Nutrion label scanning (20)
 
 POLISH
-- Change serving size in dictionary entry to be decimal/double in CoreData
-- Order of log entries should be by date/time descending
+X Change serving size in dictionary entry to be decimal/double in CoreData
+X Order of log entries should be by date/time descending
 - Portion value does not stay if edit and then click on unit picker
 - enforce seperation between mass and volume units(3)
 - dictionary view => when filter and select => details view is drawn strangely

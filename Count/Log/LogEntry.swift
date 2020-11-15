@@ -36,10 +36,10 @@ extension LogEntry{
         let sortDescriptor = NSSortDescriptor(key: "entryDate", ascending: false)
         request.sortDescriptors = [sortDescriptor]
         
-        let startDate = date.onlyDate as! Date
-        let endDate = startDate.addingTimeInterval(24*60*60)
+        let startDate = date.onlyDate
+        let endDate = startDate!.addingTimeInterval(24*60*60).addingTimeInterval(-1)
         
-        request.predicate = NSPredicate(format: "(entryDate != nil) AND (entryDate >= %@) AND (entryDate <= %@)", startDate as NSDate, endDate as NSDate)
+        request.predicate = NSPredicate(format: "(entryDate != nil) AND (entryDate >= %@) AND (entryDate <= %@)", startDate! as NSDate, endDate as NSDate)
         
         return request
     }

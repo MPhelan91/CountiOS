@@ -38,4 +38,18 @@ class HelperFunctions{
         
         return newEntry
     }
+    
+    static func calcEntryDate(_ date:Date) -> Date{
+        let calendar = Calendar.current
+        let now = Date()
+        if(calendar.isDateInToday(date)){
+            return now
+        }
+        else if(date < now){
+            return date.atEndOfDay!
+        }
+        else{
+            return date.onlyDate!
+        }
+    }
 }
