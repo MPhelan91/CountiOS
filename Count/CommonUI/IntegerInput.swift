@@ -65,12 +65,6 @@ struct IntegerInput:View{
         return HStack{
             Text("\(label): ")
             TextFieldWithToolBar(text: self.$vm.stringRepresentation, onFinishedEditing: self.updateBinding, keyboardType: .numberPad)
-            Button(action:{
-                self.vm.clearValue()
-                self.updateBinding()
-            }){
-                Image(systemName: "xmark")
-            }
         }
     }
     
