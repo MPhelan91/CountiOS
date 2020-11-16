@@ -118,7 +118,7 @@ struct DictionaryEntryFullView : View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     Spacer().frame(width:150)
-                    Button(action : {self.addNewEntry()}){
+                    Button(action : {self.hideKeyboard();self.addNewEntry();}){
                         VStack{
                             Image(systemName: "plus")
                                 .font(.system(size: 40))

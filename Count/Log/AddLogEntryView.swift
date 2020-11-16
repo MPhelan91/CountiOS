@@ -86,7 +86,7 @@ struct AddLogEntryView : View {
                     }
                     HStack{
                         Spacer()
-                        Button(action : {self.addEntry()}){
+                        Button(action : {self.hideKeyboard();self.addEntry();}){
                             VStack{
                                 Image(systemName: "plus")
                                     .font(.system(size: 40))
