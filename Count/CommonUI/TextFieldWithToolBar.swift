@@ -8,11 +8,17 @@
 
 import SwiftUI
 
-struct TextFieldWithToolBar: UIViewRepresentable {
+final class TextFieldWithToolBar: UIViewRepresentable {
     
     @Binding var text: String
     var onFinishedEditing: () -> Void
     var keyboardType: UIKeyboardType
+    
+    init(text: Binding<String>, onFinishedEditing: @escaping ()->Void, keyboardType:UIKeyboardType){
+        self._text = text
+        self.onFinishedEditing = onFinishedEditing
+        self.keyboardType = keyboardType
+    }
     
     func makeUIView(context: Context) -> UITextField {
         let textfield = UITextField()
