@@ -90,48 +90,47 @@ struct DictionaryEntryFullView : View {
     }
     
     var body : some View{
-        VStack{
-            Form{
-                TextField("Name", text: self.$name)
-                MultilineTextField("Description", text:self.$definition )
-                HStack{
-                    DecimalInput(label:"Portion", value: self.$servingSize)
-                    Picker(selection: $servingUnit, label: Text("Unit")) {
-                        ForEach(Units.compatibleWith(nil), id: \.self) { unit in
-                            Text(unit.abbreviation).tag(unit as Units?)
-                        }
+        Form{
+            TextField("Name", text: self.$name)
+            MultilineTextField("Description", text:self.$definition )
+            HStack{
+                DecimalInput(label:"Portion", value: self.$servingSize)
+                Picker(selection: $servingUnit, label: Text("Unit")) {
+                    ForEach(Units.compatibleWith(nil), id: \.self) { unit in
+                        Text(unit.abbreviation).tag(unit as Units?)
                     }
                 }
-                IntegerInput(label:"Calories", value: self.$calories)
-                IntegerInput(label:"Protien", value: self.$protien)
-                IntegerInput(label:"Carbs", value: self.$carbs)
-                IntegerInput(label:"Fat", value: self.$fat)
-                IntegerInput(label:"Sugar", value: self.$sugar)
-                HStack{
-                    Spacer()
-                    Button(action:{self.showScanner = true}){
-                        VStack{
-                            Image(systemName: "camera")
-                                .font(.system(size: 40))
-                            Text("Scan").padding(2)
-                        }
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    Spacer().frame(width:150)
-                    Button(action : {self.hideKeyboard();self.addNewEntry();}){
-                        VStack{
-                            Image(systemName: "plus")
-                                .font(.system(size: 40))
-                            Text(self.entryToEdit == nil ? "Add" : "Edit").padding(2)
-                        }
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    .disabled(((self.servingSize == nil || self.servingSize == 0) && self.servingUnit != nil)
-                                || (self.servingSize != nil && self.servingSize! > 0 && self.servingUnit == nil))
-                    Spacer()
-                }.frame(height:125)
             }
-        }.sheet(isPresented: self.$showScanner){
+            IntegerInput(label:"Calories", value: self.$calories)
+            IntegerInput(label:"Protien", value: self.$protien)
+            IntegerInput(label:"Carbs", value: self.$carbs)
+            IntegerInput(label:"Fat", value: self.$fat)
+            IntegerInput(label:"Sugar", value: self.$sugar)
+            HStack{
+                Spacer()
+                Button(action:{self.showScanner = true}){
+                    VStack{
+                        Image(systemName: "camera")
+                            .font(.system(size: 40))
+                        Text("Scan").padding(2)
+                    }
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                Spacer().frame(width:150)
+                Button(action : {self.hideKeyboard();self.addNewEntry();}){
+                    VStack{
+                        Image(systemName: "plus")
+                            .font(.system(size: 40))
+                        Text(self.entryToEdit == nil ? "Add" : "Edit").padding(2)
+                    }
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .disabled(((self.servingSize == nil || self.servingSize == 0) && self.servingUnit != nil)
+                            || (self.servingSize != nil && self.servingSize! > 0 && self.servingUnit == nil))
+                Spacer()
+            }.frame(height:125)
+        }
+        .sheet(isPresented: self.$showScanner){
             NutritionFactScanner(completion: {(args) in
                 if(args == nil || args!.count == 0){
                     //Toast: No text found
@@ -152,5 +151,6 @@ struct DictionaryEntryFullView : View {
                 }
             })
         }
+        .navigationBarTitle(Text("New Entry"), displayMode: .inline)
     }
 }

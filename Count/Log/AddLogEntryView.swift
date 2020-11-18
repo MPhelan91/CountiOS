@@ -98,5 +98,6 @@ struct AddLogEntryView : View {
                 }
             }
         }
+        .navigationBarTitle(Text("New Entry"), displayMode: .inline)
     }
 }
