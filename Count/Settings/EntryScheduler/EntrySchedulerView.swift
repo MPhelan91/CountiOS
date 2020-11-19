@@ -50,12 +50,14 @@ struct EntrySchedulerView: View {
                 ForEach(self.schedulerVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry, [], false)
                         .contextMenu{
-                            Button("Delete Selected",action:{
-                                if(self.schedulerVM.performDeleteEntries()){
-                                    self.toastMessage = "Deleted"
-                                    self.showToast = true
-                                }
-                            })
+                            if(self.schedulerVM.selectedEntries.count > 0){
+                                Button("Delete",action:{
+                                    if(self.schedulerVM.performDeleteEntries()){
+                                        self.toastMessage = "Deleted"
+                                        self.showToast = true
+                                    }
+                                })
+                            }
                         }
                 }.onDelete { indexSet in
                     self.schedulerVM.deleteEntry(index: indexSet.first!)

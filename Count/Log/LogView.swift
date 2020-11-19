@@ -50,24 +50,25 @@ struct LogView: View {
                 ForEach(self.logVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry, self.settings.macrosCounted(), true)
                         .contextMenu{
-                            Button("Copy Selected to Today",action:{
-                                if(self.logVM.performCopySelected()){
-                                    self.toastMessage = "Copied to Today"
-                                    self.showToast = true
-                                }
-                            })
-                            Button("Delete Selected",action:{
-                                if(self.logVM.performDeleteEntries()){
-                                    self.toastMessage = "Deleted"
-                                    self.showToast = true
-                                }
-                            })
-                            Button("Make Dictionary Entry From Selected",action:{
-                                if(self.logVM.selectedEntries.count > 0){
-                                    self.navSelection = "Dictionary Entry"
-                                    //unselectValues? => or pass callback that clears it
-                                }
-                            })
+                            if(self.logVM.selectedEntries.count > 0){
+                                Button("Copy to Today",action:{
+                                    if(self.logVM.performCopySelected()){
+                                        self.toastMessage = "Copied to Today"
+                                        self.showToast = true
+                                    }
+                                })
+                                Button("Delete",action:{
+                                    if(self.logVM.performDeleteEntries()){
+                                        self.toastMessage = "Deleted"
+                                        self.showToast = true
+                                    }
+                                })
+                                Button("Create Dictionary Entry",action:{
+                                    if(self.logVM.selectedEntries.count > 0){
+                                        self.navSelection = "Dictionary Entry"
+                                    }
+                                })
+                            }
                         }
                 }.onDelete { indexSet in
                     self.logVM.deleteEntry(index: indexSet.first!)
