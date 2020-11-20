@@ -119,7 +119,7 @@ struct DictionaryEntryFullView : View {
                 Spacer().frame(width:150)
                 Button(action : {self.hideKeyboard();self.addNewEntry();}){
                     VStack{
-                        Image(systemName: "plus")
+                        Image(systemName: self.entryToEdit == nil ? "plus" : "square.and.pencil")
                             .font(.system(size: 40))
                         Text(self.entryToEdit == nil ? "Add" : "Edit").padding(2)
                     }

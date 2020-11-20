@@ -3,9 +3,7 @@ UI(Ranked)
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
 
 Features (Randked):
-- App Image (8)
 - Put App on store (13)
-- Better Nutrion label scanning (20)
 
 POLISH
 
@@ -20,6 +18,7 @@ TechDebt (Not Ranked):
 - change logentry from decimal to double
 
 POST RELEASE FEATURES
+- Better Nutrion label scanning (20)
 - Copy and Paste across days
 - Settings: Weight (13)
 	- requires sub stories
