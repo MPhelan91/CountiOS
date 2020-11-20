@@ -65,7 +65,7 @@ struct DictionaryView: View {
             .navigationBarItems(trailing: self.onEntryClick == nil
                 ? AnyView(HStack{
                     Button(action: {self.action = 1}){
-                        Image(systemName: "plus").font(.system(size: 25, weight: .bold))
+                        Image(systemName: "plus").font(.system(size: 30, weight: .bold))
                     }
                 })
                 : AnyView(EmptyView())
