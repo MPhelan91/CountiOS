@@ -46,6 +46,9 @@ struct MacroTable:View{
             ForEach(self.macroGoals.indices){ idx in
                 HStack{
                     IntegerInput(label: self.macroGoals[idx].macro.getFullName, value: self.$macroGoals[idx].goal)
+                    if(self.macroGoals[idx].macro != .Calories){
+                        Text("grams")
+                    }
                 }
             }
         }
