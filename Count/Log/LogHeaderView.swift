@@ -31,7 +31,7 @@ struct LogHeaderView: View {
                 Spacer()
             }
             .frame(height: 40)
-            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+            .background(Color.systemGray3)
         }
         else if(self.macroGoals.count == 2){
             HStack{
@@ -42,7 +42,7 @@ struct LogHeaderView: View {
                 Spacer()
             }
             .frame(height: 40)
-            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+            .background(Color.systemGray3)
         }
         else if(self.macroGoals.count == 3){
             HStack{
@@ -59,7 +59,7 @@ struct LogHeaderView: View {
                 Spacer()
             }
             .frame(height: 65)
-            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+            .background(Color.systemGray3)
         }
         else if(self.macroGoals.count == 4) {
             HStack{
@@ -78,7 +78,7 @@ struct LogHeaderView: View {
                 Spacer()
             }
             .frame(height: 65)
-            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+            .background(Color.systemGray3)
         }
         else if(self.macroGoals.count == 5){
             HStack{
@@ -99,7 +99,7 @@ struct LogHeaderView: View {
                 Spacer()
             }
             .frame(height: 65)
-            .background(colorScheme == .dark ? darkModeGray : lightModeGray)
+            .background(Color.systemGray3)
         }
         else{
             EmptyView()

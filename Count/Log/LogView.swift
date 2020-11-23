@@ -20,7 +20,7 @@ struct LogView: View {
         didSet{
             //TODO: try and do this in the Toast class itself
             if(self.showToast){
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     withAnimation {
                         self.showToast = false
                     }

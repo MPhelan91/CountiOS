@@ -20,16 +20,15 @@ struct Toast<Presenting>: View where Presenting: View {
             
             ZStack(alignment: .center) {
                 
-                self.presenting()
-                    .blur(radius: self.isShowing ? 1 : 0)
+                self.presenting().blur(radius: self.isShowing ? 1 : 0)
                 
                 VStack {
                     self.text
                 }
                 .frame(width: geometry.size.width / 2,
                        height: geometry.size.height / 7)
-                    .background(Color.secondary.colorInvert())
-                    .foregroundColor(Color.primary)
+                .background(Color.systemGray3)
+                    .foregroundColor(Color.label)
                     .cornerRadius(20)
                     .transition(.slide)
                     .opacity(self.isShowing ? 1 : 0)

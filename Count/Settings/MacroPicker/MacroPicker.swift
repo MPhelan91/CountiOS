@@ -31,7 +31,7 @@ struct MacroPicker:View{
             Text("Macros")
             Spacer()
             Text(self.macroGoals.filter({$0.goal != nil && $0.goal! > 0}).map({$0.macro.getFullName}).joined(separator: ", "))
-                .foregroundColor(darkModeGray)
+                .foregroundColor(Color.systemGray)
                 .lineLimit(1)
                 .truncationMode(.tail)
         }
@@ -47,7 +47,7 @@ struct MacroTable:View{
                 HStack{
                     IntegerInput(label: self.macroGoals[idx].macro.getFullName, value: self.$macroGoals[idx].goal)
                     if(self.macroGoals[idx].macro != .Calories){
-                        Text("grams")
+                        Text("grams ")
                     }
                 }
             }

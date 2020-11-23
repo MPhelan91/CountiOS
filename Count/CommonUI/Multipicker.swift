@@ -26,7 +26,7 @@ struct Multipicker<T:Hashable>:View{
             Text(self.label)
             Spacer()
             Text(self.selectedValues.map({self.stringAccesor($0)}).joined(separator: ", "))
-                .foregroundColor(darkModeGray)
+                .foregroundColor(Color.systemGray)
                 .lineLimit(1)
                 .truncationMode(.tail)
         }
