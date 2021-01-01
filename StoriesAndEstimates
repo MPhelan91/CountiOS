@@ -1,11 +1,27 @@
-UI(Ranked)
-- Think about checking/unchecking vs copying paradigm listbackgroundcolor (8)
-- Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
-
-Features (Randked):
+Next steps:
 - Put App on store (13)
+	- Use either github or facebook to create:
+		- privacy policy page
+		- support
+		- marketing page 
+	- Find avaialble name
+	- make gmail account for available name
+	- make help site (public github?)
+	- provide iap for tip jar functunality
+	- pay $$$ to beocme aple developer
+	- submit app for aproval and then do whatever they say if rejected
+
+Features
+- Copy/Paste Entries Across Days / Scheduler
+	- Make clipboard in coredata
+	- Copy option copies entries to clip board
+	- paste option pastes new entries 
 
 POLISH
+
+UI(Ranked)
+- Think about checking/unchecking vs backgroundcolor for selction of entries (8)
+- Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
 
 - dictionary view => when filter and select => details view is drawn strangely
 
@@ -19,7 +35,6 @@ TechDebt (Not Ranked):
 
 POST RELEASE FEATURES
 - Better Nutrion label scanning (20)
-- Copy and Paste across days
 - Settings: Weight (13)
 	- requires sub stories
 - Settings: Cheat day (5)
@@ -33,3 +48,35 @@ Meh?
 	- Require at least calories to be set in AddLogEntry
 		- Deafult protien to 0
 		- Make name and cloaires be non nullable in CoreData
+
+App Store Research
+https://codewithchris.com/submit-your-app-to-the-app-store/
+
+provisioning profile
+- Must have valid profile (see other profile)
+
+- Steps
+	- build app
+	- create provisioning profile
+	- go to app store connect ans submit
+
+SKU - internal use - call anything you want
+
+App store listing information
+	- Privacy policy URL
+		- google app privacy policy to find examples
+		- facebook & github pages & wix (add suported)	
+	- Category -> 
+		- app store optimization (AOS) -> keywords etc
+		- steve young is guru (check him out)
+	- screenshots and app preview video
+		- use simulator and command s to take screen shot
+		- Davinci Apps is a tool that can help
+			- you can add some text describing what the screen shot describes
+
+	- Support URL (required)
+		- Facebook page or github pages
+	- Marketing URL (optional)
+
+
+
