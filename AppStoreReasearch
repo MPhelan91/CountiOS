@@ -1,0 +1,30 @@
+
+App Store Research
+https://codewithchris.com/submit-your-app-to-the-app-store/
+
+provisioning profile
+- Must have valid profile (see other profile)
+
+- Steps
+	- build app
+	- create provisioning profile
+	- go to app store connect ans submit
+
+SKU - internal use - call anything you want
+
+App store listing information
+	- Privacy policy URL
+		- google app privacy policy to find examples
+		- facebook & github pages & wix (add suported)	
+	- Category -> 
+		- app store optimization (AOS) -> keywords etc
+		- steve young is guru (check him out)
+	- screenshots and app preview video
+		- use simulator and command s to take screen shot
+		- Davinci Apps is a tool that can help
+			- you can add some text describing what the screen shot describes
+
+	- Support URL (required)
+		- Facebook page or github pages
+	- Marketing URL (optional)
+

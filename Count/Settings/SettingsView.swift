@@ -28,12 +28,10 @@ struct SettingsView: View {
                 NavigationLink(destination: EntrySchedulerView()){
                     Text("Scheduled Entries")
                 }
+                NavigationLink(destination: AboutView()){
+                    Text("About")
+                }
             }
-//            Text("Temp Buttons")
-//            VStack{
-//                Button(action:{self.settings.deleteSettings()}){Text("Delete Settings")}
-//
-//            }
         }
         .navigationBarTitle(Text("Settings"))
 

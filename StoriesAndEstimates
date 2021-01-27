@@ -1,21 +1,22 @@
 Next steps:
 - Put App on store (13)
-	- Use either github or facebook to create:
-		- privacy policy page
-		- support
-		- marketing page 
-	- Find avaialble name
-	- make gmail account for available name
-	- make help site (public github?)
-	- provide iap for tip jar functunality
+	- About Page with contact info
 	- pay $$$ to beocme aple developer
 	- submit app for aproval and then do whatever they say if rejected
 
 Features
+1.1
 - Copy/Paste Entries Across Days / Scheduler
 	- Make clipboard in coredata
 	- Copy option copies entries to clip board
 	- paste option pastes new entries 
+- Top off calories or macro
+- provide iap for tip jar functunality
+1.2
+- Better Nutrion label scanning (20)
+- Settings: Weight (13)
+	- requires sub stories
+- Settings: Cheat day (5)
 
 POLISH
 
@@ -23,60 +24,14 @@ UI(Ranked)
 - Think about checking/unchecking vs backgroundcolor for selction of entries (8)
 - Line up macros in log list (4 digits for cal, 3 for protien and carb, 2 for fat) (3)
 
+Known Issues
 - dictionary view => when filter and select => details view is drawn strangely
-
-- have uniform behavior for errors (research error convention for ios apps)
 
 TechDebt (Not Ranked):
 - Create ViewModel for DictionaryView 
 - Create ViewModel for DictionaryEntryFullView
 - use map for macro goals
 - change logentry from decimal to double
-
-POST RELEASE FEATURES
-- Better Nutrion label scanning (20)
-- Settings: Weight (13)
-	- requires sub stories
-- Settings: Cheat day (5)
-
-
-Meh?
-- Enforce needed values for logEntry/Dictionary Entry (LogEntry needs calores, Dictionary Entry needs name and calories)
-	- Require at least name and calories to be set in DictionaryEntryFullView
-		- Default protien to 0
-		- Make name and calories no nullable in CoreData
-	- Require at least calories to be set in AddLogEntry
-		- Deafult protien to 0
-		- Make name and cloaires be non nullable in CoreData
-
-App Store Research
-https://codewithchris.com/submit-your-app-to-the-app-store/
-
-provisioning profile
-- Must have valid profile (see other profile)
-
-- Steps
-	- build app
-	- create provisioning profile
-	- go to app store connect ans submit
-
-SKU - internal use - call anything you want
-
-App store listing information
-	- Privacy policy URL
-		- google app privacy policy to find examples
-		- facebook & github pages & wix (add suported)	
-	- Category -> 
-		- app store optimization (AOS) -> keywords etc
-		- steve young is guru (check him out)
-	- screenshots and app preview video
-		- use simulator and command s to take screen shot
-		- Davinci Apps is a tool that can help
-			- you can add some text describing what the screen shot describes
-
-	- Support URL (required)
-		- Facebook page or github pages
-	- Marketing URL (optional)
-
+- have uniform behavior for errors (research error convention for ios apps)
 
 
