@@ -1,17 +1,13 @@
-Next steps:
-- Put App on store (13)
-	- About Page with contact info
-	- pay $$$ to beocme aple developer
-	- submit app for aproval and then do whatever they say if rejected
-
 Features
 1.1
 - Copy/Paste Entries Across Days / Scheduler
 	- Make clipboard in coredata
 	- Copy option copies entries to clip board
 	- paste option pastes new entries 
-- Top off calories or macro
 - provide iap for tip jar functunality
+- app name
+- Top off calories or macro
+- scaning bug -> space between portion and unit
 1.2
 - Better Nutrion label scanning (20)
 - Settings: Weight (13)
