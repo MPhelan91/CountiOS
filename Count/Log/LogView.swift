@@ -50,55 +50,57 @@ struct LogView: View {
             List{
                 ForEach(self.logVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry, self.settings.macrosCounted(), true)
+                    .contextMenu{
+                        if(self.logVM.selectedEntries.count > 0){
+                            Button("Copy", action:{
+                                self.clipBoard.copyToClipBoard(entries: self.logVM.selectedEntries)
+                                self.logVM.deselectAllEntries()
+                                self.toastMessage = "Copied"
+                                self.showToast = true
+                            })
+                            Button("Copy to Today",action:{
+                                if(self.logVM.performCopySelectedToToday()){
+                                    self.toastMessage = "Copied to Today"
+                                    self.showToast = true
+                                }
+                            })
+                            Button("Delete",action:{
+                                if(self.logVM.performDeleteEntries()){
+                                    self.toastMessage = "Deleted"
+                                    self.showToast = true
+                                }
+                            })
+                            Button("Create Dictionary Entry",action:{
+                                if(self.logVM.selectedEntries.count > 0){
+                                    self.navSelection = "Dictionary Entry"
+                                }
+                            })
+                        }
+                    }
                 }
                 .onDelete { indexSet in
                     self.logVM.deleteEntry(index: indexSet.first!)
-                }
-                .contextMenu{
-                    if(self.clipBoard.clipBoard.count > 0){
-                        Button("Paste", action:{
-                            if(self.logVM.performAddEntries(self.clipBoard.clipBoard)){
-                                self.toastMessage = "Pasted"
-                                self.showToast = true
-                            }
-                        })
-                    }
-                    if(self.logVM.selectedEntries.count > 0){
-                        Button("Copy", action:{
-                            self.clipBoard.copyToClipBoard(entries: self.logVM.selectedEntries)
-                            self.logVM.deselectAllEntries()
-                            self.toastMessage = "Copied"
-                            self.showToast = true
-                        })
-                        Button("Copy to Today",action:{
-                            if(self.logVM.performCopySelectedToToday()){
-                                self.toastMessage = "Copied to Today"
-                                self.showToast = true
-                            }
-                        })
-                        Button("Delete",action:{
-                            if(self.logVM.performDeleteEntries()){
-                                self.toastMessage = "Deleted"
-                                self.showToast = true
-                            }
-                        })
-                        Button("Create Dictionary Entry",action:{
-                            if(self.logVM.selectedEntries.count > 0){
-                                self.navSelection = "Dictionary Entry"
-                            }
-                        })
-                    }
                 }
             }
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle(Text("Log"))
         .navigationBarItems(
-            trailing: Button(action: {
-                self.entryVM.clearData()
-                self.navSelection = "Add Entry"
-            }){
-                Image(systemName: "plus").font(.system(size: 30, weight: .bold))
+            trailing: HStack{
+                Button(action: {
+                    if(self.logVM.performAddEntries(self.clipBoard.clipBoard)){
+                        self.toastMessage = "Pasted"
+                        self.showToast = true
+                    }
+                }){
+                    Image(systemName: "doc.on.clipboard").font(.system(size: 25))
+                }.disabled(self.clipBoard.clipBoard.count == 0)
+                Button(action: {
+                    self.entryVM.clearData()
+                    self.navSelection = "Add Entry"
+                }){
+                    Image(systemName: "plus").font(.system(size: 30, weight: .bold))
+                }
             }
         )
         .toast(isShowing: self.$showToast, text: Text(self.toastMessage))

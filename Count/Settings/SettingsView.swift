@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var settings : SettingsVM
+    @EnvironmentObject var clipBoard : ClipBoardImpl
+
 
     var body: some View {
         VStack{
@@ -28,6 +30,11 @@ struct SettingsView: View {
                 NavigationLink(destination: EntrySchedulerView()){
                     Text("Scheduled Entries")
                 }
+                Button(action:{
+                    self.clipBoard.deleteClipBoard()
+                }){
+                    Text("Clear Clipboard")
+                }.disabled(self.clipBoard.clipBoard.count == 0)
                 NavigationLink(destination: AboutView()){
                     Text("About")
                 }

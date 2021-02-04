@@ -24,11 +24,16 @@ class ClipBoardImpl: ObservableObject{
     
     public func copyToClipBoard(entries:[LogEntry]){
         self.clipBoard = entries;
-        deleteClipBoard()
-        saveClipBoard()
+        deleteClipBoardInCoreData()
+        saveClipBoardInCoreData()
     }
     
-    private func deleteClipBoard(){
+    public func deleteClipBoard(){
+        self.clipBoard = [];
+        deleteClipBoardInCoreData()
+    }
+    
+    private func deleteClipBoardInCoreData(){
         do{
             let cb = try context.fetch(ClipBoard.fetchRequest()) as! [NSManagedObject]
             cb.forEach({x in context.delete(x)})
@@ -38,7 +43,7 @@ class ClipBoardImpl: ObservableObject{
         }
     }
     
-    private func saveClipBoard(){
+    private func saveClipBoardInCoreData(){
         do{
             let newCB = ClipBoard(context: self.context)
             newCB.addToEntries(NSSet(array:clipBoard))
