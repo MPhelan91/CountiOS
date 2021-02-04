@@ -32,10 +32,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let addEntryVM = AddLogEntryVM(context: context, settings: settingsVM)
         let logVM = LogVM<FetcherForLogView>(context: context, settings: settingsVM, fetcher: FetcherForLogView())
         let schedulerVM = LogVM<FetcherForScheduler>(context: context, settings: settingsVM, fetcher: FetcherForScheduler())
+        let clipBoard = ClipBoardImpl(context: context)
         
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(addEntryVM).environmentObject(logVM).environmentObject(settingsVM).environmentObject(schedulerVM)
+        let contentView = ContentView().environment(\.managedObjectContext, context).environmentObject(addEntryVM).environmentObject(logVM).environmentObject(settingsVM).environmentObject(schedulerVM).environmentObject(clipBoard)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

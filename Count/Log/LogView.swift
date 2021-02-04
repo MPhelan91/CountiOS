@@ -12,6 +12,7 @@ struct LogView: View {
     @EnvironmentObject var entryVM : AddLogEntryVM
     @EnvironmentObject var logVM : LogVM<FetcherForLogView>
     @EnvironmentObject var settings : SettingsVM
+    @EnvironmentObject var clipBoard : ClipBoardImpl
     @Environment(\.colorScheme) var colorScheme
     
     @State private var navSelection: String? = nil
@@ -49,29 +50,44 @@ struct LogView: View {
             List{
                 ForEach(self.logVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry, self.settings.macrosCounted(), true)
-                        .contextMenu{
-                            if(self.logVM.selectedEntries.count > 0){
-                                Button("Copy to Today",action:{
-                                    if(self.logVM.performCopySelected()){
-                                        self.toastMessage = "Copied to Today"
-                                        self.showToast = true
-                                    }
-                                })
-                                Button("Delete",action:{
-                                    if(self.logVM.performDeleteEntries()){
-                                        self.toastMessage = "Deleted"
-                                        self.showToast = true
-                                    }
-                                })
-                                Button("Create Dictionary Entry",action:{
-                                    if(self.logVM.selectedEntries.count > 0){
-                                        self.navSelection = "Dictionary Entry"
-                                    }
-                                })
-                            }
-                        }
-                }.onDelete { indexSet in
+                }
+                .onDelete { indexSet in
                     self.logVM.deleteEntry(index: indexSet.first!)
+                }
+                .contextMenu{
+                    if(self.clipBoard.clipBoard.count > 0){
+                        Button("Paste", action:{
+                            if(self.logVM.performAddEntries(self.clipBoard.clipBoard)){
+                                self.toastMessage = "Pasted"
+                                self.showToast = true
+                            }
+                        })
+                    }
+                    if(self.logVM.selectedEntries.count > 0){
+                        Button("Copy", action:{
+                            self.clipBoard.copyToClipBoard(entries: self.logVM.selectedEntries)
+                            self.logVM.deselectAllEntries()
+                            self.toastMessage = "Copied"
+                            self.showToast = true
+                        })
+                        Button("Copy to Today",action:{
+                            if(self.logVM.performCopySelectedToToday()){
+                                self.toastMessage = "Copied to Today"
+                                self.showToast = true
+                            }
+                        })
+                        Button("Delete",action:{
+                            if(self.logVM.performDeleteEntries()){
+                                self.toastMessage = "Deleted"
+                                self.showToast = true
+                            }
+                        })
+                        Button("Create Dictionary Entry",action:{
+                            if(self.logVM.selectedEntries.count > 0){
+                                self.navSelection = "Dictionary Entry"
+                            }
+                        })
+                    }
                 }
             }
         }

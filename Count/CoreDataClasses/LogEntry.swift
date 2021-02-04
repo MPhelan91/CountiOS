@@ -18,18 +18,10 @@ public class LogEntry:NSManagedObject,Identifiable{
     @NSManaged public var fat:NSDecimalNumber?
     @NSManaged public var sugar:NSDecimalNumber?
     @NSManaged public var scheduledFor:NSNumber?
+    @NSManaged public var clipBoard:ClipBoard?
 }
 
 extension LogEntry{
-    static func getAllLogEntries() -> NSFetchRequest<LogEntry> {
-        let request: NSFetchRequest<LogEntry> = LogEntry.fetchRequest() as! NSFetchRequest<LogEntry>
-        
-        let sortDescriptor = NSSortDescriptor(key: "entryDate", ascending: false)
-        request.sortDescriptors = [sortDescriptor]
-        
-        return request
-    }
-    
     static func getLogEntriesForDate(date:Date) -> NSFetchRequest<LogEntry> {
         let request: NSFetchRequest<LogEntry> = LogEntry.fetchRequest() as! NSFetchRequest<LogEntry>
 

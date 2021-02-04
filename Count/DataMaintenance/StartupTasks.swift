@@ -39,8 +39,8 @@ class StartupTask{
                 let everyDay = try context.fetch(LogEntry.getLogEntriesScheduledFor(day:.Everyday))
                 let today = try context.fetch(LogEntry.getLogEntriesScheduledFor(day: Day.getDayFromDate(newLastOpened)))
                 
-                everyDay.forEach{entry in _ = HelperFunctions.copyEntry(context: context, entry: entry)}
-                today.forEach{entry in _ = HelperFunctions.copyEntry(context: context, entry: entry)}
+                everyDay.forEach{entry in _ = HelperFunctions.copyEntry(Date.self, context, entry, Date())}
+                today.forEach{entry in _ = HelperFunctions.copyEntry(Date.self, context, entry, Date())}
                 settings.lastOpened = newLastOpened
                 
                 try context.save()

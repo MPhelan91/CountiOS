@@ -71,34 +71,44 @@ class LogVM<F:EntryFetcher>: ObservableObject {
         return selectedEntries.contains(where: {$0.objectID.isEqual(objectId)})
     }
     
-    private func bulkOperation(_ operation:() throws->Void) -> Bool{
-        if(self.selectedEntries.count > 0){
-            do{
-                try operation()
-            }catch{
-                print(error)
-                return false
-            }
-            selectedEntries.removeAll()
-            self.fetch()
-            return true
+    private func bulkOperation(_ operation:() throws->Void) -> Bool {
+        do{
+            try operation()
+        }catch{
+            print(error)
+            return false
         }
-        return false;
+        deselectAllEntries()
+        self.fetch()
+        return true
     }
     
-    private func copySelected() throws {
-        for entry in self.selectedEntries {
-            _ = HelperFunctions.copyEntry(context: self.context, entry: entry)
+    public func deselectAllEntries(){
+        selectedEntries.removeAll()
+    }
+    
+    private func addEntries(_ entries:[LogEntry], _ timeAttribute: F.criteriaType) throws {
+        for entry in entries {
+            _ = HelperFunctions.copyEntry(F.criteriaType.self, self.context, entry, timeAttribute)
         }
         try self.context.save()
     }
     
-    public func performCopySelected() -> Bool {
-        return bulkOperation(copySelected)
+    public func performAddEntries(_ entries:[LogEntry]) -> Bool{
+        return bulkOperation({()throws ->Void in try addEntries(entries, self.criteria)})
     }
     
-    private func deleteEntries() throws {
-        let ids = selectedEntries.map({x in x.objectID})
+    public func performCopySelectedToToday() -> Bool {
+        //TODO: This isn't great. Maybe make base Log class and then inherit for LogDate and define this class there
+        if(criteria is Date){
+            return bulkOperation({()throws ->Void in try addEntries(self.selectedEntries, Date() as! F.criteriaType)})
+        } else{
+            return false;
+        }
+    }
+    
+    private func deleteEntries(entries:[LogEntry]) throws {
+        let ids = entries.map({x in x.objectID})
         let deleteRequest = NSBatchDeleteRequest(objectIDs: ids)
         deleteRequest.resultType = .resultTypeObjectIDs
 
@@ -110,6 +120,6 @@ class LogVM<F:EntryFetcher>: ObservableObject {
     }
     
     public func performDeleteEntries() -> Bool {
-        return bulkOperation(deleteEntries)
+        return bulkOperation({()throws ->Void in try deleteEntries(entries: self.selectedEntries)})
     }
 }

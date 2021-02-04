@@ -12,6 +12,7 @@ struct EntrySchedulerView: View {
     @EnvironmentObject var entryVM : AddLogEntryVM
     @EnvironmentObject var settings : SettingsVM
     @EnvironmentObject var schedulerVM : LogVM<FetcherForScheduler>
+    @EnvironmentObject var clipBoard : ClipBoardImpl
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -49,18 +50,32 @@ struct EntrySchedulerView: View {
             List{
                 ForEach(self.schedulerVM.logEntries){ logEntry in
                     LogEntrySimpleView(logEntry, [], false)
-                        .contextMenu{
-                            if(self.schedulerVM.selectedEntries.count > 0){
-                                Button("Delete",action:{
-                                    if(self.schedulerVM.performDeleteEntries()){
-                                        self.toastMessage = "Deleted"
-                                        self.showToast = true
-                                    }
-                                })
-                            }
-                        }
                 }.onDelete { indexSet in
                     self.schedulerVM.deleteEntry(index: indexSet.first!)
+                }
+                .contextMenu{
+                    if(self.clipBoard.clipBoard.count > 0){
+                        Button("Paste", action:{
+                            if(self.schedulerVM.performAddEntries(self.clipBoard.clipBoard)){
+                                self.toastMessage = "Pasted"
+                                self.showToast = true
+                            }
+                        })
+                    }
+                    if(self.schedulerVM.selectedEntries.count > 0){
+                        Button("Copy", action:{
+                            self.clipBoard.copyToClipBoard(entries: self.schedulerVM.selectedEntries)
+                            self.schedulerVM.deselectAllEntries()
+                            self.toastMessage = "Copied"
+                            self.showToast = true
+                        })
+                        Button("Delete",action:{
+                            if(self.schedulerVM.performDeleteEntries()){
+                                self.toastMessage = "Deleted"
+                                self.showToast = true
+                            }
+                        })
+                    }
                 }
             }
         }

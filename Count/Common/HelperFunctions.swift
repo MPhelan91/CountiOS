@@ -25,7 +25,7 @@ class HelperFunctions{
         }
     }
     
-    static func copyEntry(context: NSManagedObjectContext, entry: LogEntry, date: Date = Date()) -> LogEntry{
+    static func copyEntry<T>(_ type: T.Type, _ context: NSManagedObjectContext, _ entry: LogEntry, _ timeAttribute: T) -> LogEntry{
         let newEntry = LogEntry(context: context)
         
         newEntry.name = entry.name
@@ -34,7 +34,13 @@ class HelperFunctions{
         newEntry.fat = entry.fat
         newEntry.carbs = entry.carbs
         newEntry.sugar = entry.sugar
-        newEntry.entryDate = date
+        
+        if(timeAttribute is Date){
+            newEntry.entryDate = timeAttribute as! Date
+        } else if(timeAttribute is Day){
+            let enumValue = timeAttribute as! Day
+            newEntry.scheduledFor = NSNumber(value: enumValue.rawValue)
+        }
         
         return newEntry
     }

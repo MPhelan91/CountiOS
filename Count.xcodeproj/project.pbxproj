@@ -42,6 +42,8 @@
 		4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E689224CE0F6F00E8810D /* Enums.swift */; };
 		4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */; };
 		4FBC443A25BE4CB500494EA4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC443925BE4CB500494EA4 /* AboutView.swift */; };
+		4FFAF52925CA180F004E7EFA /* ClipBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFAF52725CA180F004E7EFA /* ClipBoard.swift */; };
+		4FFAF53525CA1EBA004E7EFA /* ClipBoardImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFAF53425CA1EBA004E7EFA /* ClipBoardImpl.swift */; };
 		4FFF1BA624A57A59008672D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA524A57A59008672D9 /* AppDelegate.swift */; };
 		4FFF1BA824A57A59008672D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA724A57A59008672D9 /* SceneDelegate.swift */; };
 		4FFF1BAB24A57A59008672D9 /* Count.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA924A57A59008672D9 /* Count.xcdatamodeld */; };
@@ -108,6 +110,8 @@
 		4F8E689224CE0F6F00E8810D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBar.swift; sourceTree = "<group>"; };
 		4FBC443925BE4CB500494EA4 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		4FFAF52725CA180F004E7EFA /* ClipBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoard.swift; sourceTree = "<group>"; };
+		4FFAF53425CA1EBA004E7EFA /* ClipBoardImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoardImpl.swift; sourceTree = "<group>"; };
 		4FFF1BA224A57A59008672D9 /* Count.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Count.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFF1BA524A57A59008672D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FFF1BA724A57A59008672D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				4F6D295624DF491E008CEF08 /* Extensions.swift */,
 				4F43AE19253FB312008027B9 /* HelperFunctions.swift */,
 				4F43AE312543A187008027B9 /* EntryFetcher.swift */,
+				4FFAF53425CA1EBA004E7EFA /* ClipBoardImpl.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -227,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				4FFF1BC224A67EC1008672D9 /* LogEntrySimpleView.swift */,
-				4FFF1BC024A58B9C008672D9 /* LogEntry.swift */,
 				4F8E687B24C9086D00E8810D /* LogView.swift */,
 				4F6D295A24DF5900008CEF08 /* LogVM.swift */,
 				4F6D295424DF0BC3008CEF08 /* AddLogEntryView.swift */,
@@ -242,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				4F8E688424C90E3A00E8810D /* DictionaryView.swift */,
-				4F8E688D24CA6D3D00E8810D /* DictionaryEntry.swift */,
 				4F8E688F24CE0C4200E8810D /* DictionaryEntryFullView.swift */,
 			);
 			path = Dictionary;
@@ -253,7 +256,6 @@
 			children = (
 				4F43AE1E25434F85008027B9 /* EntryScheduler */,
 				4F26D0FE253669B800691A7D /* MacroPicker */,
-				4F26D0D22531282000691A7D /* Settings.swift */,
 				4F8E688624C90E9C00E8810D /* SettingsView.swift */,
 				4F26D0C22530F01100691A7D /* SettingsVM.swift */,
 				4FBC443925BE4CB500494EA4 /* AboutView.swift */,
@@ -268,6 +270,17 @@
 				4F6D294A24D9FBC4008CEF08 /* Conversions.swift */,
 			);
 			path = MathLibrary;
+			sourceTree = "<group>";
+		};
+		4FFAF51A25C8EACE004E7EFA /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				4FFAF52725CA180F004E7EFA /* ClipBoard.swift */,
+				4F26D0D22531282000691A7D /* Settings.swift */,
+				4F8E688D24CA6D3D00E8810D /* DictionaryEntry.swift */,
+				4FFF1BC024A58B9C008672D9 /* LogEntry.swift */,
+			);
+			path = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 		4FFF1B9924A57A59008672D9 = {
@@ -293,6 +306,7 @@
 		4FFF1BA424A57A59008672D9 /* Count */ = {
 			isa = PBXGroup;
 			children = (
+				4FFAF51A25C8EACE004E7EFA /* CoreDataClasses */,
 				4F732F6A255A0DDC00C9E53C /* DataMaintenance */,
 				4F2D3A4524FC73DB00A8B4C2 /* LabelScanning */,
 				4F6D295C24E0729A008CEF08 /* CommonUI */,
@@ -476,6 +490,7 @@
 				4F6D298424F87BFB008CEF08 /* MultilineTextField.swift in Sources */,
 				4F8E688724C90E9C00E8810D /* SettingsView.swift in Sources */,
 				4F8E688E24CA6D3D00E8810D /* DictionaryEntry.swift in Sources */,
+				4FFAF52925CA180F004E7EFA /* ClipBoard.swift in Sources */,
 				4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */,
 				4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */,
 				4F8E688324C90AED00E8810D /* ContentView.swift in Sources */,
@@ -490,6 +505,7 @@
 				4F732F632548E46400C9E53C /* FetcherForScheduler.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
+				4FFAF53525CA1EBA004E7EFA /* ClipBoardImpl.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,
 				4FFF1BC324A67EC1008672D9 /* LogEntrySimpleView.swift in Sources */,
 				4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */,

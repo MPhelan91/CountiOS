@@ -22,10 +22,6 @@ public class Settings: NSManagedObject {
     @NSManaged public var lastOpened: Date?
 }
 
-import Foundation
-import CoreData
-
-
 extension Settings {
     static func getDefaultSettings(context:NSManagedObjectContext) -> Settings{
         let defaultSettings = Settings(context: context)
@@ -39,11 +35,5 @@ extension Settings {
         defaultSettings.lastOpened = nil
         defaultSettings.lastCleaning = nil
         return defaultSettings
-    }
-    
-    static func getSettings() -> NSFetchRequest<Settings> {
-        let request = Settings.fetchRequest() as! NSFetchRequest<Settings>
-        request.fetchLimit = 1
-        return request
     }
 }
