@@ -26,6 +26,15 @@ struct AddLogEntryView : View {
         self.schedulerVM = schedulerVm
     }
     
+    func calcTopOff(_ macro:Macros) -> Double{
+        if(logVM != nil){
+            return HelperFunctions.calcTopOff(settings.macroGoals, logVM?.logEntries ?? [], macro)
+        } else if(schedulerVM != nil){
+            return HelperFunctions.calcTopOff(settings.macroGoals, schedulerVM?.logEntries ?? [], macro)
+        }
+        return 0
+    }
+    
     func getMacroBinding(_ macro:Macros) -> Binding<Double?>{
         switch macro {
         case Macros.Calories:
@@ -82,7 +91,10 @@ struct AddLogEntryView : View {
                 Group{
                     TextField("Name", text: $entryVM.name)
                     ForEach(self.settings.macrosCounted(), id:\.self){ macro in
+                        HStack{
                         DecimalInput(label: macro.getFullName, value: getMacroBinding(macro), onFinishedEditing: {self.entryVM.RecalcNutrition(ChangedData.MacroToChangedData(macro))})
+                            TopOffButton(action: {self.entryVM.setMacroAndRecalc(macro: macro, amount: calcTopOff(macro))})
+                        }
                     }
                     HStack{
                         Spacer()

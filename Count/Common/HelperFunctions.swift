@@ -45,6 +45,12 @@ class HelperFunctions{
         return newEntry
     }
     
+    static func calcTopOff(_ goals: [MacroGoal], _ entries:[LogEntry],_ macro:Macros ) -> Double{
+        let sum = sumMacros(macro, entries)
+        let goal = Double(goals.first(where: { $0.macro == macro })!.goal!)
+        return goal > 0 && sum < goal ? goal - sum : 0.0
+    }
+    
     static func calcEntryDate(_ date:Date) -> Date{
         let calendar = Calendar.current
         let now = Date()

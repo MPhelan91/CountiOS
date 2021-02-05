@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F00B49625CC99620059F5A9 /* TopOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F00B49525CC99620059F5A9 /* TopOffButton.swift */; };
 		4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F10532515986900DEF6F3 /* LogHeaderView.swift */; };
 		4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0C22530F01100691A7D /* SettingsVM.swift */; };
 		4F26D0D42531282000691A7D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0D22531282000691A7D /* Settings.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F00B49525CC99620059F5A9 /* TopOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopOffButton.swift; sourceTree = "<group>"; };
 		4F0F10532515986900DEF6F3 /* LogHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeaderView.swift; sourceTree = "<group>"; };
 		4F26D0C22530F01100691A7D /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
 		4F26D0D22531282000691A7D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				4F3A9ABA252553A10043D730 /* TextFieldWithFirstFocus.swift */,
 				4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */,
 				4F26D0E2253257E200691A7D /* Multipicker.swift */,
+				4F00B49525CC99620059F5A9 /* TopOffButton.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
 				4FFAF53525CA1EBA004E7EFA /* ClipBoardImpl.swift in Sources */,
+				4F00B49625CC99620059F5A9 /* TopOffButton.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,
 				4FFF1BC324A67EC1008672D9 /* LogEntrySimpleView.swift in Sources */,
 				4F43AE1A253FB312008027B9 /* HelperFunctions.swift in Sources */,

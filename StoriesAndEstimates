@@ -1,18 +1,21 @@
 Features
 1.1
-- Copy/Paste Entries Across Days / Scheduler
-	- Make clipboard in coredata
-	- Copy option copies entries to clip board
-	- paste option pastes new entries 
+X Copy/Paste Entries Across Days / Scheduler
 
-  *Notes* - need to make work with scheduler which requires some regigering in the logVM
+O Top off calories or macro
+  x top off button
+  x vm function that sets macro and recalcs
+  - send find out how to get goal - total and send to function
 
 - provide iap for tip jar functunality
 - app name
-- Top off calories or macro
+- Quick Add (Favorites)
 - scaning bug -> space between portion and unit
 1.2
-- Quick Add (Favorites)
+Tech Debt Release - Reorg code etc
+1.3
+UI Brush Release
+2.0
 - Better Nutrion label scanning (20)
 - Settings: Weight (13)
 	- requires sub stories

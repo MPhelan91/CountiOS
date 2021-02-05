@@ -172,4 +172,20 @@ class AddLogEntryVM: ObservableObject {
         self.carbs = nil
         self.sugar = nil
     }
+    
+    public func setMacroAndRecalc(macro: Macros, amount: Double){
+        switch(macro){
+        case Macros.Calories:
+            self.calories = amount
+        case Macros.Protien:
+            self.protien = amount
+        case Macros.Fat:
+            self.fat = amount
+        case Macros.Carbs:
+            self.carbs = amount
+        case Macros.Sugar:
+            self.sugar = amount
+        }
+        RecalcNutrition(ChangedData.MacroToChangedData(macro))
+    }
 }
