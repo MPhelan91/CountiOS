@@ -83,7 +83,13 @@ struct EntrySchedulerView: View {
                         }
                     }){
                         Image(systemName: "doc.on.clipboard").font(.system(size: 25))
-                    }.disabled(self.clipBoard.clipBoard.count == 0)
+                    }
+                    .disabled(self.clipBoard.clipBoard.count == 0)
+                    .contextMenu{
+                        if(self.clipBoard.clipBoard.count > 0){
+                            Button("Clear Clipboard", action:{self.clipBoard.deleteClipBoard()})
+                        }
+                    }
                     Button(action: {
                         self.entryVM.clearData()
                         self.navSelection = "Add Entry"
