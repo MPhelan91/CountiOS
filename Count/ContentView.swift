@@ -33,6 +33,14 @@ struct ContentView: View {
                 Image(systemName: "gear")
                 Text("Settings")
             }
+            NavigationView{
+                TipJarView()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .tabItem{
+                Image(systemName: "dollarsign.circle")
+                Text("Tip Jar")}
         }
     }
 }
+

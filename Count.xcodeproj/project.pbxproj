@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F00B49625CC99620059F5A9 /* TopOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F00B49525CC99620059F5A9 /* TopOffButton.swift */; };
 		4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0F10532515986900DEF6F3 /* LogHeaderView.swift */; };
+		4F2477B525D9A66500758017 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2477B425D9A66500758017 /* StoreKit.framework */; };
+		4F2477B725D9A7AD00758017 /* TipJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2477B625D9A7AD00758017 /* TipJar.swift */; };
+		4F2477C025D9D8F000758017 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2477BF25D9D8F000758017 /* TipJarView.swift */; };
 		4F26D0C32530F01100691A7D /* SettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0C22530F01100691A7D /* SettingsVM.swift */; };
 		4F26D0D42531282000691A7D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0D22531282000691A7D /* Settings.swift */; };
 		4F26D0E3253257E200691A7D /* Multipicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26D0E2253257E200691A7D /* Multipicker.swift */; };
@@ -19,6 +22,7 @@
 		4F43AE2025434FA2008027B9 /* EntrySchedulerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */; };
 		4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE312543A187008027B9 /* EntryFetcher.swift */; };
 		4F43AE372543A27A008027B9 /* FetcherForLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F43AE362543A27A008027B9 /* FetcherForLogView.swift */; };
+		4F4C229F25D9E2B800E088EC /* TipJarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4C229E25D9E2B800E088EC /* TipJarVM.swift */; };
 		4F6D294B24D9FBC4008CEF08 /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294A24D9FBC4008CEF08 /* Conversions.swift */; };
 		4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */; };
 		4F6D295324DF0B67008CEF08 /* AddLogEntryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */; };
@@ -75,6 +79,9 @@
 /* Begin PBXFileReference section */
 		4F00B49525CC99620059F5A9 /* TopOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopOffButton.swift; sourceTree = "<group>"; };
 		4F0F10532515986900DEF6F3 /* LogHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHeaderView.swift; sourceTree = "<group>"; };
+		4F2477B425D9A66500758017 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4F2477B625D9A7AD00758017 /* TipJar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJar.swift; sourceTree = "<group>"; };
+		4F2477BF25D9D8F000758017 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		4F26D0C22530F01100691A7D /* SettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVM.swift; sourceTree = "<group>"; };
 		4F26D0D22531282000691A7D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4F26D0E2253257E200691A7D /* Multipicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multipicker.swift; sourceTree = "<group>"; };
@@ -85,6 +92,7 @@
 		4F43AE1F25434FA2008027B9 /* EntrySchedulerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySchedulerView.swift; sourceTree = "<group>"; };
 		4F43AE312543A187008027B9 /* EntryFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFetcher.swift; sourceTree = "<group>"; };
 		4F43AE362543A27A008027B9 /* FetcherForLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetcherForLogView.swift; sourceTree = "<group>"; };
+		4F4C229E25D9E2B800E088EC /* TipJarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarVM.swift; sourceTree = "<group>"; };
 		4F6D294A24D9FBC4008CEF08 /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		4F6D294C24DA028A008CEF08 /* NutritionalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalInfo.swift; sourceTree = "<group>"; };
 		4F6D295224DF0B67008CEF08 /* AddLogEntryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogEntryVM.swift; sourceTree = "<group>"; };
@@ -146,12 +154,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2477B525D9A66500758017 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F2477B325D9A66500758017 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F2477B425D9A66500758017 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F2477BE25D9D8DD00758017 /* TipJar */ = {
+			isa = PBXGroup;
+			children = (
+				4F2477B625D9A7AD00758017 /* TipJar.swift */,
+				4F2477BF25D9D8F000758017 /* TipJarView.swift */,
+				4F4C229E25D9E2B800E088EC /* TipJarVM.swift */,
+			);
+			path = TipJar;
+			sourceTree = "<group>";
+		};
 		4F26D0FE253669B800691A7D /* MacroPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +320,7 @@
 				4F6D296824E1BB24008CEF08 /* ConversionTests */,
 				4F6D297824E99453008CEF08 /* ExtensionTests */,
 				4FFF1BA324A57A59008672D9 /* Products */,
+				4F2477B325D9A66500758017 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +351,7 @@
 				4FFF1BB624A57A5B008672D9 /* Info.plist */,
 				4FFF1BA924A57A59008672D9 /* Count.xcdatamodeld */,
 				4FFF1BB024A57A5B008672D9 /* Preview Content */,
+				4F2477BE25D9D8DD00758017 /* TipJar */,
 				4F8E688A24CA667200E8810D /* Log */,
 				4F8E688B24CA668B00E8810D /* Dictionary */,
 				4F8E688C24CA669500E8810D /* Settings */,
@@ -503,11 +532,13 @@
 				4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */,
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
 				4FBC443A25BE4CB500494EA4 /* AboutView.swift in Sources */,
+				4F4C229F25D9E2B800E088EC /* TipJarVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
 				4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */,
 				4F732F632548E46400C9E53C /* FetcherForScheduler.swift in Sources */,
 				4FFF1BC124A58B9C008672D9 /* LogEntry.swift in Sources */,
 				4F26D0D42531282000691A7D /* Settings.swift in Sources */,
+				4F2477B725D9A7AD00758017 /* TipJar.swift in Sources */,
 				4FFAF53525CA1EBA004E7EFA /* ClipBoardImpl.swift in Sources */,
 				4F00B49625CC99620059F5A9 /* TopOffButton.swift in Sources */,
 				4F6D298824FABB84008CEF08 /* IntegerInput.swift in Sources */,
@@ -517,6 +548,7 @@
 				4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */,
 				4F6D295724DF491E008CEF08 /* Extensions.swift in Sources */,
 				4FFF1BA824A57A59008672D9 /* SceneDelegate.swift in Sources */,
+				4F2477C025D9D8F000758017 /* TipJarView.swift in Sources */,
 				4F6D296224E1955C008CEF08 /* UIExetnsions.swift in Sources */,
 				4F6D294D24DA028A008CEF08 /* NutritionalInfo.swift in Sources */,
 				4F3A9ABB252553A10043D730 /* TextFieldWithFirstFocus.swift in Sources */,
