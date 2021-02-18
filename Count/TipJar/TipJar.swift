@@ -23,40 +23,66 @@ public class TipJar: NSObject, SKProductsRequestDelegate {
     ]
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     private var productsRequest: SKProductsRequest?
-
-
+    private var callBack : ((Bool,String)->Void)?
+    
     public override init() {
-      super.init()
+        super.init()
+        SKPaymentQueue.default().add(self)
     }
     
     public func requestProducts(_ completionHandler: @escaping ProductsRequestCompletionHandler) {
-      productsRequest?.cancel()
-      productsRequestCompletionHandler = completionHandler
-
-      productsRequest = SKProductsRequest(productIdentifiers: tipIDs)
-      productsRequest!.delegate = self
-      productsRequest!.start()
+        productsRequest?.cancel()
+        productsRequestCompletionHandler = completionHandler
+        
+        productsRequest = SKProductsRequest(productIdentifiers: tipIDs)
+        productsRequest!.delegate = self
+        productsRequest!.start()
+    }
+    
+    public func buyProduct(_ product: SKProduct) {
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
     }
     
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let products = response.products
         productsRequestCompletionHandler?(true, products)
         clearRequestAndHandler()
-
-        for p in products {
-          print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
-        }
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-      print("Failed to load list of products.")
-      print("Error: \(error.localizedDescription)")
-      productsRequestCompletionHandler?(false, nil)
-      clearRequestAndHandler()
+        //TODO: ERROR Handling
+        productsRequestCompletionHandler?(false, nil)
+        clearRequestAndHandler()
     }
     
     private func clearRequestAndHandler() {
-      productsRequest = nil
-      productsRequestCompletionHandler = nil
+        productsRequest = nil
+        productsRequestCompletionHandler = nil
+    }
+}
+
+extension TipJar : SKPaymentTransactionObserver{
+    public func setCallBack(_ callBack: @escaping (Bool, String)->Void){
+        self.callBack = callBack
+    }
+    
+    public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch (transaction.transactionState) {
+            case .purchased:
+                if(self.callBack != nil){
+                    self.callBack!(true, transaction.payment.productIdentifier)
+                }
+                break
+            case .failed:
+                if(self.callBack != nil){
+                    self.callBack!(false, transaction.payment.productIdentifier)
+                }
+                break
+            default:
+                break
+            }
+        }
     }
 }

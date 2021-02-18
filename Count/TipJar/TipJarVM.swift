@@ -18,8 +18,11 @@ class TipOption: Identifiable{
 
 class TipJarVM : ObservableObject{
     @Published var tipOptions: [TipOption] = []
+    @Published var showAlert = false
+    @Published var alertMessage = ""
     
     init(){
+        Store.tipJar.setCallBack(self.onTryPurchaseResponse)
         Store.tipJar.requestProducts{success, products in
             DispatchQueue.main.async {
                 if(success){
@@ -31,5 +34,33 @@ class TipJarVM : ObservableObject{
                 }
             }
         }
+    }
+    
+    public func onTryPurchaseResponse(_ success: Bool, _ prodId: String){
+        if(success){
+            self.alertMessage = prodIdToMessage(prodId)
+        } else{
+            self.alertMessage = "Something went wrong :("
+        }
+        self.showAlert = true
+    }
+    
+    private func prodIdToMessage(_ prodId: String) -> String{
+        switch(prodId){
+        case "com.MichaelPhelan.CountFit.SmallTip":
+            return "Every little bit helps"
+        case "com.MichaelPhelan.CountFit.MediumTip":
+            return "Very Appreciated"
+        case "com.MichaelPhelan.CountFit.LargeTip":
+            return "You went above and beyond"
+        case "com.MichaelPhelan.CountFit.HugeTip":
+            return "I'm speechless"
+        default:
+            return ""
+        }
+    }
+    
+    public func tip(_ option: TipOption){
+        Store.tipJar.buyProduct(option.product)
     }
 }

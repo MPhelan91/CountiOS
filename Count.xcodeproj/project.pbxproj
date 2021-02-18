@@ -46,7 +46,6 @@
 		4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E688F24CE0C4200E8810D /* DictionaryEntryFullView.swift */; };
 		4F8E689324CE0F6F00E8810D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8E689224CE0F6F00E8810D /* Enums.swift */; };
 		4F983543252AA2AD00E8F746 /* TextFieldWithToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */; };
-		4FBC443A25BE4CB500494EA4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC443925BE4CB500494EA4 /* AboutView.swift */; };
 		4FFAF52925CA180F004E7EFA /* ClipBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFAF52725CA180F004E7EFA /* ClipBoard.swift */; };
 		4FFAF53525CA1EBA004E7EFA /* ClipBoardImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFAF53425CA1EBA004E7EFA /* ClipBoardImpl.swift */; };
 		4FFF1BA624A57A59008672D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF1BA524A57A59008672D9 /* AppDelegate.swift */; };
@@ -119,7 +118,6 @@
 		4F8E688F24CE0C4200E8810D /* DictionaryEntryFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryFullView.swift; sourceTree = "<group>"; };
 		4F8E689224CE0F6F00E8810D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4F983542252AA2AD00E8F746 /* TextFieldWithToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBar.swift; sourceTree = "<group>"; };
-		4FBC443925BE4CB500494EA4 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4FFAF52725CA180F004E7EFA /* ClipBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoard.swift; sourceTree = "<group>"; };
 		4FFAF53425CA1EBA004E7EFA /* ClipBoardImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipBoardImpl.swift; sourceTree = "<group>"; };
 		4FFF1BA224A57A59008672D9 /* Count.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Count.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,7 +286,6 @@
 				4F26D0FE253669B800691A7D /* MacroPicker */,
 				4F8E688624C90E9C00E8810D /* SettingsView.swift */,
 				4F26D0C22530F01100691A7D /* SettingsVM.swift */,
-				4FBC443925BE4CB500494EA4 /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -531,7 +528,6 @@
 				4F0F10542515986900DEF6F3 /* LogHeaderView.swift in Sources */,
 				4F2D3A4724FC746F00A8B4C2 /* NutritionFactsScanner.swift in Sources */,
 				4F6D295B24DF5900008CEF08 /* LogVM.swift in Sources */,
-				4FBC443A25BE4CB500494EA4 /* AboutView.swift in Sources */,
 				4F4C229F25D9E2B800E088EC /* TipJarVM.swift in Sources */,
 				4F8E689024CE0C4200E8810D /* DictionaryEntryFullView.swift in Sources */,
 				4F43AE322543A187008027B9 /* EntryFetcher.swift in Sources */,
@@ -791,7 +787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Count/Preview Content\"";
 				DEVELOPMENT_TEAM = 9997N9GMJS;
 				ENABLE_PREVIEWS = YES;
@@ -813,7 +809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Count/Preview Content\"";
 				DEVELOPMENT_TEAM = 9997N9GMJS;
 				ENABLE_PREVIEWS = YES;

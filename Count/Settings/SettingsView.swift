@@ -35,9 +35,6 @@ struct SettingsView: View {
                 }){
                     Text("Clear Clipboard")
                 }.disabled(self.clipBoard.clipBoard.count == 0)
-                NavigationLink(destination: AboutView()){
-                    Text("About")
-                }
             }
         }
         .navigationBarTitle(Text("Settings"))
