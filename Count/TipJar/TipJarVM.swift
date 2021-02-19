@@ -19,6 +19,7 @@ class TipOption: Identifiable{
 class TipJarVM : ObservableObject{
     @Published var tipOptions: [TipOption] = []
     @Published var showAlert = false
+    @Published var alertTitle = ""
     @Published var alertMessage = ""
     
     init(){
@@ -38,9 +39,11 @@ class TipJarVM : ObservableObject{
     
     public func onTryPurchaseResponse(_ success: Bool, _ prodId: String){
         if(success){
+            self.alertTitle = "Thank You!"
             self.alertMessage = prodIdToMessage(prodId)
         } else{
-            self.alertMessage = "Something went wrong :("
+            self.alertTitle = "Error"
+            self.alertMessage = "Something went wrong. You weren't charged."
         }
         self.showAlert = true
     }

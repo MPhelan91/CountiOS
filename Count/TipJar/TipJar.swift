@@ -74,12 +74,18 @@ extension TipJar : SKPaymentTransactionObserver{
                 if(self.callBack != nil){
                     self.callBack!(true, transaction.payment.productIdentifier)
                 }
+                SKPaymentQueue.default().finishTransaction(transaction)
                 break
             case .failed:
-                if(self.callBack != nil){
+                if(self.callBack != nil
+                    && (transaction.error as? SKError)?.code != SKError.Code.paymentCancelled){
                     self.callBack!(false, transaction.payment.productIdentifier)
                 }
+                SKPaymentQueue.default().finishTransaction(transaction)
                 break
+            case .restored:
+              SKPaymentQueue.default().finishTransaction(transaction)
+              break
             default:
                 break
             }
