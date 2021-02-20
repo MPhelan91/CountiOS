@@ -26,21 +26,25 @@ struct TipJarView: View{
                 }
                 Spacer(minLength: 20)
             }
-            List{
-                Section(header: Text("Tip Options")){
-                    ForEach(self.tipJarVM.tipOptions){ tipOption in
-                        Button(action: {
-                            self.tipJarVM.tip(tipOption)
-                        }){
-                            HStack{
-                                Text(tipOption.product.localizedTitle)
-                                Spacer()
-                                Text(tipOption.product.price.description)
+            HStack{
+                Spacer(minLength: 20)
+                List{
+                    Section(header: Text("Tip Options")){
+                        ForEach(self.tipJarVM.tipOptions){ tipOption in
+                            Button(action: {
+                                self.tipJarVM.tip(tipOption)
+                            }){
+                                HStack{
+                                    Text(tipOption.product.localizedTitle)
+                                    Spacer()
+                                    Text("$"+tipOption.product.price.description)
 
+                                }
                             }
                         }
-                    }
+                    }.textCase(nil)
                 }
+                Spacer(minLength: 20)
             }
         }
         .alert(isPresented: self.$tipJarVM.showAlert) {
