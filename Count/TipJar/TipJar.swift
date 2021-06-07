@@ -60,6 +60,10 @@ public class TipJar: NSObject, SKProductsRequestDelegate {
         productsRequest = nil
         productsRequestCompletionHandler = nil
     }
+    
+    public func canMakePayments() -> Bool {
+      return SKPaymentQueue.canMakePayments()
+    }
 }
 
 extension TipJar : SKPaymentTransactionObserver{

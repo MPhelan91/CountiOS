@@ -66,4 +66,8 @@ class TipJarVM : ObservableObject{
     public func tip(_ option: TipOption){
         Store.tipJar.buyProduct(option.product)
     }
+    
+    public func canTip() -> Bool{
+        return Store.tipJar.canMakePayments()
+    }
 }

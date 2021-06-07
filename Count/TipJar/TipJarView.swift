@@ -37,10 +37,13 @@ struct TipJarView: View{
                                 HStack{
                                     Text(tipOption.product.localizedTitle)
                                     Spacer()
-                                    Text("$"+tipOption.product.price.description)
-
+                                    if(self.tipJarVM.canTip()){
+                                        Text("$"+tipOption.product.price.description)
+                                    } else{
+                                        Text("Not Available").italic()
+                                    }
                                 }
-                            }
+                            }.disabled(!self.tipJarVM.canTip())
                         }
                     }.textCase(nil)
                 }
