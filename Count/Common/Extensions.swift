@@ -8,6 +8,10 @@
 
 import Foundation
 
+extension NSDecimalNumber {
+    
+}
+
 extension Date {
 
     var onlyDate: Date? {

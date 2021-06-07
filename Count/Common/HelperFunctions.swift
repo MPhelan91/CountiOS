@@ -13,15 +13,15 @@ class HelperFunctions{
     static func sumMacros(_ macroType:Macros, _ entries: [LogEntry]) -> Double {
         switch macroType {
         case Macros.Calories:
-            return entries.map({$0.calories as! Double}).reduce(0.0, +)
+            return entries.map({$0.calories?.doubleValue ?? 0}).reduce(0.0, +)
         case Macros.Protien:
-            return entries.map({$0.protien as! Double}).reduce(0.0, +)
+            return entries.map({$0.protien?.doubleValue ?? 0}).reduce(0.0, +)
         case Macros.Fat:
-            return entries.map({$0.fat as! Double}).reduce(0.0, +)
+            return entries.map({$0.fat?.doubleValue ?? 0}).reduce(0.0, +)
         case Macros.Carbs:
-            return entries.map({$0.carbs as! Double}).reduce(0.0, +)
+            return entries.map({$0.carbs?.doubleValue ?? 0}).reduce(0.0, +)
         case Macros.Sugar:
-            return entries.map({$0.sugar as! Double}).reduce(0.0, +)
+            return entries.map({$0.sugar?.doubleValue ?? 0}).reduce(0.0, +)
         }
     }
     

@@ -40,8 +40,8 @@ struct DictionaryEntryFullView : View {
     }
     
     init(_ logEntries: [LogEntry]){//, _ callBack: ()->Void){
-        _name = State(initialValue: "")
-        _definition = State(initialValue: logEntries.compactMap({x in x.name}).joined(separator: "\n"))
+        _name =  State(initialValue: logEntries.count == 1 ? logEntries[0].name! : "")
+        _definition = State(initialValue: logEntries.count > 1 ? logEntries.compactMap({x in x.name}).joined(separator: "\n") : "")
         _servingSize = State(initialValue: nil)
         _servingUnit = State(initialValue: nil)
         _calories =  State(initialValue: (toInt(HelperFunctions.sumMacros(.Calories, logEntries))))

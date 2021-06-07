@@ -132,5 +132,68 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6203652A-D87C-4125-A804-E7798128FD75"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Count/Common/HelperFunctions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "sumMacros(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6203652A-D87C-4125-A804-E7798128FD75 - 4a3bd608b3b44009"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Count.HelperFunctions.sumMacros(Count.Macros, Swift.Array&lt;Count.LogEntry&gt;) -&gt; Swift.Double"
+                  moduleName = "Count"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelphelan/Documents/Count/Count/Common/HelperFunctions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "6203652A-D87C-4125-A804-E7798128FD75 - 15eeb529cda2ca9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Count.LogEntry) -&gt; Swift.Double in static Count.HelperFunctions.sumMacros(Count.Macros, Swift.Array&lt;Count.LogEntry&gt;) -&gt; Swift.Double"
+                  moduleName = "Count"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelphelan/Documents/Count/Count/Common/HelperFunctions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "6203652A-D87C-4125-A804-E7798128FD75 - 149195cd3a6f8be3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 (Swift.Double, Swift.Double) -&gt; Swift.Double in implicit closure #1 (Swift.Double.Type) -&gt; (Swift.Double, Swift.Double) -&gt; Swift.Double in static Count.HelperFunctions.sumMacros(Count.Macros, Swift.Array&lt;Count.LogEntry&gt;) -&gt; Swift.Double"
+                  moduleName = "Count"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelphelan/Documents/Count/Count/Common/HelperFunctions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

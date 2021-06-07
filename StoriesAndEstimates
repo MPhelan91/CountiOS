@@ -9,15 +9,21 @@ X app name
 Tech Debt Release - Reorg code etc
 - Quick Add (Favorites)
 - scaning bug -> space between portion and unit
-- bug -> check and swipe delete
-- bug -> copy and paste in scheduled entries
-- improvement -> create meal from one entry -> name should be prefilled
-- find way to get info from nutritonx or other apis
+- bug -> paste value that has been deleted pastes nil log entry
+	- has to do with implentation -> clipboard table is just a link to existing log entries, so when one is deleted it blows everything up
+	- requires db change/clipbaord change
+
+- git auth tech debt (https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
+
+X bug -> check and swipe delete (CAn't reproduce anymore)
+X bug -> copy and paste in scheduled entries
+X improvement -> create meal from one entry -> name should be prefilled
 
 1.3
 UI Release
 
 2.0
+- find way to get info from nutritonx or other apis
 - Better Nutrion label scanning (20)
 - Weight tracking (13)
 	- requires sub stories
@@ -39,5 +45,6 @@ TechDebt (Not Ranked):
 - use map for macro goals
 - change logentry from decimal to double
 - have uniform behavior for errors (research error convention for ios apps)
+- Dictionary Entries -> Disallow entries without names / dupplicate names / etc
 
 
