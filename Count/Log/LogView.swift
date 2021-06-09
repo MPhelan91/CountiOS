@@ -35,6 +35,12 @@ struct LogView: View {
         VStack{
             NavigationLink(destination: AddLogEntryView(self.logVM), tag: "Add Entry", selection: $navSelection) {EmptyView()}
             NavigationLink(destination:DictionaryEntryFullView(self.logVM.selectedEntries).onDisappear{self.logVM.selectedEntries.removeAll()}, tag: "Dictionary Entry", selection: $navSelection){EmptyView()}
+            /*This empty Nav link is because there is a bug
+             introduced in 14.5 when you have exactly
+             two nav links in list*/
+            NavigationLink(destination: EmptyView()) {
+                EmptyView()
+            }
             HStack{
                 Button(action:{self.logVM.previous()}){
                     Image(systemName: "chevron.left").font(.system(size: 15)).foregroundColor(colorScheme == .dark ? Color.white : Color.black)
