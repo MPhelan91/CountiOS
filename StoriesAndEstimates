@@ -15,6 +15,10 @@ Tech Debt Release - Reorg code etc
 
 - git auth tech debt (https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
 
+ios 14.5 Bugs
+X two nav links at same level breaks navigation
+- keyboard doest pop up immediatley when search dictionary to create log entry
+
 X bug -> check and swipe delete (CAn't reproduce anymore)
 X bug -> copy and paste in scheduled entries
 X improvement -> create meal from one entry -> name should be prefilled

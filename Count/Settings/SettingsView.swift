@@ -12,10 +12,11 @@ struct SettingsView: View {
     @EnvironmentObject var settings : SettingsVM
     @EnvironmentObject var clipBoard : ClipBoardImpl
 
-
+    @State var filter = ""
     var body: some View {
         VStack{
             Form{
+                TextFieldWithFirstFocus(text:self.$filter, placeHolder:"Filter", isFirstResponder: true)
                 Picker(selection: $settings.massUnit, label: Text("Default Mass Unit")) {
                     ForEach(Units.massUnits(), id: \.self) { unit in
                         Text(unit.abbreviation).tag(unit as Units?)
